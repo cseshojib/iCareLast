@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.shojib.project_moon" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!--
+ The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="21" />
+    <permission
+        android:name="com.example.googlemaps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="i_Care_dcc"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="i_Care_dcc" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".display_contact"
+            android:label="@string/title_activity_display_contact" >
+        </activity>
+        <activity
+            android:name=".health_service"
+            android:label="@string/title_activity_health_service" >
+        </activity>
+        <activity
+            android:name=".medication"
+            android:label="@string/title_activity_medication" >
+        </activity>
+        <activity
+            android:name=".vaccination"
+            android:label="@string/title_activity_vaccination" >
+        </activity>
+        <activity
+            android:name=".dietChart"
+            android:label="@string/title_activity_diet_chart" >
+        </activity>
+        <activity
+            android:name=".hospital"
+            android:label="@string/title_activity_hospital" >
+        </activity>
+        <activity
+            android:name=".doctors"
+            android:label="@string/title_activity_doctors" >
+        </activity>
+        <activity
+            android:name=".RBS"
+            android:label="@string/title_activity_rbs" >
+        </activity>
+        <activity
+            android:name=".doctors_profile"
+            android:label="@string/title_activity_doctors_profile" >
+        </activity>
+        <activity
+            android:name=".RBS_SAVE"
+            android:label="@string/title_activity_rbs__save" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".hospitalMapsActivity"
+            android:label="@string/title_activity_hospital_maps" >
+        </activity>
+    </application>
+
+</manifest>

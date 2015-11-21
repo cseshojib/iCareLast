@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">i_Care_dcc</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="Add_New">Add New</string>
+    <string name="edit">Edit Contact</string>
+    <string name="delete">Delete Contact</string>
+    <string name="title_activity_display_contact">DisplayContact</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+    <string name="bloodgp">Blood</string>
+    <string name="address">Address</string>
+    <string name="marital">Marital</string>
+    <string name="save">Save </string>
+    <string name="deleteContact">Are you sure, you want to delete it.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="title_activity_health_service">health_service</string>
+    <string name="add_Doctors">add_Doctors</string>
+    <string name="Edit_Doctors">Edit_Doctors</string>
+    <string name="Delete_Doctors">Delete_Doctors</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_medication">medication</string>
+    <string name="title_activity_vaccination">vaccination</string>
+    <string name="title_activity_diet_chart">dietChart</string>
+    <string name="title_activity_hospital">hospital</string>
+    <string name="title_activity_doctors">doctors</string>
+    <string name="title_activity_rbs">RBS</string>
+    <string name="title_activity_doctors_profile">doctors_profile</string>
+    <string name="title_activity_rbs__save">RBS_SAVE</string>
+
+    <string name="Doctors">Find Doctors and Dentists by Specialty</string>
+
+    <string-array name="Doctors_arrays">
+
+        <item>Acupuncturists</item>
+        <item>Allergists</item>
+        <item>Audiologists</item>
+        <item>Cardiologists</item>
+        <item>Chiropractors</item>
+        <item>Colorectal Surgeons</item>
+        <item>Dentists</item>
+        <item>Dermatologists</item>
+        <item>Dietitians</item>
+        <item>Ear_Nose_Throat Doctors</item>
+        <item>Emergency Medicine Physicians</item>
+        <item>Endocrinologists</item>
+        <item>Endodontists</item>
+        <item>Eye Doctors</item>
+        <item>Family Physicians</item>
+        <item>Gastroenterologists</item>
+
+        <item>Hearing Specialists</item>
+        <item>Hematologists</item>
+        <item>Infectious Disease Specialists</item>
+        <item>Infertility Specialists</item>
+        <item>Internists</item>
+        <item>Nephrologists</item>
+        <item>Neurologists</item>
+        <item>Neurosurgeons</item>
+        <item>Oral Surgeons</item>
+        <item>Orthopedic Surgeons</item>
+
+
+
+
+        <item>Physical Therapists</item>
+        <item>Plastic Surgeons</item>
+
+
+        <item>Psychiatrists</item>
+        <item>Psychologists</item>
+        <item>Psychotherapists</item>
+
+         <item>Radiologists</item>
+
+        <item>Sleep Medicine Specialists</item>
+        <item>Sports Medicine Specialists</item>
+        <item>Surgeons</item>
+        <item>Therapists / Counselors</item>
+
+        <item>Urologists</item>
+    </string-array>
+    <string name="title_activity_hospital_maps">Map</string>
+
+</resources>
