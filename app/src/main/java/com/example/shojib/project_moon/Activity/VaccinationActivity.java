@@ -1,12 +1,14 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.shojib.project_moon.R;
 
-public class vaccination extends ActionBarActivity {
+
+public class VaccinationActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

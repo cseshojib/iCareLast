@@ -1,14 +1,15 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.example.shojib.project_moon.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class hospitalMapsActivity extends FragmentActivity {
+public class HospitalMapsActivity extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 

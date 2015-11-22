@@ -1,6 +1,5 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,8 +14,10 @@ import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.example.shojib.project_moon.DBHelper;
+import com.example.shojib.project_moon.R;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
     public final static String EXTRA_MESSAGE = "MESSAGE";
@@ -43,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
                 Bundle dataBundle = new Bundle();
                 dataBundle.putInt("id", id_To_Search);
 
-                Intent intent = new Intent(getApplicationContext(),display_contact.class);
+                Intent intent = new Intent(getApplicationContext(),DisplayContactActivity.class);
 
                 intent.putExtras(dataBundle);
                 startActivity(intent);
@@ -67,7 +68,7 @@ public class MainActivity extends ActionBarActivity {
             case R.id.item1:Bundle dataBundle = new Bundle();
                 dataBundle.putInt("id", 0);
 
-                Intent intent = new Intent(getApplicationContext(),display_contact.class);
+                Intent intent = new Intent(getApplicationContext(),DisplayContactActivity.class);
                 intent.putExtras(dataBundle);
 
                 startActivity(intent);

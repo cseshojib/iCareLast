@@ -1,11 +1,10 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,8 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shojib.project_moon.DBHelper;
+import com.example.shojib.project_moon.R;
 
-public class display_contact extends Activity {
+
+public class DisplayContactActivity extends Activity {
     int from_Where_I_Am_Coming = 0;
     private DBHelper mydb ;
 
@@ -110,7 +112,7 @@ public class display_contact extends Activity {
                 b3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(display_contact.this, health_service.class);
+                        Intent intent = new Intent(DisplayContactActivity.this, HealthServiceActivity.class);
                         startActivity(intent);
 
                     }

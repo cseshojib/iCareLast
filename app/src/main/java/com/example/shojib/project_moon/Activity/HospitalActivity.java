@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
@@ -9,8 +9,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import com.example.shojib.project_moon.R;
 
-public class hospital extends ActionBarActivity {
+
+public class HospitalActivity extends ActionBarActivity {
 
     ProgressBar progressBar;
     ProgressDialog progressDialog;
