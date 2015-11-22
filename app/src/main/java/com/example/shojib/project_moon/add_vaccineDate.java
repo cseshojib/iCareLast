@@ -32,7 +32,7 @@ public class add_vaccineDate extends Activity implements View.OnClickListener {
         day = cal.get(Calendar.DAY_OF_MONTH);
         month = cal.get(Calendar.MONTH);
         year = cal.get(Calendar.YEAR);
-        et = (EditText) findViewById(R.id.editText);
+        et = (EditText) findViewById(R.id.editText_date);
         ib.setOnClickListener(this);
     }
 

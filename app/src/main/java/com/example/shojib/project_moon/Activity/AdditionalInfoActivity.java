@@ -4,16 +4,56 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.shojib.project_moon.R;
 
 
 public class AdditionalInfoActivity extends ActionBarActivity {
 
+    public String height;
+    public String weight;
+    public String bloodPressure;
+    public String extraIssue;
+
+    EditText heightTextView;
+    EditText weightTextView;
+    EditText bloodPressureTextView;
+    EditText extraIssueTextView;
+
+    Button addInfoSaveButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additional_info);
+
+        heightTextView = (EditText)findViewById(R.id.editText_height);
+        weightTextView = (EditText)findViewById(R.id.editText_weight);
+        bloodPressureTextView =(EditText)findViewById(R.id.editText_BP);
+        extraIssueTextView=(EditText)findViewById(R.id.editText_Ex);
+        addInfoSaveButton = (Button)findViewById(R.id.add_health_info_button);
+
+
+        height = heightTextView.getText().toString();
+        weight = weightTextView.getText().toString();
+        bloodPressure = bloodPressureTextView.getText().toString();
+        extraIssue = extraIssueTextView.getText().toString();
+
+
+        addInfoSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
     }
 
 

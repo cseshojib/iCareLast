@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +22,12 @@ public class DisplayContactActivity extends Activity {
     int from_Where_I_Am_Coming = 0;
     private DBHelper mydb ;
 
-    TextView name ;
-    TextView age;
-    TextView bloodgp;
-    TextView gender;
+    EditText name ;
+    EditText age;
+    EditText bloodgp;
+    EditText gender;
+
+
 
     int id_To_Update = 0;
 
@@ -33,21 +36,18 @@ public class DisplayContactActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_contact);
 
-        name = (TextView) findViewById(R.id.editText_name);
-       age =(TextView) findViewById(R.id.editText_age);
-        bloodgp =(TextView) findViewById(R.id.editText_bloodgp);
-        gender = (TextView) findViewById(R.id.editText_gender);
+        name = (EditText) findViewById(R.id.editText_name);
+        age =(EditText) findViewById(R.id.editText_age);
+        bloodgp =(EditText) findViewById(R.id.editText_bloodgp);
+        gender = (EditText) findViewById(R.id.editText_gender);
 
-
+        // starting From this line, code will be changed for new DB design.
 
         mydb = new DBHelper(this);
 
 
         Button b2 = (Button)findViewById(R.id.button2);
         b2.setVisibility(View.INVISIBLE);
-
-
-
 
         Bundle extras = getIntent().getExtras();
         if(extras !=null)

@@ -35,7 +35,7 @@ public class add_medicineTime extends Activity implements OnClickListener {
         cal = Calendar.getInstance();
         hour = cal.get(Calendar.HOUR_OF_DAY);
         min = cal.get(Calendar.MINUTE);
-        et = (EditText) findViewById(R.id.editText);
+        et = (EditText) findViewById(R.id.editText_time);
         ib.setOnClickListener(this);
 
 

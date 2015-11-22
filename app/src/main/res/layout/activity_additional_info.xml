@@ -111,6 +111,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
+
+        android:onClick="run"
+
         android:textSize="25sp"
         android:id="@+id/add_health_info_button"
         android:layout_below="@+id/textView_extraIssue"
