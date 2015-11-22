@@ -23,22 +23,20 @@ public class display_contact extends Activity {
     TextView age;
     TextView bloodgp;
     TextView gender;
-    TextView weight;
-    TextView address;
-    TextView marital;
+
     int id_To_Update = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_contact);
+
         name = (TextView) findViewById(R.id.editText_name);
        age =(TextView) findViewById(R.id.editText_age);
         bloodgp =(TextView) findViewById(R.id.editText_bloodgp);
         gender = (TextView) findViewById(R.id.editText_gender);
-        //weight =(TextView) findViewById(R.id.editText_weight);
-        //address =(TextView) findViewById(R.id.editText_address);
-       /// marital =(TextView) findViewById(R.id.editText_marital);
+
+
 
         mydb = new DBHelper(this);
 
@@ -64,9 +62,7 @@ public class display_contact extends Activity {
                 String age1 = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_AGE));
                 String blgp = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_BLOOD));
                 String gend = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_GENDER));
-                String weig = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_WEIGHT));
-                String addrs = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_ADDRESS));
-                String bia = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_MARITAL));
+
 
                 if (!rs.isClosed())
                 {
@@ -91,17 +87,6 @@ public class display_contact extends Activity {
                 gender.setFocusable(false);
                 gender.setClickable(false);
 
-                weight.setText((CharSequence)weig);
-                weight.setFocusable(false);
-                weight.setClickable(false);
-
-                address.setText((CharSequence)addrs);
-                address.setFocusable(false);
-                address.setClickable(false);
-
-                marital.setText((CharSequence)bia);
-                marital.setFocusable(false);
-                marital.setClickable(false);
 
 
                 Button b3 = (Button)findViewById(R.id.button2);
@@ -163,17 +148,7 @@ public class display_contact extends Activity {
                 gender.setFocusableInTouchMode(true);
                 gender.setClickable(true);
 
-                weight.setEnabled(true);
-                weight.setFocusableInTouchMode(true);
-                weight.setClickable(true);
 
-                address.setEnabled(true);
-                address.setFocusableInTouchMode(true);
-                address.setClickable(true);
-
-                marital.setEnabled(true);
-                marital.setFocusableInTouchMode(true);
-                marital.setClickable(true);
 
                 return true;
             case R.id.Delete_Contact:
@@ -211,7 +186,7 @@ public class display_contact extends Activity {
         {
             int Value = extras.getInt("id");
             if(Value>0){
-                if(mydb.updateContact(id_To_Update,name.getText().toString(), age.getText().toString(), bloodgp.getText().toString(), gender.getText().toString(), weight.getText().toString(), address.getText().toString(), marital.getText().toString())){
+                if(mydb.updateContact(id_To_Update,name.getText().toString(), age.getText().toString(), bloodgp.getText().toString(), gender.getText().toString())){
                     Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
@@ -221,7 +196,7 @@ public class display_contact extends Activity {
                 }
             }
             else{
-                if(mydb.insertContact(name.getText().toString(), age.getText().toString(), bloodgp.getText().toString(), gender.getText().toString(), weight.getText().toString(),address.getText().toString(), marital.getText().toString())){
+                if(mydb.insertContact(name.getText().toString(), age.getText().toString(), bloodgp.getText().toString(), gender.getText().toString())){
                     Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
                 }
 

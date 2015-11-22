@@ -20,30 +20,23 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_AGE = "age";
     public static final String CONTACTS_COLUMN_BLOOD = "bloodgp";
     public static final String CONTACTS_COLUMN_GENDER = "gender";
-    public static final String CONTACTS_COLUMN_WEIGHT = "weight";
-    public static final String CONTACTS_COLUMN_ADDRESS = "address";
-    public static final String CONTACTS_COLUMN_MARITAL = "marital";
+
     private HashMap hp;
 
 
 
-    public static final String CONTACTS_TABLE_NAME_DOC = "doctor";
-    public static final String CONTACTS_COLUMN_ID_2 = "id2";
-    public static final String CONTACTS_COLUMN_NAME_DOC = "name_doctor";
-    public static final String CONTACTS_COLUMN_SPECTIATIALITIES_DOC = "spectialities";
-    public static final String CONTACTS_COLUMN_PHONE_DOC = "phone";
-    public static final String CONTACTS_COLUMN_ADDRESS_DOC = "address_doctors";
-   public DBHelper(Context context)
+
+    public DBHelper(Context context)
     {
         super(context, DATABASE_NAME , null, 1);
     }
 
     @Override
-      public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
         db.execSQL(
                 "create table member " +
-                        "(id integer primary key, name text,age text,bloodgp text,gender text,weight text,address text,marital text)"
+                        "(id integer primary key, name text,age text,bloodgp text,gender text)"
         );
     }
 
@@ -57,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertContact  (String name, String age, String bloodgp, String gender,String weight, String address, String marital)
+    public boolean insertContact  (String name, String age, String bloodgp, String gender)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -65,9 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("age", age);
         contentValues.put("bloodgp", bloodgp);
         contentValues.put("gender", gender);
-        contentValues.put("weight", weight);
-        contentValues.put("address", address);
-        contentValues.put("marital", marital);
+
         db.insert("member", null, contentValues);
         return true;
     }
@@ -84,7 +75,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
-    public boolean updateContact (Integer id, String name, String age, String bloodgp, String gender,String weight, String address, String marital)
+    public boolean updateContact (Integer id, String name, String age, String bloodgp, String gender)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -92,9 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("age", age);
         contentValues.put("bloodgp", bloodgp);
         contentValues.put("gender", gender);
-        contentValues.put("weight", weight);
-        contentValues.put("address", address);
-        contentValues.put("marital", marital);
+
         db.update("member", contentValues, "id = ? ", new String[] { Integer.toString(id) } );
         return true;
     }
