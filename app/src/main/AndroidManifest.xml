@@ -21,8 +21,8 @@
         android:name="com.example.googlemaps.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
 
@@ -32,52 +32,55 @@
         android:label="i_Care_dcc"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="i_Care_dcc" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".display_contact"
+            android:name=".Activity.DisplayContactActivity"
             android:label="@string/title_activity_display_contact" >
         </activity>
         <activity
-            android:name=".health_service"
+            android:name=".Activity.HealthServiceActivity"
             android:label="@string/title_activity_health_service" >
         </activity>
         <activity
-            android:name=".medication"
+            android:name=".Activity.MedicationActivity"
             android:label="@string/title_activity_medication" >
         </activity>
         <activity
-            android:name=".vaccination"
+            android:name=".Activity.VaccinationActivity"
             android:label="@string/title_activity_vaccination" >
         </activity>
         <activity
-            android:name=".dietChart"
+            android:name=".Activity.DietChartActivity"
             android:label="@string/title_activity_diet_chart" >
         </activity>
         <activity
-            android:name=".hospital"
+            android:name=".Activity.HospitalActivity"
             android:label="@string/title_activity_hospital" >
+
         </activity>
         <activity
-            android:name=".doctors"
+            android:name=".Activity.DoctorsActivity"
             android:label="@string/title_activity_doctors" >
         </activity>
         <activity
-            android:name=".RBS"
+            android:name=".Activity.RbsActivity"
             android:label="@string/title_activity_rbs" >
         </activity>
         <activity
-            android:name=".doctors_profile"
+            android:name=".Activity.DoctorsProfileActivity"
             android:label="@string/title_activity_doctors_profile" >
         </activity>
         <activity
-            android:name=".RBS_SAVE"
+            android:name=".Activity.RbsSaveActivity"
             android:label="@string/title_activity_rbs__save" >
         </activity>
 
@@ -89,11 +92,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".hospitalMapsActivity"
+            android:name=".Activity.HospitalMapsActivity"
             android:label="@string/title_activity_hospital_maps" >
         </activity>
         <activity
-            android:name=".Additional_info"
+            android:name=".Activity.AdditionalInfoActivity"
             android:label="@string/title_activity_additional_info" >
         </activity>
     </application>

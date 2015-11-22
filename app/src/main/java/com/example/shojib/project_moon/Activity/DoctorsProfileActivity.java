@@ -1,11 +1,10 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,18 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import com.example.shojib.project_moon.CustomOnItemSelectedListener;
+import com.example.shojib.project_moon.DBHelper;
+import com.example.shojib.project_moon.R;
 
 
-
-public class doctors_profile extends Activity {
+public class DoctorsProfileActivity extends Activity {
     int from_Where_I_Am_Coming = 0;
     private DBHelper mydb;
 
@@ -145,7 +138,7 @@ public class doctors_profile extends Activity {
                             public void onClick(DialogInterface dialog, int id2) {
                                 mydb.deleteContact(id_To_Update);
                                 Toast.makeText(getApplicationContext(), "Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), doctors.class);
+                                Intent intent = new Intent(getApplicationContext(), DoctorsActivity.class);
                                 startActivity(intent);
                             }
                         })
@@ -167,7 +160,7 @@ public class doctors_profile extends Activity {
 
     public void run(View view) {
 
-        Intent intent = new Intent(getApplicationContext(), doctors.class);
+        Intent intent = new Intent(getApplicationContext(), DoctorsActivity.class);
         startActivity(intent);
     }
 }

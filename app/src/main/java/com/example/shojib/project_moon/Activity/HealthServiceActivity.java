@@ -1,16 +1,17 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.shojib.project_moon.R;
 
-public class health_service extends Activity {
+
+public class HealthServiceActivity extends Activity {
 
 
 
@@ -40,7 +41,7 @@ public class health_service extends Activity {
         health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(health_service.this, RBS.class);
+                Intent intent = new Intent(HealthServiceActivity.this, RbsActivity.class);
                 startActivity(intent);
 
             }
@@ -48,7 +49,7 @@ public class health_service extends Activity {
         doctors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(health_service.this, doctors.class);
+                Intent intent = new Intent(HealthServiceActivity.this, DoctorsActivity.class);
                 startActivity(intent);
 
             }
@@ -57,7 +58,7 @@ public class health_service extends Activity {
         medicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(health_service.this, medication.class);
+                Intent intent = new Intent(HealthServiceActivity.this, MedicationActivity.class);
                 startActivity(intent);
 
             }
@@ -65,7 +66,7 @@ public class health_service extends Activity {
         vaccination.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(health_service.this, vaccination.class);
+                Intent intent = new Intent(HealthServiceActivity.this, VaccinationActivity.class);
                 startActivity(intent);
 
             }
@@ -73,7 +74,7 @@ public class health_service extends Activity {
         diet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(health_service.this, dietChart.class);
+                Intent intent = new Intent(HealthServiceActivity.this, DietChartActivity.class);
                 startActivity(intent);
 
             }
@@ -81,7 +82,7 @@ public class health_service extends Activity {
         hospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(health_service.this, hospital.class);
+                Intent intent = new Intent(HealthServiceActivity.this, HospitalActivity.class);
                 startActivity(intent);
 
             }

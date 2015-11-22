@@ -1,24 +1,26 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.shojib.project_moon.R;
 
-public class RBS extends ActionBarActivity {
+
+public class DietChartActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rbs);
+        setContentView(R.layout.activity_diet_chart);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_rb, menu);
+        getMenuInflater().inflate(R.menu.menu_diet_chart, menu);
         return true;
     }
 
