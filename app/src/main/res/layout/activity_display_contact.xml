@@ -15,26 +15,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Name: "
+            android:text="Name           : "
             android:id="@+id/textView_Name"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="67dp"
-            android:textColor="#ffffffff" />
+            android:textColor="#ffffffff"
+            android:layout_toLeftOf="@+id/editText_name"
+            android:layout_toStartOf="@+id/editText_name" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Age: "
+            android:text="Age               : "
             android:hint="Enter your age"
             android:id="@+id/textView_age"
-            android:layout_marginTop="32dp"
-            android:layout_below="@+id/textView_Name"
+            android:textColor="#ffffffff"
+            android:layout_below="@+id/editText_name"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#ffffffff" />
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,58 +44,24 @@
             android:text="Blood Group: "
             android:hint="Choose your blood group"
             android:id="@+id/textView_bloodgp"
+            android:textColor="#ffffffff"
+            android:layout_below="@+id/editText_age"
             android:layout_above="@+id/textView_genden"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="39dp"
-            android:textColor="#ffffffff" />
+            android:layout_toLeftOf="@+id/editText_bloodgp"
+            android:layout_toStartOf="@+id/editText_bloodgp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Gender: "
+            android:text="Gender         : "
             android:id="@+id/textView_genden"
             android:textColor="#ffffffff"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Weight: "
-            android:id="@+id/textView_weight"
-            android:layout_marginTop="35dp"
-            android:layout_below="@+id/textView_genden"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#ffffffff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Address: "
-            android:id="@+id/textView_address"
-            android:layout_marginTop="29dp"
-            android:layout_below="@+id/textView_weight"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#ffffffff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Marital Status: "
-            android:id="@+id/textView_marital"
-            android:layout_marginTop="28dp"
-            android:layout_below="@+id/textView_address"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#ffffffff" />
+            android:layout_below="@+id/editText_bloodgp"
+            android:layout_alignLeft="@+id/textView_bloodgp"
+            android:layout_alignStart="@+id/textView_bloodgp"
+            android:layout_toLeftOf="@+id/editText_bloodgp"
+            android:layout_toStartOf="@+id/editText_bloodgp" />
 
 
         <TextView
@@ -117,8 +84,8 @@
             android:textColor="#feeaeaea"
             android:textColorHint="#ffffffff"
             android:layout_alignTop="@+id/textView_Name"
-            android:layout_alignLeft="@+id/editText_age"
-            android:layout_alignStart="@+id/editText_age" />
+            android:layout_toRightOf="@+id/textView_age"
+            android:layout_toEndOf="@+id/textView_age" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -128,9 +95,9 @@
             android:hint="Enter your age"
             android:textColor="#ffffffff"
             android:textColorHint="#ffffffff"
-            android:layout_alignTop="@+id/textView_age"
-            android:layout_alignLeft="@+id/editText_bloodgp"
-            android:layout_alignStart="@+id/editText_bloodgp" />
+            android:layout_alignBottom="@+id/textView_age"
+            android:layout_toRightOf="@+id/textView_age"
+            android:layout_toEndOf="@+id/textView_age" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -140,9 +107,9 @@
             android:textColor="#ffffffff"
             android:textSize="15sp"
             android:textColorHint="#ffffffff"
-            android:layout_alignTop="@+id/textView_bloodgp"
-            android:layout_alignLeft="@+id/editText_marital"
-            android:layout_alignStart="@+id/editText_marital" />
+            android:layout_below="@+id/editText_age"
+            android:layout_toRightOf="@+id/textView_age"
+            android:layout_toEndOf="@+id/textView_age" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -152,65 +119,44 @@
             android:textColor="#ffffffff"
             android:textSize="15sp"
             android:textColorHint="#ffffffff"
-            android:layout_alignTop="@+id/textView_genden"
-            android:layout_alignRight="@+id/editText_bloodgp"
-            android:layout_alignEnd="@+id/editText_bloodgp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:id="@+id/editText_weight"
-            android:hint="Weight in Kg"
-            android:textSize="15sp"
-            android:textColor="#ffffffff"
-            android:textColorHint="#ffffffff"
-            android:layout_alignTop="@+id/textView_weight"
-            android:layout_alignLeft="@+id/editText_gender"
-            android:layout_alignStart="@+id/editText_gender" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:id="@+id/editText_address"
-            android:hint="e.g: Mirpur/ Banani "
-            android:textColor="#ffffffff"
-            android:textSize="15sp"
-            android:textColorHint="#ffffffff"
-            android:layout_alignTop="@+id/textView_address"
-            android:layout_alignRight="@+id/editText_bloodgp"
-            android:layout_alignEnd="@+id/editText_bloodgp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:id="@+id/editText_marital"
-            android:hint="Single/Married"
-            android:textSize="15sp"
-            android:textColor="#ffffffff"
-            android:textColorHint="#ffffffff"
-            android:layout_alignTop="@+id/textView_marital"
-            android:layout_toRightOf="@+id/textView_marital" />
+            android:layout_below="@+id/editText_bloodgp"
+            android:layout_toRightOf="@+id/textView_age"
+            android:layout_toEndOf="@+id/textView_age" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:text="Save"
             android:textSize="20sp"
             android:id="@+id/button1"
             android:onClick="run"
-            android:layout_below="@+id/textView_marital"
+            android:layout_below="@+id/editText_gender"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="75dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Your Health Services"
+            android:textSize="20sp"
+            android:id="@+id/button2"
+            android:layout_marginBottom="63dp"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Your Health Services"
-            android:textSize="20sp"
-            android:id="@+id/button2"
-            android:layout_below="@+id/button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Additional Health info "
+            android:id="@+id/button_add_Addi_healthinfo"
+            android:layout_above="@+id/button2"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

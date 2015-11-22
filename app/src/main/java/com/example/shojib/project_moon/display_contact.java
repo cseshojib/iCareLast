@@ -36,15 +36,17 @@ public class display_contact extends Activity {
        age =(TextView) findViewById(R.id.editText_age);
         bloodgp =(TextView) findViewById(R.id.editText_bloodgp);
         gender = (TextView) findViewById(R.id.editText_gender);
-        weight =(TextView) findViewById(R.id.editText_weight);
-        address =(TextView) findViewById(R.id.editText_address);
-        marital =(TextView) findViewById(R.id.editText_marital);
+        //weight =(TextView) findViewById(R.id.editText_weight);
+        //address =(TextView) findViewById(R.id.editText_address);
+       /// marital =(TextView) findViewById(R.id.editText_marital);
 
         mydb = new DBHelper(this);
 
 
         Button b2 = (Button)findViewById(R.id.button2);
         b2.setVisibility(View.INVISIBLE);
+
+
 
 
         Bundle extras = getIntent().getExtras();
@@ -114,7 +116,7 @@ public class display_contact extends Activity {
                     }
                 });
 
-            }
+                            }
         }
     }
 

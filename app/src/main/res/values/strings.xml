@@ -83,5 +83,6 @@
         <item>Urologists</item>
     </string-array>
     <string name="title_activity_hospital_maps">Map</string>
+    <string name="title_activity_additional_info">Additional_info</string>
 
 </resources>

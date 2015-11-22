@@ -47,7 +47,7 @@
         android:layout_marginTop="29dp" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:inputType="time"
         android:ems="10"
@@ -57,28 +57,24 @@
         android:layout_alignStart="@+id/editText_rbs" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
         android:id="@+id/editText_date"
         android:layout_above="@+id/editText_time"
         android:layout_alignLeft="@+id/editText_time"
-        android:layout_alignStart="@+id/editText_time"
-        android:layout_alignRight="@+id/editText_time"
-        android:layout_alignEnd="@+id/editText_time" />
+        android:layout_alignStart="@+id/editText_time" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/editText_rbs"
         android:layout_alignBottom="@+id/textView_rbs"
         android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
-        android:layout_alignRight="@+id/button_rbsSave"
-        android:layout_alignEnd="@+id/button_rbsSave" />
+        android:layout_alignStart="@+id/textView5" />
 
     <Button
         android:layout_width="wrap_content"
@@ -91,5 +87,23 @@
         android:layout_marginBottom="28dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/imageButton_date"
+        android:src="@drawable/calendar_icon"
+        android:layout_above="@+id/textView_time"
+        android:layout_toRightOf="@+id/editText_date"
+        android:layout_toEndOf="@+id/editText_date" />
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/imageButton_time"
+        android:src="@drawable/time_icon"
+        android:layout_above="@+id/editText_rbs"
+        android:layout_toRightOf="@+id/editText_time"
+        android:layout_toEndOf="@+id/editText_time" />
 
 </RelativeLayout>
