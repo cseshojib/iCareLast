@@ -1,97 +1,87 @@
 package com.example.shojib.project_moon;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
+import android.widget.ProgressBar;
 
 
-public class hospital extends Activity {
+public class hospital extends ActionBarActivity {
 
-    //Button hospital;
-    private WebView mWebview;
+    ProgressBar progressBar;
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital);
 
-        //hospital = (Button) findViewById(R.id.button3);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Map Loading...");
+        progressDialog.show();
 
-       // hospital.setOnClickListener(new View.OnClickListener() {
-            //@Override
-           // public void onClick(View v) {
-               // Intent intent = new Intent(hospital.this, MapsActivity.class);
-                //startActivity(intent);
+        String url = "https://www.google.com.bd/maps/";
 
+        WebView webView = (WebView) findViewById(R.id.webView);
+//        webView.setWebViewClient(new myWebClient());
+//        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
 
+        webView.setWebViewClient(new MyBrowser());
+        webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        webView.loadUrl(url);
 
-           // }
-        //});
+        webView.setWebViewClient(new WebViewClient() {
 
-        mWebview = (WebView)findViewById(R.id.webView1);
-        WebSettings webSettings = mWebview.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        mWebview.loadUrl("https://www.google.com/maps");
-        mWebview.setWebViewClient(new com.example.shojib.project_moon.MyAppWebViewClient()
-        {
-@Override
-public void onPageFinished(WebView view,String url){
-        //  findViewById(R.id.prcessbar1).setVisibility(View.GONE);
-
-        findViewById(R.id.webView1).setVisibility(View.VISIBLE);
-
-
-
-        }});
-
-
+            public void onPageFinished(WebView view, String url) {
+                progressDialog.dismiss();
             }
+        });
 
-    @Override
-    public void onBackPressed()
-    {
-        if(mWebview.canGoBack())
-            mWebview.goBack();
-        else
-            super.onBackPressed();
+
     }
 
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
 
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_hospital, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
             return true;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
-    private class MyAppWebViewClient extends WebViewClient
-    {
+    public class myWebClient extends WebViewClient {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            // TODO Auto-generated method stub
+            super.onPageStarted(view, url, favicon);
+        }
 
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            // TODO Auto-generated method stub
+
+            view.loadUrl(url);
+            return true;
+
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            // TODO Auto-generated method stub
+            super.onPageFinished(view, url);
+
+//            progressBar.setVisibility(View.GONE);
+
+
+
+        }
     }
+
 }

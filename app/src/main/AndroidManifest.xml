@@ -21,8 +21,8 @@
         android:name="com.example.googlemaps.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
 
@@ -34,11 +34,13 @@
         <activity
             android:name=".MainActivity"
             android:label="i_Care_dcc" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".display_contact"
@@ -63,6 +65,7 @@
         <activity
             android:name=".hospital"
             android:label="@string/title_activity_hospital" >
+
         </activity>
         <activity
             android:name=".doctors"
