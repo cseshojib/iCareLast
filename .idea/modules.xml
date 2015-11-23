@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Project_moon.iml" filepath="$PROJECT_DIR$/Project_moon.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/iCareLast.iml" filepath="$PROJECT_DIR$/iCareLast.iml" />
     </modules>
   </component>
 </project>
-
