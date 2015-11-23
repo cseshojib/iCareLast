@@ -1,23 +1,52 @@
 package com.example.shojib.project_moon.Activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.example.shojib.project_moon.R;
 
 
-public class VaccinationActivity extends ActionBarActivity {
+
+public class VaccinationActivity extends Activity {
+
+
+
+    Button addVaccineButton;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccination);
+
+        addVaccineButton = (Button)findViewById(R.id.button_Add_Vaccine);
+
+        addVaccineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VaccinationActivity.this, addVaccination22.class);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
 
-
-    @Override
+   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_vaccination, menu);

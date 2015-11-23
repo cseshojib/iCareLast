@@ -1,20 +1,24 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Activity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.shojib.project_moon.R;
+
 import java.util.Calendar;
 
-/**
- * Created by Shojib on 11/22/2015.
- */
-public class add_vaccineDate extends Activity implements View.OnClickListener {
+
+public class addVaccination22  extends Activity implements View.OnClickListener {
+
+
+
     private ImageButton ib;
     private Calendar cal;
     private int day;
@@ -25,7 +29,7 @@ public class add_vaccineDate extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.popup_vaccine);
+        setContentView(R.layout.activity_add_vaccination22);
         // mDateButton = (Button) findViewById(R.id.date_button);
         ib = (ImageButton) findViewById(R.id.button_datePick);
         cal = Calendar.getInstance();

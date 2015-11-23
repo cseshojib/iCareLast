@@ -84,5 +84,7 @@
     </string-array>
     <string name="title_activity_hospital_maps">Map</string>
     <string name="title_activity_additional_info">Additional_info</string>
+    <string name="title_activity_pop_up_medicine">popUpMedicine</string>
+    <string name="title_activity_add_vaccination22">addVaccination22</string>
 
 </resources>
