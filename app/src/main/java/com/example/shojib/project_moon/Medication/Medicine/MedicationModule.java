@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon.ModuleClass;
+package com.example.shojib.project_moon.Medication.Medicine;
 
 import java.io.Serializable;
 
@@ -22,9 +22,27 @@ public class MedicationModule implements Serializable {
 
     }
 
+    public MedicationModule() {
+    }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public void setMedicineId(long medicineId) {
+        this.medicineId = medicineId;
+    }
+
+    public void setMedicineName(String medicineName) {
+        this.medicineName = medicineName;
+    }
+
+    public void setMedicineReason(String medicineReason) {
+        this.medicineReason = medicineReason;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setReminder(int reminder) {
+        this.reminder = reminder;
     }
 
     public long getMedicineId() {

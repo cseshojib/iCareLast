@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon.ModuleClass;
+package com.example.shojib.project_moon.Vaccine.VaccineDate;
 
 import java.io.Serializable;
 
@@ -16,9 +16,17 @@ public class VaccineDateModule implements Serializable {
         this.vaccineDate = vaccineDate;
     }
 
+    public VaccineDateModule() {
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    }
+
+
+    public void setVaccineId(long vaccineId) {
+        this.vaccineId = vaccineId;
+    }
+
+    public void setVaccineDate(String vaccineDate) {
+        this.vaccineDate = vaccineDate;
     }
 
     public long getVaccineId() {
