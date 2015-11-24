@@ -15,6 +15,8 @@ import java.util.Calendar;
 
 public class add_vaccine extends Activity implements View.OnClickListener {
 
+// this class should be deleted ....
+
 
     private ImageButton ib;
     private Calendar cal;
