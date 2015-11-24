@@ -34,8 +34,40 @@ public class DoctorModule implements Serializable {
 
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public void setDoctorId(long doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setAppointmentDate(String appointmentDate) {
+        this.appointmentDate = appointmentDate;
+    }
+
+    public void setAppointmentTime(String appointmentTime) {
+        this.appointmentTime = appointmentTime;
+    }
+
+    public void setReminder(int reminder) {
+        this.reminder = reminder;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public long getDoctorId() {
