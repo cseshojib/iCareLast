@@ -62,8 +62,9 @@ public class MedicationDataBaseQuery {
 
     }
 
-    public List<MedicationModule> getAllMedicine()
-    {   List<MedicationModule> medicationModuleList=new ArrayList<>();
+    public List<MedicationModule> getAllMedicine() {
+
+        List<MedicationModule> medicationModuleList=new ArrayList<>();
         Cursor cursor=mSqLiteDatabase.query(DbHelper.TABLE_NAME_MEDICATION, allColumns, null, null, null, null, null);
         if(cursor!=null)
         {
@@ -88,6 +89,7 @@ public class MedicationDataBaseQuery {
     private MedicationModule cursorToMedicineModule(Cursor cursor) {
 
         MedicationModule medicationModule=new MedicationModule();
+
         medicationModule.setMedicineId(cursor.getLong(0));
         medicationModule.setMedicineName(cursor.getString(1));
         medicationModule.setMedicineReason(cursor.getString(2));
@@ -96,7 +98,7 @@ public class MedicationDataBaseQuery {
 
         return medicationModule;
     }
-    private void UpdateMedicineByMedicineId(long medicineId, String medicineName, String medicineReason, long userId, int reminder)
+    private void updateMedicineByMedicineId(long medicineId, String medicineName, String medicineReason, long userId, int reminder)
     { try {
         open();
     } catch (SQLException e) {
