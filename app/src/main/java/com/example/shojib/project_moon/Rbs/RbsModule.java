@@ -30,6 +30,26 @@ public class RbsModule implements Serializable {
         return serialVersionUID;
     }
 
+    public void setRbsId(long rbsId) {
+        this.rbsId = rbsId;
+    }
+
+    public void setRbsUnit(float rbsUnit) {
+        this.rbsUnit = rbsUnit;
+    }
+
+    public void setRbsDate(String rbsDate) {
+        this.rbsDate = rbsDate;
+    }
+
+    public void setRbsTime(String rbsTime) {
+        this.rbsTime = rbsTime;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
     public long getRbsId() {
         return rbsId;
     }
