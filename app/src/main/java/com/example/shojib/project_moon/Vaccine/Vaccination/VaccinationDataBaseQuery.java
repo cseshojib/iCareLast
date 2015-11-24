@@ -44,7 +44,7 @@ public class VaccinationDataBaseQuery {
     {
         mPDbHelper.close();
     }
-    public  void CreateNewVaccine( String vaccineName, String vaccineReason, long userId, int reminder)
+    public  void createNewVaccine(String vaccineName, String vaccineReason, long userId, int reminder)
     {
         ContentValues values=new ContentValues();
 
@@ -96,7 +96,7 @@ public class VaccinationDataBaseQuery {
 
         return vaccinationModule;
     }
-    private void UpDateVaccineByVaccinById(long vaccineId,String vaccineName, String vaccineReason, long userId, int reminder)
+    private void updateVaccineByVaccinById(long vaccineId, String vaccineName, String vaccineReason, long userId, int reminder)
     {
         try {
             open();

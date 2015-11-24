@@ -44,7 +44,7 @@ public class MedicationDataBaseQuery {
     {
         mPDbHelper.close();
     }
-    public  void CreateNewMedication( String medicineName, String medicineReason, long userId, int reminder)
+    public  void createNewMedication(String medicineName, String medicineReason, long userId, int reminder)
     {
         ContentValues values=new ContentValues();
 
@@ -96,7 +96,7 @@ public class MedicationDataBaseQuery {
 
         return medicationModule;
     }
-    private void UpDateMedicineByMedicineId(long medicineId,String medicineName, String medicineReason, long userId, int reminder)
+    private void UpdateMedicineByMedicineId(long medicineId, String medicineName, String medicineReason, long userId, int reminder)
     { try {
         open();
     } catch (SQLException e) {
@@ -118,7 +118,7 @@ public class MedicationDataBaseQuery {
    close();
     }
 
-    public void MedicineDeletByMedicineId(long ePId){
+    public void medicineDeletByMedicineId(long ePId){
         try {
             open();
         } catch (SQLException e) {

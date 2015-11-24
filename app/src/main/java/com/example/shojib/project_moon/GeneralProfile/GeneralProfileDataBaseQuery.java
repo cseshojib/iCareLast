@@ -49,7 +49,7 @@ public class GeneralProfileDataBaseQuery {
     {
         mPDbHelper.close();
     }
-    public  void CreateNewProfile( String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
+    public  void createNewProfile(String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
     {
         ContentValues values=new ContentValues();
 
@@ -109,7 +109,7 @@ public class GeneralProfileDataBaseQuery {
 
         return generalProfileModule;
     }
-    private void UpDateProfileByProfileId(long userId, String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
+    private void updateProfileByProfileId(long userId, String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
     {
         try {
             open();

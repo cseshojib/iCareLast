@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon.ModuleClass;
+package com.example.shojib.project_moon.Doctor;
 
 import java.io.Serializable;
 
@@ -27,6 +27,10 @@ public class DoctorModule implements Serializable {
         this.appointmentTime = appointmentTime;
         this.reminder = reminder;
         this.userId = userId;
+
+    }
+
+    public DoctorModule(){
 
     }
 

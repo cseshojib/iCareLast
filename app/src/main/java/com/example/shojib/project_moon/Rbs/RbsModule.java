@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon.ModuleClass;
+package com.example.shojib.project_moon.Rbs;
 
 import java.io.Serializable;
 
@@ -20,6 +20,10 @@ public class RbsModule implements Serializable {
         this.rbsDate = rbsDate;
         this.rbsTime = rbsTime;
         this.userId = userId;
+    }
+
+    public RbsModule(){
+
     }
 
     public static long getSerialVersionUID() {

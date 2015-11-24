@@ -43,7 +43,7 @@ public class MedicineTimeDataBaseQuery {
         mPDbHelper.close();
     }
 
-    public void CreateNewMedicineTime(long medicineId, String medicineTime) {
+    public void createNewMedicineTime(long medicineId, String medicineTime) {
         ContentValues values = new ContentValues();
 
 
@@ -87,7 +87,7 @@ public class MedicineTimeDataBaseQuery {
         return medicineTimeModule;
     }
 
-    private void UpDateMedicineByMedicineId(long medicineId, String medicineTime) {
+    private void updateMedicineByMedicineId(long medicineId, String medicineTime) {
         try {
             open();
         } catch (SQLException e) {
@@ -106,7 +106,7 @@ public class MedicineTimeDataBaseQuery {
             close();
         }
 
-    public void MedicineTimeDeletByMedicineId(long ePId) {
+    public void medicineTimeDeletByMedicineId(long ePId) {
         try {
             open();
         } catch (SQLException e) {
