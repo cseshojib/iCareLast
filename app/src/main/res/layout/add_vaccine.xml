@@ -11,12 +11,12 @@
         android:text="Vaccine Name:"
         android:textSize="20sp"
         android:id="@+id/textView_VaccineName"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -75,12 +75,9 @@
         android:layout_height="wrap_content"
         android:text="Save Vaccine"
         android:id="@+id/saveVaccine_button"
-        android:layout_below="@+id/editText_date"
-        android:layout_marginTop="71dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/editText_reasons"
-        android:layout_alignStart="@+id/editText_reasons" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="101dp" />
 
     <ImageButton
         android:layout_width="48dp"
@@ -88,7 +85,7 @@
         android:id="@+id/button_datePick"
         android:onClick="showDatePickerDialog"
         android:src="@drawable/calendar_icon"
-        android:layout_above="@+id/saveVaccine_button"
+        android:layout_alignBottom="@+id/editText_date"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

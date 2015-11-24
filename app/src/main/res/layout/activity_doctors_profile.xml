@@ -137,7 +137,7 @@
         android:text="Save Doctors Info"
         android:textSize="20sp"
         android:onClick="drInfoSave"
-        android:id="@+id/button_Save_Doctors"
+        android:id="@+id/saveDoctorButton"
         android:layout_marginBottom="86dp"
         android:background="#ff97ffb3"
         android:layout_alignParentBottom="true"

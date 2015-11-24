@@ -4,16 +4,44 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.shojib.project_moon.R;
 
 
 public class RbsSaveActivity extends ActionBarActivity {
 
+    TextView date;
+    TextView time;
+    EditText rbsUnit;
+
+    Button rbsSaveButton;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rbs__save);
+
+        date = (TextView)findViewById(R.id.rbsDateTextView);
+        time = (TextView)findViewById(R.id.rbsTimeTextView);
+        rbsUnit = (EditText)findViewById(R.id.rbsEditText);
+        rbsSaveButton = (Button) findViewById(R.id.rbsSaveButton);
+
+        rbsSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                
+
+
+
+            }
+        });
     }
 
 
@@ -39,3 +67,5 @@ public class RbsSaveActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+

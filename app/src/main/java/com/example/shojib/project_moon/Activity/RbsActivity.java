@@ -1,19 +1,44 @@
 package com.example.shojib.project_moon.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.shojib.project_moon.R;
 
 
 public class RbsActivity extends ActionBarActivity {
 
+    Button rbsAddButton;
+    Button rbsShowButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rbs);
+
+        rbsAddButton = (Button)findViewById(R.id.addRbsButton);
+        rbsShowButton = (Button)findViewById(R.id.rbsShowButton);
+
+        rbsAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RbsActivity.this, RbsSaveActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        rbsShowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 

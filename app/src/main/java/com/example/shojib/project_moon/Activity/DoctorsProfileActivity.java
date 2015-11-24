@@ -30,7 +30,7 @@ public class DoctorsProfileActivity extends Activity {
     String Name;
     String phoneNumber;
     String address;
-    private Button button_Save_Doctors;
+    private Button saveDoctorsButton;
 
 
 
@@ -43,10 +43,23 @@ public class DoctorsProfileActivity extends Activity {
         dr_phoneNumber = (EditText) findViewById(R.id.dr_phoneEditText);
         dr_address = (EditText) findViewById(R.id.dr_AddressEditText);
 
+        saveDoctorsButton = (Button)findViewById(R.id.saveDoctorButton);
 
-        Name = doctorName.getText().toString();
-        phoneNumber = dr_phoneNumber.getText().toString();
-        address = dr_address.getText().toString();
+        saveDoctorsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Name = doctorName.getText().toString();
+                phoneNumber = dr_phoneNumber.getText().toString();
+                address = dr_address.getText().toString();
+
+
+
+
+
+            }
+        });
+
 
     }
 
@@ -65,7 +78,7 @@ public class DoctorsProfileActivity extends Activity {
 
         dr_specialtySpinner1 = (Spinner) findViewById(R.id.dr_specialtySpinner1);
 
-        button_Save_Doctors = (Button) findViewById(R.id.button_Save_Doctors);
+        saveDoctorsButton = (Button) findViewById(R.id.button_Save_Doctors);
 
 
     }
