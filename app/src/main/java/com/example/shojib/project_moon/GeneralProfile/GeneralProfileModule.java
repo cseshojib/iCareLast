@@ -9,7 +9,7 @@ public class GeneralProfileModule implements Serializable {
 
     private static final long serilVersionUID=-7406082437623008161L;
 
-   private int userId;
+   private long userId;
    private String profileName;
    private int age ;
    private String bloodGroup ;
@@ -22,7 +22,7 @@ public class GeneralProfileModule implements Serializable {
 
     }
 
-    public GeneralProfileModule(int userId, String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease) {
+    public GeneralProfileModule(long userId, String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease) {
         this.userId = userId;
         this.profileName = profileName;
         this.age = age;
@@ -34,11 +34,11 @@ public class GeneralProfileModule implements Serializable {
         this.disease = disease;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
