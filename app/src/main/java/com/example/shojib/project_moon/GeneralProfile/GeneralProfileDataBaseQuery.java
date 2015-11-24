@@ -96,7 +96,7 @@ public class GeneralProfileDataBaseQuery {
     private GeneralProfileModule cursorToProfileModule(Cursor cursor) {
 
         GeneralProfileModule generalProfileModule=new GeneralProfileModule();
-        generalProfileModule.setUserId(cursor.getInt(0));
+        generalProfileModule.setUserId(cursor.getLong(0));
         generalProfileModule.setProfileName(cursor.getString(1));
         generalProfileModule.setAge(cursor.getInt(2));
         generalProfileModule.setBloodGroup(cursor.getString(3));
