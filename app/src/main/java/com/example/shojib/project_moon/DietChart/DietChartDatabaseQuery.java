@@ -2,9 +2,11 @@ package com.example.shojib.project_moon.DietChart;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.shojib.project_moon.DBHelperPackage.DbHelper;
+import com.google.android.gms.maps.CameraUpdate;
 
 import java.sql.SQLException;
 
@@ -21,7 +23,7 @@ public class DietChartDatabaseQuery {
     };
 
 
-    public DietChartDatabaseQuery(Context context){
+    public DietChartDatabaseQuery(Context context) {
         this.context = context;
         this.mPDbHelper = new DbHelper(context, DbHelper.DATABASE_NAME, null, DbHelper.DATABASE_VERSION);
 
@@ -33,32 +35,59 @@ public class DietChartDatabaseQuery {
     }
 
     private void open() throws SQLException {
-        mSqLiteDatabase=mPDbHelper.getWritableDatabase();
+        mSqLiteDatabase = mPDbHelper.getWritableDatabase();
     }
-    private void close()
-    {
+
+    private void close() {
         mPDbHelper.close();
     }
 
-    public void createNewDietChart(String foodItem){
+    public void createNewDietChart(String foodItem) {
 
         ContentValues values = new ContentValues();
 
         values.put(DbHelper.COLUMN_DIET_FOOD_ITEM, foodItem);
 
-        long insertId=mSqLiteDatabase.insert(DbHelper.TABLE_NAME_DIET_CHART, null, values);
+        long insertId = mSqLiteDatabase.insert(DbHelper.TABLE_NAME_DIET_CHART, null, values);
         mSqLiteDatabase.query(DbHelper.TABLE_NAME_DIET_CHART, allColumns, DbHelper.COLUMN_DIET_ID + " = " + insertId, null, null, null, null);
 
     }
 
-    public void getSingleDietChartById(Long dietId){
+    public DietChartModule getSingleDietChartById(Long dietId) {
+        try {
+            open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Cursor cursor = mSqLiteDatabase.query(DbHelper.TABLE_NAME_DIET_CHART, allColumns, DbHelper.COLUMN_DIET_ID + "=? " + dietId, new String[]{String.valueOf(dietId)}, null, null, null);
 
+        DietChartModule dietChartModule = null;
+        if (cursor != null) {
+            try {
+                cursor.moveToFirst();
+                dietChartModule = cursorToDietChartModule(cursor);
+            } finally {
+                close();
+            }
+        }
+
+        return dietChartModule;
     }
 
-}
+
+    private DietChartModule cursorToDietChartModule(Cursor cursor) {
+
+        DietChartModule dietChartModule = new DietChartModule();
+
+        dietChartModule.setDietId(cursor.getLong(0));
+        dietChartModule.setFoodItem(cursor.getString(1));
+
+        return dietChartModule;
+    }
 
 
-/*
+
+    /*
 
 public List<DietChartModule> getAllDietChart(){
 
@@ -85,14 +114,9 @@ public List<DietChartModule> getAllDietChart(){
         return dietChartModuleList;
     }
 
-    private DietChartModule cursorToDietChartModule(Cursor cursor) {
-
-        DietChartModule dietChartModule = new DietChartModule();
-
-        dietChartModule.setDietId(cursor.getLong(0));
-        dietChartModule.setFoodItem(cursor.getString(1));
-
-        return null;
-    }
 
  */
+
+}
+
+
