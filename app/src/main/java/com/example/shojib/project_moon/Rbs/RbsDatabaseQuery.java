@@ -11,9 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by hasan on 11/24/15.
- */
+
 public class RbsDatabaseQuery {
     private Context context;
     private DbHelper mPDbHelper;
@@ -38,14 +36,13 @@ public class RbsDatabaseQuery {
             e.printStackTrace();
         }
 
-
     }
 
     private void open() throws SQLException {
         mSqLiteDatabase=mPDbHelper.getWritableDatabase();
     }
-    private void close()
-    {
+
+    private void close() {
         mPDbHelper.close();
     }
 
@@ -101,5 +98,39 @@ public class RbsDatabaseQuery {
         return rbsModule;
     }
 
+
+    private void updateRbsByRbsId(long rbsId, float rbsUnit, String rbsDate, String rbsTime, long userId) {
+
+        try {
+            open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        ContentValues values=new ContentValues();
+
+        values.put(DbHelper.COLUMN_RBS_ID,rbsId);
+        values.put(DbHelper.COLUMN_RBS_UNIT, rbsUnit);
+        values.put(DbHelper.COLUMN_RBS_DATE, rbsDate);
+        values.put(DbHelper.COLUMN_RBS_TIME, rbsTime);
+        values.put(DbHelper.COLUMN_GENERAL_INFO_USER_ID, userId);
+
+        mSqLiteDatabase.update(DbHelper.TABLE_NAME_RBS, values, DbHelper.COLUMN_RBS_ID + " = " + rbsId, null);
+
+        close();
+    }
+
+
+    public void rbsDeletByRbsId(long ePId){
+        try {
+            open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        mSqLiteDatabase.delete(DbHelper.TABLE_NAME_RBS, DbHelper.COLUMN_RBS_ID + " = " + ePId, null);
+
+        close();
+    }
 
 }

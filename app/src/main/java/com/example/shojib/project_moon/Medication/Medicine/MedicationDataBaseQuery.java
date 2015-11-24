@@ -11,9 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Suuny on 11/23/2015.
- */
+
 public class MedicationDataBaseQuery {
     private Context context;
     private DbHelper mPDbHelper;
@@ -27,6 +25,8 @@ public class MedicationDataBaseQuery {
             DbHelper.COLUMN_MEDICATION_REMINDER
 
     };
+
+
     public MedicationDataBaseQuery(Context context) {
         this.context = context;
         this.mPDbHelper = new DbHelper(context,DbHelper.DATABASE_NAME,null,DbHelper.DATABASE_VERSION);
@@ -40,25 +40,22 @@ public class MedicationDataBaseQuery {
     private void open() throws SQLException {
         mSqLiteDatabase=mPDbHelper.getWritableDatabase();
     }
+
     private void close()
     {
         mPDbHelper.close();
     }
-    public  void createNewMedication(String medicineName, String medicineReason, long userId, int reminder)
-    {
-        ContentValues values=new ContentValues();
 
+    public  void createNewMedication(String medicineName, String medicineReason, long userId, int reminder) {
+        ContentValues values=new ContentValues();
 
         values.put(DbHelper.COLUMN_MEDICATION_MEDICINE_NAME,medicineName);
         values.put(DbHelper.COLUMN_MEDICATION_REASON,medicineReason);
         values.put(DbHelper.COLUMN_GENERAL_INFO_USER_ID,userId);
         values.put(DbHelper.COLUMN_MEDICATION_REMINDER,reminder);
-      
 
         long insertId=mSqLiteDatabase.insert(DbHelper.TABLE_NAME_MEDICATION, null, values);
         mSqLiteDatabase.query(DbHelper.TABLE_NAME_MEDICATION, allColumns, DbHelper.COLUMN_MEDICATION_MEDICINE_ID + " = " + insertId, null, null, null, null);
-
-
 
     }
 
@@ -83,7 +80,6 @@ public class MedicationDataBaseQuery {
         }
         return medicationModuleList;
 
-
     }
 
     private MedicationModule cursorToMedicineModule(Cursor cursor) {
@@ -98,37 +94,39 @@ public class MedicationDataBaseQuery {
 
         return medicationModule;
     }
-    private void updateMedicineByMedicineId(long medicineId, String medicineName, String medicineReason, long userId, int reminder)
-    { try {
-        open();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
+
+    private void updateMedicineByMedicineId(long medicineId, String medicineName, String medicineReason, long userId, int reminder) {
+
+        try {
+            open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         ContentValues values=new ContentValues();
-
 
         values.put(DbHelper.COLUMN_MEDICATION_MEDICINE_NAME,medicineName);
         values.put(DbHelper.COLUMN_MEDICATION_REASON,medicineReason);
         values.put(DbHelper.COLUMN_GENERAL_INFO_USER_ID,userId);
         values.put(DbHelper.COLUMN_MEDICATION_REMINDER, reminder);
 
-
         mSqLiteDatabase.update(DbHelper.TABLE_NAME_MEDICATION, values, DbHelper.COLUMN_MEDICATION_MEDICINE_ID + " = " + medicineId, null);
 
-
    close();
+
     }
 
     public void medicineDeletByMedicineId(long ePId){
+
         try {
             open();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        mSqLiteDatabase.delete(DbHelper.TABLE_NAME_MEDICATION,DbHelper.COLUMN_MEDICATION_MEDICINE_ID+ " = "+ePId,null);
-        close();
 
+        mSqLiteDatabase.delete(DbHelper.TABLE_NAME_MEDICATION,DbHelper.COLUMN_MEDICATION_MEDICINE_ID+ " = "+ePId,null);
+
+        close();
     }
 
 }
