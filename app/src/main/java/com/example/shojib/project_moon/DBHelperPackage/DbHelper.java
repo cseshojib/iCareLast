@@ -159,8 +159,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_DIET_CHART = "CREATE TABLE "+ TABLE_NAME_DIET_CHART
             + "("
             + COLUMN_DIET_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_DIET_FOOD_ITEM + " TEXT, "
-            + COLUMN_GENERAL_INFO_USER_ID + " INTEGER NOT NULL"
+            + COLUMN_DIET_FOOD_ITEM + " TEXT "
             + ");";
 
 

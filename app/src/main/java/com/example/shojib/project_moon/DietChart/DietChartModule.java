@@ -10,12 +10,10 @@ public class DietChartModule implements Serializable {
 
     private long dietId;
     private String foodItem;
-    private long userId;
 
-    public DietChartModule(long dietId, String foodItem, long userId){
+    public DietChartModule(long dietId, String foodItem){
         this.dietId = dietId;
         this.foodItem = foodItem;
-        this.userId = userId;
     }
 
     public DietChartModule(){
@@ -26,6 +24,14 @@ public class DietChartModule implements Serializable {
         return serialVersionUID;
     }
 
+    public void setDietId(long dietId) {
+        this.dietId = dietId;
+    }
+
+    public void setFoodItem(String foodItem) {
+        this.foodItem = foodItem;
+    }
+
     public long getDietId() {
         return dietId;
     }
@@ -34,7 +40,4 @@ public class DietChartModule implements Serializable {
         return foodItem;
     }
 
-    public long getUserId() {
-        return userId;
-    }
 }
