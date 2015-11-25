@@ -11,7 +11,7 @@ public class GeneralProfileModule implements Serializable {
 
    private long userId;
    private String profileName;
-   private int age ;
+   private String age ;
    private String bloodGroup ;
    private String gender;
    private float height;
@@ -22,7 +22,7 @@ public class GeneralProfileModule implements Serializable {
 
     }
 
-    public GeneralProfileModule(long userId, String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease) {
+    public GeneralProfileModule(long userId, String profileName, String age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease) {
         this.userId = userId;
         this.profileName = profileName;
         this.age = age;
@@ -50,11 +50,11 @@ public class GeneralProfileModule implements Serializable {
         this.profileName = profileName;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

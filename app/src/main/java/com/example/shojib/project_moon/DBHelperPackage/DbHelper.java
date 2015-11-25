@@ -33,7 +33,7 @@ public class DbHelper extends SQLiteOpenHelper {
             + "("
             + COLUMN_GENERAL_INFO_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_GENERAL_INFO_PROFILE_NAME+" TEXT NOT NULL, "
-            + COLUMN_GENERAL_INFO_AGE+" INTEGER, "
+            + COLUMN_GENERAL_INFO_AGE+" TEXT, "
             + COLUMN_GENERAL_INFO_BLOOD_GROUP+" TEXT, "
             + COLUMN_GENERAL_INFO_GENDER+" TEXT NOT NULL ,"
             + COLUMN_GENERAL_INFO_HEIGHT+" REAL, "

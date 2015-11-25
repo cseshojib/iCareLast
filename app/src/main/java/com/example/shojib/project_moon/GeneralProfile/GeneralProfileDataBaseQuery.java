@@ -49,7 +49,7 @@ public class GeneralProfileDataBaseQuery {
     {
         mPDbHelper.close();
     }
-    public  void createNewProfile(String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
+    public  void createNewProfile(String profileName, String age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
     {
         ContentValues values=new ContentValues();
 
@@ -98,7 +98,7 @@ public class GeneralProfileDataBaseQuery {
         GeneralProfileModule generalProfileModule=new GeneralProfileModule();
         generalProfileModule.setUserId(cursor.getLong(0));
         generalProfileModule.setProfileName(cursor.getString(1));
-        generalProfileModule.setAge(cursor.getInt(2));
+        generalProfileModule.setAge(cursor.getString(2));
         generalProfileModule.setBloodGroup(cursor.getString(3));
         generalProfileModule.setGender(cursor.getString(4));
         generalProfileModule.setHeight(cursor.getFloat(5));
@@ -109,7 +109,7 @@ public class GeneralProfileDataBaseQuery {
 
         return generalProfileModule;
     }
-    private void updateProfileByProfileId(long userId, String profileName, int age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
+    private void updateProfileByProfileId(long userId, String profileName, String age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
     {
         try {
             open();
@@ -137,9 +137,24 @@ public class GeneralProfileDataBaseQuery {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        mSqLiteDatabase.delete(DbHelper.TABLE_NAME_GENERAL_INFO,DbHelper.COLUMN_GENERAL_INFO_USER_ID+ " = "+ePId,null);
+        mSqLiteDatabase.delete(DbHelper.TABLE_NAME_GENERAL_INFO, DbHelper.COLUMN_GENERAL_INFO_USER_ID + " = " + ePId, null);
         close();
 
     }
 
+    public GeneralProfileModule getSingleProfileById(long pID) {
+        GeneralProfileModule generalProfileModule=null;
+
+        Cursor cursor=mSqLiteDatabase.query(DbHelper.TABLE_NAME_GENERAL_INFO,allColumns,DbHelper.COLUMN_GENERAL_INFO_USER_ID+" = ?"+pID,new String[]{String.valueOf(pID)},null,null,null);
+
+        if (cursor != null) {
+            try {
+                cursor.moveToFirst();
+               generalProfileModule = cursorToProfileModule(cursor);
+            } finally {
+                //close();
+            }
+        }
+        return generalProfileModule;
+    }
 }

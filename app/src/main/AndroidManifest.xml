@@ -32,7 +32,7 @@
         android:label="i_Care_dcc"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".GeneralProfile.ProfileMainActivity"
             android:label="i_Care_dcc" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,8 +40,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".GeneralProfile.CreateProfileActivity"></activity>
         <activity
-            android:name=".Activity.DisplayContactActivity"
+            android:name=".GeneralProfile.DisplayProfileActivity"
             android:label="@string/title_activity_display_contact" >
         </activity>
         <activity
