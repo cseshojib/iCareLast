@@ -78,7 +78,7 @@ public class DoctorsProfileActivity extends Activity {
 
         dr_specialtySpinner1 = (Spinner) findViewById(R.id.dr_specialtySpinner1);
 
-        saveDoctorsButton = (Button) findViewById(R.id.button_Save_Doctors);
+        saveDoctorsButton = (Button) findViewById(R.id.saveDoctorButton);
 
 
     }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -22,7 +23,7 @@ public class rbs_date extends Activity implements View.OnClickListener {
     private int day;
     private int month;
     private int year;
-    private EditText et1;
+    private TextView et1;
 
 
 
@@ -39,7 +40,7 @@ public class rbs_date extends Activity implements View.OnClickListener {
         day = cal1.get(Calendar.DAY_OF_MONTH);
         month = cal1.get(Calendar.MONTH);
         year = cal1.get(Calendar.YEAR);
-        et1 = (EditText) findViewById(R.id.editText_date);
+        et1 = (TextView) findViewById(R.id.rbsDateTextView);
         ib1.setOnClickListener(this);
 
 

@@ -72,24 +72,26 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:id="@+id/imageButton_date"
+        android:onClick="showDatePickerDialog"
         android:src="@drawable/calendar_icon"
-        android:layout_alignBottom="@+id/textView_date"
-        android:layout_alignLeft="@+id/imageButton_time"
-        android:layout_alignStart="@+id/imageButton_time" />
+        android:layout_above="@+id/textView_time"
+        android:layout_toRightOf="@+id/rbsEditText"
+        android:layout_toEndOf="@+id/rbsEditText" />
 
     <ImageButton
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:id="@+id/imageButton_time"
+        android:onClick="showTimePickerDialog"
         android:src="@drawable/time_icon"
         android:layout_above="@+id/rbsEditText"
-        android:layout_alignRight="@+id/rbsEditText"
-        android:layout_alignEnd="@+id/rbsEditText" />
+        android:layout_toRightOf="@+id/rbsEditText"
+        android:layout_toEndOf="@+id/rbsEditText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Click on Calendar"
         android:id="@+id/rbsDateTextView"
         android:layout_alignTop="@+id/textView_date"
         android:layout_alignLeft="@+id/rbsEditText"
@@ -98,10 +100,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Click on Watch"
         android:id="@+id/rbsTimeTextView"
         android:layout_above="@+id/textView_rbs"
         android:layout_alignLeft="@+id/rbsEditText"
         android:layout_alignStart="@+id/rbsEditText" />
+
 
 </RelativeLayout>

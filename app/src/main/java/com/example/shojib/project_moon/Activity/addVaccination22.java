@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.shojib.project_moon.R;
 
@@ -24,19 +25,20 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
     private int day;
     private int month;
     private int year;
-    private EditText et;
+    private TextView dateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vaccination22);
         // mDateButton = (Button) findViewById(R.id.date_button);
+
         ib = (ImageButton) findViewById(R.id.button_datePick);
         cal = Calendar.getInstance();
         day = cal.get(Calendar.DAY_OF_MONTH);
         month = cal.get(Calendar.MONTH);
         year = cal.get(Calendar.YEAR);
-        et = (EditText) findViewById(R.id.editText_date);
+        dateTextView = (TextView) findViewById(R.id.vaccinationDateTextView);
         ib.setOnClickListener(this);
     }
 
@@ -54,7 +56,7 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
     private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int selectedYear,
                               int selectedMonth, int selectedDay) {
-            et.setText(selectedDay + " / " + (selectedMonth + 1) + " / "
+            dateTextView.setText(selectedDay + " / " + (selectedMonth + 1) + " / "
                     + selectedYear);
         }
     };

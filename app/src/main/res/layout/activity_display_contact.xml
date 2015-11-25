@@ -130,10 +130,9 @@
             android:textSize="20sp"
             android:id="@+id/button1"
             android:onClick="run"
-            android:layout_below="@+id/editText_gender"
+            android:layout_above="@+id/button_add_Addi_healthinfo"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="75dp" />
+            android:layout_alignParentStart="true" />
 
         <Button
             android:layout_width="match_parent"
