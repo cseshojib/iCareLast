@@ -64,7 +64,10 @@ public class GeneralProfileDataBaseQuery {
         values.put(DbHelper.COLUMN_GENERAL_INFO_DISEASE, disease);
 
         long insertId=mSqLiteDatabase.insert(DbHelper.TABLE_NAME_GENERAL_INFO, null, values);
-        mSqLiteDatabase.query(DbHelper.TABLE_NAME_GENERAL_INFO, allColumns, DbHelper.COLUMN_GENERAL_INFO_USER_ID + " = " + insertId, null, null, null, null);
+
+        Cursor cursor= mSqLiteDatabase.query(DbHelper.TABLE_NAME_GENERAL_INFO, allColumns, DbHelper.COLUMN_GENERAL_INFO_USER_ID + " = " + insertId, null, null, null, null);
+        GeneralProfileModule generalProfileModule=cursorToProfileModule(cursor);
+        System.out.println("insertId= " + insertId+"\n"+"PrName= "+generalProfileModule.getProfileName());
 
 
 
@@ -109,7 +112,7 @@ public class GeneralProfileDataBaseQuery {
 
         return generalProfileModule;
     }
-    private void updateProfileByProfileId(long userId, String profileName, String age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
+    public void updateProfileByProfileId(long userId, String profileName, String age, String bloodGroup, String gender, float height, float weight, float bloodPressure, String disease)
     {
         try {
             open();
@@ -143,9 +146,9 @@ public class GeneralProfileDataBaseQuery {
     }
 
     public GeneralProfileModule getSingleProfileById(long pID) {
-        GeneralProfileModule generalProfileModule=null;
 
-        Cursor cursor=mSqLiteDatabase.query(DbHelper.TABLE_NAME_GENERAL_INFO,allColumns,DbHelper.COLUMN_GENERAL_INFO_USER_ID+" = ?"+pID,new String[]{String.valueOf(pID)},null,null,null);
+        Cursor cursor=mSqLiteDatabase.query(DbHelper.TABLE_NAME_GENERAL_INFO,allColumns,DbHelper.COLUMN_GENERAL_INFO_USER_ID+ "=? ",new String[]{String.valueOf(pID)},null,null,null);
+        GeneralProfileModule generalProfileModule=null;
 
         if (cursor != null) {
             try {

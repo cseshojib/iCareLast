@@ -53,21 +53,17 @@ public class DisplayProfileActivity extends Activity {
             Button b = (Button) findViewById(R.id.button_save);
             b.setVisibility(View.INVISIBLE);
 
-            name.setText((CharSequence) nam);
-            name.setFocusable(false);
-            name.setClickable(false);
+            name.setText(nam);
 
-            age.setText((CharSequence) age1);
-            age.setFocusable(false);
-            age.setClickable(false);
 
-            bloodgp.setText((CharSequence) blgp);
-            bloodgp.setFocusable(false);
-            bloodgp.setClickable(false);
+            age.setText(age1);
 
-            gender.setText((CharSequence) gend);
-            gender.setFocusable(false);
-            gender.setClickable(false);
+
+            bloodgp.setText(blgp);
+
+
+            gender.setText(gend);
+
 
 
             Button b3 = (Button) findViewById(R.id.button_add_Addi_healthinfo);
