@@ -39,15 +39,16 @@ public class AdditionalInfoActivity extends ActionBarActivity {
         addInfoSaveButton = (Button)findViewById(R.id.add_health_info_button);
 
 
-        height = heightTextView.getText().toString();
-        weight = weightTextView.getText().toString();
-        bloodPressure = bloodPressureTextView.getText().toString();
-        extraIssue = extraIssueTextView.getText().toString();
 
 
         addInfoSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                height = heightTextView.getText().toString();
+                weight = weightTextView.getText().toString();
+                bloodPressure = bloodPressureTextView.getText().toString();
+                extraIssue = extraIssueTextView.getText().toString();
+
 
             }
         });

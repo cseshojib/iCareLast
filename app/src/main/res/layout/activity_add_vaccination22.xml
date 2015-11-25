@@ -59,28 +59,15 @@
         android:layout_alignStart="@+id/textView_reason"
         android:layout_marginTop="39dp" />
 
-    <EditText
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText_date"
-        android:layout_alignBottom="@+id/textView_date"
-        android:layout_toRightOf="@+id/textView_VaccineName"
-        android:layout_toLeftOf="@+id/button_datePick"
-        android:layout_toStartOf="@+id/button_datePick" />
-
-
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Vaccine"
         android:id="@+id/saveVaccine_button"
-        android:layout_below="@+id/editText_date"
-        android:layout_marginTop="71dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/editText_reasons"
-        android:layout_alignStart="@+id/editText_reasons" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="89dp" />
 
     <ImageButton
         android:layout_width="48dp"
@@ -88,7 +75,7 @@
         android:id="@+id/button_datePick"
         android:onClick="showDatePickerDialog"
         android:src="@drawable/calendar_icon"
-        android:layout_above="@+id/saveVaccine_button"
+        android:layout_alignBottom="@+id/textView_date"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -103,6 +90,17 @@
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/textView_date"
         android:layout_alignStart="@+id/textView_date" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click on Calendar"
+        android:id="@+id/vaccinationDateTextView"
+        android:layout_alignBottom="@+id/button_datePick"
+        android:layout_toLeftOf="@+id/button_datePick"
+        android:layout_alignLeft="@+id/editText_reasons"
+        android:layout_alignStart="@+id/editText_reasons"
+        android:layout_alignTop="@+id/textView_date" />
 
 
 </RelativeLayout>
