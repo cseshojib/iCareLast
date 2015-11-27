@@ -23,10 +23,10 @@ public class CreateProfileActivity extends Activity {
     private EditText age;
     private EditText bloodgp;
     private EditText gender;
-    private EditText height;
-    private EditText weight;
-    private EditText bloodPressure;
-    private EditText disease;
+    private EditText heightEditText;
+    private EditText weightEditText;
+    private EditText bloodPressureEditText;
+    private EditText diseaseEditText;
 
 
     private  long pID;
@@ -43,10 +43,10 @@ public class CreateProfileActivity extends Activity {
         age =(EditText) findViewById(R.id.editText_age);
         bloodgp =(EditText) findViewById(R.id.editText_bloodgp);
         gender = (EditText) findViewById(R.id.editText_gender);
-        height=(EditText)findViewById(R.id.editText_height);
-        weight=(EditText)findViewById(R.id.editText_weight);
-        bloodPressure=(EditText)findViewById(R.id.editText_bloodPressure);
-        disease=(EditText)findViewById(R.id.editText_disease);
+        heightEditText=(EditText)findViewById(R.id.editText_height);
+        weightEditText=(EditText)findViewById(R.id.editText_weight);
+        bloodPressureEditText=(EditText)findViewById(R.id.editText_bloodPressure);
+        diseaseEditText=(EditText)findViewById(R.id.editText_disease);
 
 
 
@@ -74,30 +74,14 @@ public class CreateProfileActivity extends Activity {
             final float bloodPressure = generalProfileModule.getBloodPressure();
             String disease = generalProfileModule.getDisease();
 
-
-
             name.setText(nam);
-
-
             age.setText(age1);
-
-
             bloodgp.setText(blgp);
-
-
             gender.setText(gend);
-
-            /*height.setText(height);
-
-            weight.setText(weight);
-
-            bloodPressure.setText(bloodPressure);
-
-            disease.setText(disease);*/
-
-
-
-
+            heightEditText.setText(String.valueOf(height));
+            weightEditText.setText(String.valueOf(weight));
+            bloodPressureEditText.setText(String.valueOf(bloodPressure));
+            diseaseEditText.setText(disease);
 
             Button b = (Button) findViewById(R.id.button_save);
 
@@ -105,15 +89,14 @@ public class CreateProfileActivity extends Activity {
                 @Override
                 public void onClick(View v) {
 
-
                     final Editable nam1 =name.getText();
                     final Editable age1 =age.getText();
                     final Editable blgp = bloodgp.getText();
                     final Editable gend = gender.getText();
-                    /*final Editable height;
-                    final Editable weight = weight.getText();
-                    final Editable bloodPressure = bloodPressure.getText();
-                    final Editable disease = disease.getText();*/
+                    final Editable height = heightEditText.getText();
+                    final Editable weight = weightEditText.getText();
+                    final Editable bloodPressure = bloodPressureEditText.getText();
+                    final Editable disease = diseaseEditText.getText();
 
 
 
@@ -121,7 +104,7 @@ public class CreateProfileActivity extends Activity {
 
                     try {
                         if (!TextUtils.isEmpty(nam1) && !TextUtils.isEmpty(age1) && !TextUtils.isEmpty(blgp) && !TextUtils.isEmpty(gend)) {
-                            mGeneralProfileDataBaseQuery.updateProfileByProfileId(pID,nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.parseFloat("5.8"), Float.parseFloat("165"), Float.parseFloat("85"), "n/a");
+                            mGeneralProfileDataBaseQuery.updateProfileByProfileId(pID,nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(),Float.valueOf(height.toString()), Float.valueOf(weight.toString()), Float.valueOf(bloodPressure.toString()), disease.toString());
                             //mGeneralProfileDataBaseQuery.updateProfileByProfileId(pID,nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), height.parseFloat("5.8"), weight.parseFloat("165"), bloodPressure.parseFloat("85"), disease.toString());
                             finish();
                         } else {
@@ -149,10 +132,10 @@ public class CreateProfileActivity extends Activity {
             final Editable blgp = bloodgp.getText();
             final Editable gend = gender.getText();
 
-            /*final Editable height = height.getText();
-            final Editable weight = weight.getText();
-            final Editable bloodPressure = bloodPressure.getText();
-            final Editable disease = disease.getText();*/
+            final Editable height = heightEditText.getText();
+            final Editable weight = weightEditText.getText();
+            final Editable bloodPressure = bloodPressureEditText.getText();
+            final Editable disease = diseaseEditText.getText();
 
             Button b = (Button)findViewById(R.id.button_save);
 
@@ -163,7 +146,7 @@ public class CreateProfileActivity extends Activity {
                     try {
                         if (!TextUtils.isEmpty(nam1) && !TextUtils.isEmpty(age1) && !TextUtils.isEmpty(blgp) && !TextUtils.isEmpty(gend) )
                         {
-                            mGeneralProfileDataBaseQuery.createNewProfile(nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.parseFloat("5.8"), Float.parseFloat("165"), Float.parseFloat("85"), "n/a");
+                            mGeneralProfileDataBaseQuery.createNewProfile(nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.valueOf(height.toString()), Float.valueOf(weight.toString()), Float.valueOf(bloodPressure.toString()), disease.toString());
                             //mGeneralProfileDataBaseQuery.createNewProfile(nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.parseFloat("5.8"), Float.parseFloat("165"), Float.parseFloat("85"), "n/a");
                             finish();
                         }
