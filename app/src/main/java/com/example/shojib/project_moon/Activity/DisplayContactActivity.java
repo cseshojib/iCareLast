@@ -27,7 +27,8 @@ public class DisplayContactActivity extends Activity {
     private  long pID;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_contact);
 
@@ -38,9 +39,9 @@ public class DisplayContactActivity extends Activity {
 
         // starting From this line, code will be changed for new DB design.
 
-        mGeneralProfileDataBaseQuery=new GeneralProfileDataBaseQuery(this);
-        Button b2 = (Button)findViewById(R.id.button2);
-        b2.setVisibility(View.INVISIBLE);
+       mGeneralProfileDataBaseQuery=new GeneralProfileDataBaseQuery(this);
+        Button b2 = (Button)findViewById(R.id.button_add_Addi_healthinfo);
+     b2.setVisibility(View.INVISIBLE);
 
         Bundle extras = getIntent().getExtras();
         if(extras !=null)
@@ -52,6 +53,11 @@ public class DisplayContactActivity extends Activity {
                 String age1 =generalProfileModule.getAge()+"";
                 String blgp = generalProfileModule.getBloodGroup();
                 String gend = generalProfileModule.getGender();
+
+                Float height = generalProfileModule.getHeight();
+                Float weight= generalProfileModule.getWeight();
+                Float bloodPressure = generalProfileModule.getBloodPressure();
+                String disease = generalProfileModule.getDisease();
 
                 Button b = (Button)findViewById(R.id.button_save);
                 b.setVisibility(View.INVISIBLE);
@@ -72,12 +78,24 @@ public class DisplayContactActivity extends Activity {
                 gender.setFocusable(false);
                 gender.setClickable(false);
 
+               /* height.setText((CharSequence)height);
+                height.setFocusable(false);
+                height.setClickable(false);
+
+                weight.setText((CharSequence)weight);
+                weight.setFocusable(false);
+                weight.setClickable(false);
+
+                disease.setText((CharSequence)disease);
+                disease.setFocusable(false);
+                disease.setClickable(false);*/
 
 
-                Button b3 = (Button)findViewById(R.id.button2);
+                Button b3 = (Button)findViewById(R.id.button_add_Addi_healthinfo);
                 b3.setVisibility(View.VISIBLE);
 
-                b3.setOnClickListener(new View.OnClickListener() {
+                b3.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(DisplayContactActivity.this, HealthServiceActivity.class);
@@ -86,8 +104,8 @@ public class DisplayContactActivity extends Activity {
                     }
                 });
 
-                            }
         }
+    }
 
 //
 //    @Override

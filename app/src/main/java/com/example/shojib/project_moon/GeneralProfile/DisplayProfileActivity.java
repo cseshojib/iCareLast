@@ -20,6 +20,10 @@ public class DisplayProfileActivity extends Activity {
     private EditText age;
     private EditText bloodgp;
     private EditText gender;
+    private EditText height;
+    private EditText weight;
+    private EditText bloodPressure;
+    private EditText disease;
 
 
     private long pID;
@@ -37,7 +41,7 @@ public class DisplayProfileActivity extends Activity {
         // starting From this line, code will be changed for new DB design.
 
         mGeneralProfileDataBaseQuery = new GeneralProfileDataBaseQuery(this);
-        Button b2 = (Button) findViewById(R.id.button2);
+        Button b2 = (Button) findViewById(R.id.button_add_Addi_healthinfo);
         b2.setVisibility(View.INVISIBLE);
 
         Bundle extras = getIntent().getExtras();
@@ -49,6 +53,10 @@ public class DisplayProfileActivity extends Activity {
             String age1 = generalProfileModule.getAge() + "";
             String blgp = generalProfileModule.getBloodGroup();
             String gend = generalProfileModule.getGender();
+            float height = generalProfileModule.getHeight();
+            float weight = generalProfileModule.getWeight();
+            float bloodPressure = generalProfileModule.getBloodPressure();
+            String disease = generalProfileModule.getDisease();
 
             Button b = (Button) findViewById(R.id.button_save);
             b.setVisibility(View.INVISIBLE);
@@ -63,6 +71,14 @@ public class DisplayProfileActivity extends Activity {
 
 
             gender.setText(gend);
+
+            /*height.setText(height);
+
+            weight.setText(weight);
+
+            bloodPressure.setText(bloodPressure);
+
+            disease.setText(disease);*/
 
 
 

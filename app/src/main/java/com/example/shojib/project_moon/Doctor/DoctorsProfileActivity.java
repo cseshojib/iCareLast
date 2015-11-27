@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon.Activity;
+package com.example.shojib.project_moon.Doctor;
 
 import android.app.Activity;
 import android.app.AlertDialog;

@@ -1,23 +1,12 @@
-package com.example.shojib.project_moon.Activity;
+package com.example.shojib.project_moon.Medication.Medicine;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 
 import com.example.shojib.project_moon.R;
-import com.example.shojib.project_moon.popUpMedicine;
 
 
 public class MedicationActivity extends Activity {
@@ -25,6 +14,8 @@ public class MedicationActivity extends Activity {
     //The "x" and "y" position of the "Show Button" on screen.
 
     Button addMedicineButton;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +27,7 @@ public class MedicationActivity extends Activity {
         addMedicineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MedicationActivity.this, popUpMedicine.class);
+                Intent intent = new Intent(MedicationActivity.this, addMedicine.class);
                 startActivity(intent);
 
             }

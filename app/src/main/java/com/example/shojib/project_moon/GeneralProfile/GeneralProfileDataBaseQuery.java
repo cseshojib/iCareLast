@@ -147,7 +147,7 @@ public class GeneralProfileDataBaseQuery {
 
     public GeneralProfileModule getSingleProfileById(long pID) {
 
-        Cursor cursor=mSqLiteDatabase.query(DbHelper.TABLE_NAME_GENERAL_INFO,allColumns,DbHelper.COLUMN_GENERAL_INFO_USER_ID+ "=? ",new String[]{String.valueOf(pID)},null,null,null);
+        Cursor cursor=mSqLiteDatabase.query(DbHelper.TABLE_NAME_GENERAL_INFO,allColumns,DbHelper.COLUMN_GENERAL_INFO_USER_ID+ "=? ",new String[]{String.valueOf(pID)},null,null,null, null);
         GeneralProfileModule generalProfileModule=null;
 
         if (cursor != null) {

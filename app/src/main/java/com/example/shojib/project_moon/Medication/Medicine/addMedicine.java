@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon;
+package com.example.shojib.project_moon.Medication.Medicine;
 
 import java.util.Calendar;
 
@@ -6,23 +6,37 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.example.shojib.project_moon.R;
 
 
-public class popUpMedicine extends Activity implements OnClickListener {
+public class addMedicine extends Activity implements OnClickListener {
 
     private ImageButton ib;
     private Calendar cal;
     private int hour;
     private int min;
     private EditText et;
+    private EditText medicineName;
+    private EditText medicineReason;
+    private CheckBox reminder;
+
+    private MedicationDataBaseQuery medicationDataBaseQuery;
+    private MedicationModule medicationModule;
+    private  long pID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +50,70 @@ public class popUpMedicine extends Activity implements OnClickListener {
         min = cal.get(Calendar.MINUTE);
         et = (EditText) findViewById(R.id.editText_time);
         ib.setOnClickListener(this);
+
+
+        medicineName = (EditText)findViewById(R.id.editText_medicineName);
+        medicineReason = (EditText)findViewById(R.id.editText_reasons);
+        reminder = (CheckBox)findViewById(R.id.checkBox);
+
+
+
+        medicationDataBaseQuery= new MedicationDataBaseQuery(this);
+        pID = Long.parseLong(getIntent().getStringExtra("puid"));
+
+
+        //medicationModule = MedicationDataBaseQuery.getSingleProfileById(pID);
+
+        String medicineName = medicationModule.getMedicineName();
+        String medicineReason = medicationModule.getMedicineReason();
+        int reminder = medicationModule.getReminder();
+
+
+        /*medicineName.setText(medicineName);
+        medicineReason.setText(medicineReason);
+        reminder.setText(reminder);*/
+
+
+
+
+        Button b = (Button) findViewById(R.id.saveMedicine_button);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                /*final Editable medicineName =medicineName.getText();
+                final Editable medicineReason =medicineReason.getText();
+                final Editable reminder = reminder.getText();*/
+
+
+
+
+
+
+
+                try {
+                    //if (!TextUtils.isEmpty(medicineName) && !TextUtils.isEmpty(medicineReason) && !TextUtils.isEmpty(reminder))
+
+                   {
+                       // medicationDataBaseQuery.updateProfileByProfileId(pID,medicineName.toString(), medicineReason.toString(), reminder.getText().toString());
+                        finish();
+                    }
+                    //else
+                    {
+                        Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+
     }
 
     @Override

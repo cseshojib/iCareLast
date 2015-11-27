@@ -131,27 +131,9 @@ forRefresh();
                 return false;
 
 
-
-
-
-
-
-
         }
         return true;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,17 +1,16 @@
-package com.example.shojib.project_moon.Activity;
-
-import android.support.v7.app.ActionBarActivity;
+package com.example.shojib.project_moon.DietChart;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.shojib.project_moon.R;
 
+ class BMICalculatorActivity extends Activity {
+    /** Called when the activity is first created. */
 
-public class DietChartActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +42,21 @@ public class DietChartActivity extends ActionBarActivity {
 
             // now set the value in the result text
 
-            resultText.setText(bmiValue + "-" + bmiInterpretation);
+            resultText.setText("BMI: " + bmiValue + " - " + bmiInterpretation);
         }
     }
 
     // the formula to calculate the BMI index
 
     // check for http://en.wikipedia.org/wiki/Body_mass_index
-    private float calculateBMI (float weight, float height) {
+    private float calculateBMI (float weight, float heightIntoFeet) {
 
-        return (float) (weight * 4.88 / (height * height));
+        //Body Mass Index or BMI = (weight in kilograms) ÷ (height in meters)² ≈
+        //703 × (weight in pounds) ÷ (height in inches)²
+
+        float heightInMeter = (float) (0.3048*heightIntoFeet);
+
+        return (float) ( weight / (heightInMeter * heightInMeter));
     }
 
 
@@ -61,7 +65,7 @@ public class DietChartActivity extends ActionBarActivity {
 
         if (bmiValue < 16)
         {
-            return "Severely underweight";
+            return "Severely underweight!! ";
         }
         else if (bmiValue < 18.5)
         {

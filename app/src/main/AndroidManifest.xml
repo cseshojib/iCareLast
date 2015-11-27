@@ -40,7 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GeneralProfile.CreateProfileActivity"></activity>
+        <activity android:name=".GeneralProfile.CreateProfileActivity" />
         <activity
             android:name=".GeneralProfile.DisplayProfileActivity"
             android:label="@string/title_activity_display_contact" >
@@ -50,7 +50,7 @@
             android:label="@string/title_activity_health_service" >
         </activity>
         <activity
-            android:name=".Activity.MedicationActivity"
+            android:name=".Medication.Medicine.MedicationActivity"
             android:label="@string/title_activity_medication" >
         </activity>
         <activity
@@ -66,7 +66,7 @@
             android:label="@string/title_activity_hospital" >
         </activity>
         <activity
-            android:name=".Activity.DoctorsActivity"
+            android:name=".Doctor.DoctorsActivity"
             android:label="@string/title_activity_doctors" >
         </activity>
         <activity
@@ -74,7 +74,7 @@
             android:label="@string/title_activity_rbs" >
         </activity>
         <activity
-            android:name=".Activity.DoctorsProfileActivity"
+            android:name=".Doctor.DoctorsProfileActivity"
             android:label="@string/title_activity_doctors_profile" >
         </activity>
         <activity
@@ -98,12 +98,16 @@
             android:label="@string/title_activity_additional_info" >
         </activity>
         <activity
-            android:name=".popUpMedicine"
+            android:name=".Medication.Medicine.addMedicine"
             android:label="@string/title_activity_pop_up_medicine" >
         </activity>
         <activity
             android:name=".Activity.addVaccination22"
             android:label="@string/title_activity_add_vaccination22" >
+        </activity>
+        <activity
+            android:name=".DietChart.dietCalculationActivity"
+            android:label="@string/title_activity_diet_calculation" >
         </activity>
     </application>
 

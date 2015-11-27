@@ -18,7 +18,7 @@ public class GeneralProfileModule implements Serializable {
    private float weight;
    private float bloodPressure;
    private String disease;
-    public GeneralProfileModule(){
+   public GeneralProfileModule(){
 
     }
 
