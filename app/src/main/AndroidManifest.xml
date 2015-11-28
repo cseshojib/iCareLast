@@ -58,10 +58,6 @@
             android:label="@string/title_activity_vaccination" >
         </activity>
         <activity
-            android:name=".Activity.DietChartActivity"
-            android:label="@string/title_activity_diet_chart" >
-        </activity>
-        <activity
             android:name=".Activity.HospitalActivity"
             android:label="@string/title_activity_hospital" >
         </activity>
@@ -108,9 +104,12 @@
         <activity
             android:name=".DietChart.dietCalculationActivity"
             android:label="@string/title_activity_diet_calculation" >
-
         </activity>
-        <activity android:name=".Medication.Medicine.displayMedicine"></activity>
+        <activity android:name=".Medication.Medicine.displayMedicine" />
+        <activity
+            android:name=".Activity.dietAndFitness"
+            android:label="@string/title_activity_diet_and_fitness" >
+        </activity>
     </application>
 
 </manifest>

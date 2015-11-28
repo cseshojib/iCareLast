@@ -84,7 +84,7 @@ long pID;
         diet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HealthServiceActivity.this, DietChartActivity.class);
+                Intent intent = new Intent(HealthServiceActivity.this, dietAndFitness.class);
                 intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 

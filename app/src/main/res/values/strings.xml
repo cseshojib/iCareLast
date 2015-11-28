@@ -87,5 +87,6 @@
     <string name="title_activity_pop_up_medicine">popUpMedicine</string>
     <string name="title_activity_add_vaccination22">addVaccination22</string>
     <string name="title_activity_diet_calculation">dietCalculationActivity</string>
+    <string name="title_activity_diet_and_fitness">dietAndFitness</string>
 
 </resources>
