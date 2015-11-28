@@ -25,7 +25,7 @@ public class HealthServiceActivity extends Activity {
     Button diet;
     Button hospital;
     Button exit;
-
+long pID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +39,16 @@ public class HealthServiceActivity extends Activity {
         diet = (Button) findViewById(R.id.dietButton);
         hospital = (Button) findViewById(R.id.hospitalButton);
         exit = (Button) findViewById(R.id.exitButton);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            pID = Long.parseLong(getIntent().getStringExtra("pid"));
+        }
 
         health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HealthServiceActivity.this, RbsActivity.class);
+                intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 
             }
@@ -53,6 +57,7 @@ public class HealthServiceActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HealthServiceActivity.this, DoctorsActivity.class);
+                intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 
             }
@@ -62,6 +67,7 @@ public class HealthServiceActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HealthServiceActivity.this, MedicationActivity.class);
+                intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 
             }
@@ -70,6 +76,7 @@ public class HealthServiceActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HealthServiceActivity.this, VaccinationActivity.class);
+                intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 
             }
@@ -78,6 +85,7 @@ public class HealthServiceActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HealthServiceActivity.this, DietChartActivity.class);
+                intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 
             }
@@ -86,6 +94,7 @@ public class HealthServiceActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HealthServiceActivity.this, HospitalActivity.class);
+                intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 
             }

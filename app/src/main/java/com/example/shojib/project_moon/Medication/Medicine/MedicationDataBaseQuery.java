@@ -55,6 +55,7 @@ public class MedicationDataBaseQuery {
         values.put(DbHelper.COLUMN_MEDICATION_REMINDER, reminder);
 
         long insertId = mSqLiteDatabase.insert(DbHelper.TABLE_NAME_MEDICATION, null, values);
+        System.out.println("MedicineDb "+insertId);
         mSqLiteDatabase.query(DbHelper.TABLE_NAME_MEDICATION, allColumns, DbHelper.COLUMN_MEDICATION_MEDICINE_ID + " = " + insertId, null, null, null, null);
 
     }
@@ -89,7 +90,7 @@ public class MedicationDataBaseQuery {
         medicationModule.setMedicineReason(cursor.getString(2));
         medicationModule.setUserId(cursor.getLong(3));
         medicationModule.setReminder(cursor.getString(4));
-
+        System.out.println("MedicineDBq "+medicationModule.getMedicineName());
         return medicationModule;
     }
 

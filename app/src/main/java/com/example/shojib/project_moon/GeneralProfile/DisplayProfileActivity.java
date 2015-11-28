@@ -85,6 +85,7 @@ public class DisplayProfileActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(DisplayProfileActivity.this, HealthServiceActivity.class);
+                    intent.putExtra("pid",String.valueOf(pID));
                     startActivity(intent);
 
                 }

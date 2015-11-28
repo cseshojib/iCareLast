@@ -36,10 +36,11 @@ public class addMedicine extends Activity implements OnClickListener {
     private EditText medicineName;
     private EditText medicineReason;
 
-    private long pID;
+    private long pID=1;
 
     private long mID;
-    String flag = null;
+    String flag1 = null;
+    String flag2 = null;
 
 
        @Override
@@ -61,17 +62,20 @@ public class addMedicine extends Activity implements OnClickListener {
 
            medicationDataBaseQuery = new MedicationDataBaseQuery(this);
            Intent mEIntent = getIntent();
-           flag = mEIntent.getStringExtra("mid");
+           flag2 = mEIntent.getStringExtra("mid");
+           flag1 = mEIntent.getStringExtra("pid");
 
-           if (flag != null) {
+           if (flag2 != null) {
 
                mID = Long.parseLong(getIntent().getStringExtra("mid"));
+
                medicationModule = medicationDataBaseQuery.getSingleMedicineById(mID);
 
 
                String mName = medicationModule.getMedicineName();
                String mReason = medicationModule.getMedicineReason();
                String mReminderTime = medicationModule.getReminder();
+               pID=medicationModule.getUserId();
 
                medicineName.setText(mName);
                medicineReason.setText(mReason);
@@ -89,7 +93,7 @@ public class addMedicine extends Activity implements OnClickListener {
 
 
                        try {
-                           if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) && !TextUtils.isEmpty(reminder1)) {
+                           if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) ) {
                                medicationDataBaseQuery.updateMedicineByMedicineId(mID, mName1.toString(), mReason1.toString(), pID, reminder1.toString());
                                finish();
                            } else {
@@ -104,6 +108,8 @@ public class addMedicine extends Activity implements OnClickListener {
                    }
                });
            } else {
+
+               pID=Long.parseLong(getIntent().getStringExtra("pid"));
                final Editable mName1 = medicineName.getText();
                final Editable mReason1 = medicineReason.getText();
                final Editable reminder1 = reminder.getText();
@@ -114,7 +120,8 @@ public class addMedicine extends Activity implements OnClickListener {
                    @Override
                    public void onClick(View v) {
                        try {
-                           if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) && !TextUtils.isEmpty(reminder1)) {
+                           System.out.println(mName1.toString()+mReason1.toString()+reminder1.toString());
+                           if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) ) {
                                medicationDataBaseQuery.createNewMedication(mName1.toString(), mReason1.toString(), pID, reminder1.toString());
                                Toast.makeText(getApplicationContext(), "Medicine Added Successfully!", Toast.LENGTH_LONG).show();
 

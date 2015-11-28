@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.example.shojib.project_moon.GeneralProfile.GeneralProfileListAdapter;
 import com.example.shojib.project_moon.R;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class MedicationActivity extends AppCompatActivity implements OnItemClick
 
 
     Button addMedicineButton;
-
+long pID;
 
 
     @Override
@@ -49,12 +50,20 @@ public class MedicationActivity extends AppCompatActivity implements OnItemClick
         mListView=(ListView)findViewById(R.id.medicineListView);
         mListView.setOnItemClickListener(this);
         mListView.setOnItemLongClickListener(this);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            pID = Long.parseLong(getIntent().getStringExtra("pid"));
+        }
         addMedicineButton = (Button)findViewById(R.id.button_Add_Medicine);
         addMedicineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MedicationActivity.this, addMedicine.class);
+
+
+
+
+                intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
             }
         });
@@ -62,20 +71,21 @@ public class MedicationActivity extends AppCompatActivity implements OnItemClick
 
     @Override
     protected void onResume() {
-
-        forRefresh();
         super.onResume();
+        forRefresh();
+
     }
     private void forRefresh()
     {
         medicationDataBaseQuery =new MedicationDataBaseQuery(this);
         moduleList=medicationDataBaseQuery.getAllMedicine();
         if(moduleList!=null && !moduleList.isEmpty())
-        {
+        {   System.out.println("modulelist not null");
             mAdapter=new MedicationListAdapter(this,moduleList);
             mListView.setAdapter(mAdapter);
             contextRegister();
         }
+          System.out.println("modulelist");
     }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

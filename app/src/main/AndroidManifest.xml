@@ -108,7 +108,9 @@
         <activity
             android:name=".DietChart.dietCalculationActivity"
             android:label="@string/title_activity_diet_calculation" >
+
         </activity>
+        <activity android:name=".Medication.Medicine.displayMedicine"></activity>
     </application>
 
 </manifest>

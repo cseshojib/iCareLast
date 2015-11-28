@@ -49,9 +49,9 @@ public class MedicationListAdapter extends BaseAdapter {
         View v=convertView;
         ViewHolder holder;
         if(v == null) {
-            v = mLayoutInflater.inflate(R.layout.list_profile_helper_xml, parent, false);
+            v = mLayoutInflater.inflate(R.layout.list_medicine_helper_xml, parent, false);
             holder = new ViewHolder();
-            holder.tvPName = (TextView) v.findViewById(R.id.txt_profile_title);
+            holder.tvMName = (TextView) v.findViewById(R.id.txt_medicine_title);
 
             v.setTag(holder);
         }
@@ -61,7 +61,7 @@ public class MedicationListAdapter extends BaseAdapter {
        MedicationModule currentItem=getItem(position);
         if(currentItem!=null)
         {
-           // holder.tvPName.setText(currentItem.getProfileName());
+            holder.tvMName.setText(currentItem.getMedicineName()+" \n"+currentItem.getMedicineReason()+" \n"+currentItem.getReminder());
         }
         return v;
 
@@ -71,6 +71,6 @@ public class MedicationListAdapter extends BaseAdapter {
     }
      class ViewHolder
     {
-        TextView tvPName;
+        TextView tvMName;
     }
 }

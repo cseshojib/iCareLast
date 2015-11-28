@@ -142,7 +142,7 @@ public class CreateProfileActivity extends Activity {
                     try {
                         if (!TextUtils.isEmpty(nam1) && !TextUtils.isEmpty(age1) && !TextUtils.isEmpty(blgp) && !TextUtils.isEmpty(gend) )
                         {
-                            mGeneralProfileDataBaseQuery.createNewProfile(nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.valueOf(height.toString()), Float.valueOf(weight.toString()), Float.valueOf(bloodPressure.toString()), disease.toString());
+                            mGeneralProfileDataBaseQuery.createNewProfile(nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.parseFloat(height.toString()), Float.parseFloat(weight.toString()), Float.parseFloat(bloodPressure.toString()), disease.toString());
                             //mGeneralProfileDataBaseQuery.createNewProfile(nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.parseFloat("5.8"), Float.parseFloat("165"), Float.parseFloat("85"), "n/a");
                             finish();
                         }
