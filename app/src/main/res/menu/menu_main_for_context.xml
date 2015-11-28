@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     tools:context=".Activity.MainActivity">
-    <item android:id="@+id/action_UpdateP" android:title="Update Profile" android:orderInCategory="90" />
-    <item android:id="@+id/action_DeleteP" android:title="Delete Profile" android:orderInCategory="99" />
+    <item android:id="@+id/action_UpdateP"
+        android:title="Update Profile"
+        android:orderInCategory="90" />
+    <item android:id="@+id/action_DeleteP"
+        android:title="Delete Profile"
+        android:orderInCategory="99" />
 </menu>

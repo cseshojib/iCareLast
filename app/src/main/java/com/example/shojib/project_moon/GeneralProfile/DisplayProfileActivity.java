@@ -37,6 +37,10 @@ public class DisplayProfileActivity extends Activity {
         age = (EditText) findViewById(R.id.editText_age);
         bloodgp = (EditText) findViewById(R.id.editText_bloodgp);
         gender = (EditText) findViewById(R.id.editText_gender);
+        height = (EditText) findViewById(R.id.editText_height);
+        weight = (EditText) findViewById(R.id.editText_weight);
+        bloodPressure = (EditText) findViewById(R.id.editText_bloodPressure);
+        disease = (EditText) findViewById(R.id.editText_disease);
 
         // starting From this line, code will be changed for new DB design.
 
@@ -53,32 +57,24 @@ public class DisplayProfileActivity extends Activity {
             String age1 = generalProfileModule.getAge() + "";
             String blgp = generalProfileModule.getBloodGroup();
             String gend = generalProfileModule.getGender();
-            float height = generalProfileModule.getHeight();
-            float weight = generalProfileModule.getWeight();
-            float bloodPressure = generalProfileModule.getBloodPressure();
-            String disease = generalProfileModule.getDisease();
+            float height1 = generalProfileModule.getHeight();
+            float weight1 = generalProfileModule.getWeight();
+            float bloodPressure1 = generalProfileModule.getBloodPressure();
+            String disease1 = generalProfileModule.getDisease();
 
             Button b = (Button) findViewById(R.id.button_save);
             b.setVisibility(View.INVISIBLE);
 
+
+
             name.setText(nam);
-
-
             age.setText(age1);
-
-
             bloodgp.setText(blgp);
-
-
             gender.setText(gend);
-
-            /*height.setText(height);
-
-            weight.setText(weight);
-
-            bloodPressure.setText(bloodPressure);
-
-            disease.setText(disease);*/
+            height.setText(String.valueOf(height1));
+            weight.setText(String.valueOf(weight1));
+            bloodPressure.setText(String.valueOf(bloodPressure1));
+            disease.setText(disease1);
 
 
 

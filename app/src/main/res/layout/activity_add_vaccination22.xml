@@ -11,12 +11,12 @@
         android:text="Vaccine Name:"
         android:textSize="20sp"
         android:id="@+id/textView_VaccineName"
-        android:layout_marginTop="77dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="81dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_below="@+id/textView10"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -34,10 +34,10 @@
         android:text="Reasons:"
         android:textSize="20dp"
         android:id="@+id/textView_reason"
+        android:layout_marginTop="33dp"
         android:layout_below="@+id/editText_VaccineName"
         android:layout_alignLeft="@+id/textView_VaccineName"
-        android:layout_alignStart="@+id/textView_VaccineName"
-        android:layout_marginTop="39dp" />
+        android:layout_alignStart="@+id/textView_VaccineName" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,17 +57,18 @@
         android:layout_below="@+id/textView_reason"
         android:layout_alignLeft="@+id/textView_reason"
         android:layout_alignStart="@+id/textView_reason"
-        android:layout_marginTop="39dp" />
+        android:layout_marginTop="29dp" />
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save Vaccine"
+        android:textSize="16dp"
         android:id="@+id/saveVaccine_button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="89dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="48dp"
@@ -79,28 +80,37 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <CheckedTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Notification"
-        android:textSize="20sp"
-        android:checked="true"
-        android:id="@+id/checkedTextView"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView_date"
-        android:layout_alignStart="@+id/textView_date" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click on Calendar"
-        android:id="@+id/vaccinationDateTextView"
+        android:id="@+id/vaccinationDateEditView"
         android:layout_alignBottom="@+id/button_datePick"
         android:layout_toLeftOf="@+id/button_datePick"
         android:layout_alignLeft="@+id/editText_reasons"
         android:layout_alignStart="@+id/editText_reasons"
         android:layout_alignTop="@+id/textView_date" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Notification"
+        android:id="@+id/getNotificationcheckBox"
+        android:checked="false"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/vaccinationDateEditView"
+        android:layout_alignRight="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Add Vaccination"
+        android:id="@+id/textView10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp" />
 
 
 </RelativeLayout>

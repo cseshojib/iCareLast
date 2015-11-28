@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.shojib.project_moon.Doctor.DoctorsActivity;
 import com.example.shojib.project_moon.Medication.Medicine.MedicationActivity;
 import com.example.shojib.project_moon.R;
+import com.example.shojib.project_moon.Vaccine.Vaccination.VaccinationActivity;
 
 
 public class HealthServiceActivity extends Activity {

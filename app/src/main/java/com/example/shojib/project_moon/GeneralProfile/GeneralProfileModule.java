@@ -1,10 +1,6 @@
 package com.example.shojib.project_moon.GeneralProfile;
 
 import java.io.Serializable;
-
-/**
- * Created by Suuny on 11/23/2015.
- */
 public class GeneralProfileModule implements Serializable {
 
     private static final long serilVersionUID=-7406082437623008161L;

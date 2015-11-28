@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.shojib.project_moon.DBHelperPackage.DbHelper;
+import com.example.shojib.project_moon.Medication.Medicine.MedicationModule;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class VaccinationDataBaseQuery {
     private Context context;
     private DbHelper mPDbHelper;
     private SQLiteDatabase mSqLiteDatabase;
+    private long vID;
+
 
     private String[] allColumns={
             DbHelper. COLUMN_VACCINATION_VACCINE_ID,
@@ -96,7 +99,7 @@ public class VaccinationDataBaseQuery {
 
         return vaccinationModule;
     }
-    private void updateVaccineByVaccinById(long vaccineId, String vaccineName, String vaccineReason, long userId, int reminder)
+    public void updateVaccineByVaccinById(long vaccineId, String vaccineName, String vaccineReason, long userId, int reminder)
     {
         try {
             open();
@@ -129,5 +132,25 @@ public class VaccinationDataBaseQuery {
         close();
 
     }
+    public VaccinationModule getSingleVaccineById(long pID) {
+
+        Cursor cursor = mSqLiteDatabase.query(DbHelper.TABLE_NAME_VACCINATION, allColumns, DbHelper.COLUMN_VACCINATION_VACCINE_ID + "=? ", new String[]{String.valueOf(pID)}, null, null, null, null);
+        VaccinationModule vaccinationModule= null;
+
+        if (cursor != null) {
+            try {
+                cursor.moveToFirst();
+                vaccinationModule = cursorToVaccineModule(cursor);
+            }
+            finally
+            {
+                //close();
+            }
+        }
+
+        return vaccinationModule;
+    }
+
+
 
 }

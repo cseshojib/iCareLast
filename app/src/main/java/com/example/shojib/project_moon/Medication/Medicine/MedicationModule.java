@@ -9,10 +9,10 @@ public class MedicationModule implements Serializable {
     private String medicineName;
     private String medicineReason;
     private long userId;
-    private int reminder;
+    private String reminder;
 
 
-    public MedicationModule(long medicineId, String medicineName, String medicineReason, long userId, int reminder) {
+    public MedicationModule(long medicineId, String medicineName, String medicineReason, long userId, String reminder) {
 
         this.medicineId = medicineId;
         this.medicineName = medicineName;
@@ -41,7 +41,7 @@ public class MedicationModule implements Serializable {
         this.userId = userId;
     }
 
-    public void setReminder(int reminder) {
+    public void setReminder(String reminder) {
         this.reminder = reminder;
     }
 
@@ -61,7 +61,7 @@ public class MedicationModule implements Serializable {
         return userId;
     }
 
-    public int getReminder() {
+    public String getReminder() {
         return reminder;
     }
 }

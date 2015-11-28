@@ -98,10 +98,6 @@ public class CreateProfileActivity extends Activity {
                     final Editable bloodPressure = bloodPressureEditText.getText();
                     final Editable disease = diseaseEditText.getText();
 
-
-
-
-
                     try {
                         if (!TextUtils.isEmpty(nam1) && !TextUtils.isEmpty(age1) && !TextUtils.isEmpty(blgp) && !TextUtils.isEmpty(gend)) {
                             mGeneralProfileDataBaseQuery.updateProfileByProfileId(pID,nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(),Float.valueOf(height.toString()), Float.valueOf(weight.toString()), Float.valueOf(bloodPressure.toString()), disease.toString());
@@ -150,8 +146,6 @@ public class CreateProfileActivity extends Activity {
                             //mGeneralProfileDataBaseQuery.createNewProfile(nam1.toString(), age.getText().toString(), blgp.toString(), gend.toString(), Float.parseFloat("5.8"), Float.parseFloat("165"), Float.parseFloat("85"), "n/a");
                             finish();
                         }
-
-
                     }
                     catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
@@ -159,8 +153,6 @@ public class CreateProfileActivity extends Activity {
 
                 }
             });
-
-
 
             Button b3 = (Button)findViewById(R.id.button_add_Addi_healthinfo);
             b3.setVisibility(View.GONE);

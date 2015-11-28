@@ -2,6 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.MedicationActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_UpdateP"
+        android:title="Update Profile"
+        android:orderInCategory="90" />
+    <item android:id="@+id/action_DeleteP"
+        android:title="Delete Profile"
+        android:orderInCategory="99" />
 </menu>

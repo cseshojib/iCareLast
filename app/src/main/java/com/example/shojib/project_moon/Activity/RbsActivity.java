@@ -36,6 +36,10 @@ public class RbsActivity extends ActionBarActivity {
         rbsShowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+             //add query
+
+
+
 
             }
         });

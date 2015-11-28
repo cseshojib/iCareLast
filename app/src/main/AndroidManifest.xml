@@ -54,7 +54,7 @@
             android:label="@string/title_activity_medication" >
         </activity>
         <activity
-            android:name=".Activity.VaccinationActivity"
+            android:name=".Vaccine.Vaccination.VaccinationActivity"
             android:label="@string/title_activity_vaccination" >
         </activity>
         <activity
@@ -102,7 +102,7 @@
             android:label="@string/title_activity_pop_up_medicine" >
         </activity>
         <activity
-            android:name=".Activity.addVaccination22"
+            android:name=".Vaccine.Vaccination.addVaccination22"
             android:label="@string/title_activity_add_vaccination22" >
         </activity>
         <activity

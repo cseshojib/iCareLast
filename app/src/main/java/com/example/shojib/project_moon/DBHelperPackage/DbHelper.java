@@ -58,7 +58,7 @@ public class DbHelper extends SQLiteOpenHelper {
             + COLUMN_MEDICATION_MEDICINE_NAME+" TEXT NOT NULL, "
             + COLUMN_MEDICATION_REASON+" TEXT, "
             + COLUMN_GENERAL_INFO_USER_ID+" INTEGER NOT NULL, "
-            + COLUMN_MEDICATION_REMINDER+" INTEGER "
+            + COLUMN_MEDICATION_REMINDER+" TEXT "
             + ");";
 
     //For medicine_time table

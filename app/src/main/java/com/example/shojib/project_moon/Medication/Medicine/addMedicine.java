@@ -5,6 +5,7 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -24,97 +25,109 @@ import com.example.shojib.project_moon.R;
 
 public class addMedicine extends Activity implements OnClickListener {
 
+
+    private MedicationDataBaseQuery medicationDataBaseQuery;
+    private MedicationModule medicationModule;
     private ImageButton ib;
     private Calendar cal;
     private int hour;
     private int min;
-    private EditText et;
+    private EditText reminder;
     private EditText medicineName;
     private EditText medicineReason;
-    private CheckBox reminder;
 
-    private MedicationDataBaseQuery medicationDataBaseQuery;
-    private MedicationModule medicationModule;
-    private  long pID;
+    private long pID;
+
+    private long mID;
+    String flag = null;
 
 
-    @Override
+       @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pop_up_medicine);
+           super.onCreate(savedInstanceState);
+           setContentView(R.layout.activity_pop_up_medicine);
 
 
-        ib = (ImageButton) findViewById(R.id.button_timePick);
-        cal = Calendar.getInstance();
-        hour = cal.get(Calendar.HOUR_OF_DAY);
-        min = cal.get(Calendar.MINUTE);
-        et = (EditText) findViewById(R.id.editText_time);
-        ib.setOnClickListener(this);
+           ib = (ImageButton) findViewById(R.id.button_timePick);
+           cal = Calendar.getInstance();
+           hour = cal.get(Calendar.HOUR_OF_DAY);
+           min = cal.get(Calendar.MINUTE);
+           reminder = (EditText) findViewById(R.id.editText_time);
+           medicineName = (EditText) findViewById(R.id.editText_medicineName);
+           medicineReason = (EditText) findViewById(R.id.editText_reasons);
 
 
-        medicineName = (EditText)findViewById(R.id.editText_medicineName);
-        medicineReason = (EditText)findViewById(R.id.editText_reasons);
-        reminder = (CheckBox)findViewById(R.id.checkBox);
+           ib.setOnClickListener(this);
+
+           medicationDataBaseQuery = new MedicationDataBaseQuery(this);
+           Intent mEIntent = getIntent();
+           flag = mEIntent.getStringExtra("mid");
+
+           if (flag != null) {
+
+               mID = Long.parseLong(getIntent().getStringExtra("mid"));
+               medicationModule = medicationDataBaseQuery.getSingleMedicineById(mID);
 
 
+               String mName = medicationModule.getMedicineName();
+               String mReason = medicationModule.getMedicineReason();
+               String mReminderTime = medicationModule.getReminder();
 
-        medicationDataBaseQuery= new MedicationDataBaseQuery(this);
-        pID = Long.parseLong(getIntent().getStringExtra("puid"));
+               medicineName.setText(mName);
+               medicineReason.setText(mReason);
+               reminder.setText(mReminderTime);
 
+               Button saveMedicineButton = (Button) findViewById(R.id.saveMedicine_button);
 
-        //medicationModule = MedicationDataBaseQuery.getSingleProfileById(pID);
-
-        String medicineName = medicationModule.getMedicineName();
-        String medicineReason = medicationModule.getMedicineReason();
-        int reminder = medicationModule.getReminder();
-
-
-        /*medicineName.setText(medicineName);
-        medicineReason.setText(medicineReason);
-        reminder.setText(reminder);*/
-
-
-
-
-        Button b = (Button) findViewById(R.id.saveMedicine_button);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+               saveMedicineButton.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       //
+                       final Editable mName1 = medicineName.getText();
+                       final Editable mReason1 = medicineReason.getText();
+                       final Editable reminder1 = reminder.getText();
 
 
-                /*final Editable medicineName =medicineName.getText();
-                final Editable medicineReason =medicineReason.getText();
-                final Editable reminder = reminder.getText();*/
+                       try {
+                           if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) && !TextUtils.isEmpty(reminder1)) {
+                               medicationDataBaseQuery.updateMedicineByMedicineId(mID, mName1.toString(), mReason1.toString(), pID, reminder1.toString());
+                               finish();
+                           } else {
+                               Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
 
+                           }
 
+                       } catch (Exception e) {
+                           Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+                       }
 
+                   }
+               });
+           } else {
+               final Editable mName1 = medicineName.getText();
+               final Editable mReason1 = medicineReason.getText();
+               final Editable reminder1 = reminder.getText();
 
+               Button sameMedicineButton = (Button) findViewById(R.id.saveMedicine_button);
 
+               sameMedicineButton.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       try {
+                           if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) && !TextUtils.isEmpty(reminder1)) {
+                               medicationDataBaseQuery.createNewMedication(mName1.toString(), mReason1.toString(), pID, reminder1.toString());
+                               Toast.makeText(getApplicationContext(), "Medicine Added Successfully!", Toast.LENGTH_LONG).show();
 
-
-                try {
-                    //if (!TextUtils.isEmpty(medicineName) && !TextUtils.isEmpty(medicineReason) && !TextUtils.isEmpty(reminder))
-
-                   {
-                       // medicationDataBaseQuery.updateProfileByProfileId(pID,medicineName.toString(), medicineReason.toString(), reminder.getText().toString());
-                        finish();
-                    }
-                    //else
-                    {
-                        Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-
-                    }
-
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
-
-
-    }
+                               finish();
+                           }
+                       }
+                       catch (Exception e) {
+                           Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+                       }
+                   }
+               });
+           }
+       }
 
     @Override
     public void onClick(View v) {
@@ -139,7 +152,7 @@ public class addMedicine extends Activity implements OnClickListener {
                 hour = hourOfDay;
                 am_pm = "AM";
             }
-            et.setText(hour + " : " + minute + " " + am_pm);
+            reminder.setText(hour + " : " + minute + " " + am_pm);
         }
     };
 

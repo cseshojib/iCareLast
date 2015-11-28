@@ -27,7 +27,8 @@ public class ProfileMainActivity extends AppCompatActivity implements OnItemClic
     private GeneralProfileDataBaseQuery mGeneralProfileDataBaseQuery;
     private GeneralProfileListAdapter mAdapter;
     private List<GeneralProfileModule> moduleList;
-long ePID=0;
+
+    long ePID=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +43,10 @@ long ePID=0;
     @Override
     protected void onResume() {
 
-forRefresh();
-
-
-        super.onResume();
+    forRefresh();
+    super.onResume();
     }
+
     private void forRefresh()
     {
         mGeneralProfileDataBaseQuery=new GeneralProfileDataBaseQuery(this);
@@ -59,14 +59,11 @@ forRefresh();
         }
     }
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
         GeneralProfileListAdapter mGeneralProfileListAdaptere;
-
         mGeneralProfileListAdaptere=(GeneralProfileListAdapter)parent.getAdapter();
-
         Intent intent = new Intent(getApplicationContext(),DisplayProfileActivity.class);
-
                 intent.putExtra("pid", String.valueOf(mGeneralProfileListAdaptere.getItemId(position)));
                 startActivity(intent);
     }
@@ -86,10 +83,6 @@ forRefresh();
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.menu_main_for_context , menu);
-
-
-
-
         menu.setHeaderTitle("Select Menu ");
     }
     private void contextRegister ()
@@ -116,21 +109,17 @@ forRefresh();
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
                                 mGeneralProfileDataBaseQuery.profileDeletByProfileId(ePID);
-forRefresh();
+            forRefresh();
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // do nothing
-
                             }
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
-
                 return false;
-
-
         }
         return true;
     }
@@ -150,8 +139,6 @@ forRefresh();
         {
             case R.id.item1:
                 Intent intent = new Intent(getApplicationContext(),CreateProfileActivity.class);
-
-
                 startActivity(intent);
                 return true;
             default:
@@ -160,12 +147,10 @@ forRefresh();
     }
 
     public boolean onKeyDown(int keycode, KeyEvent event) {
-        if (keycode == KeyEvent.KEYCODE_BACK) {
+        if (keycode == KeyEvent.KEYCODE_BACK)
+        {
             moveTaskToBack(true);
         }
         return super.onKeyDown(keycode, event);
     }
-
-
-
 }

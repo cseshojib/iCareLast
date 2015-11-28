@@ -21,6 +21,10 @@ public class DisplayContactActivity extends Activity {
     private EditText age;
     private EditText bloodgp;
     private EditText gender;
+    private EditText height;
+    private EditText weight;
+    private EditText bloodPressure;
+    private EditText disease;
 
 
 
@@ -35,6 +39,12 @@ public class DisplayContactActivity extends Activity {
         age =(EditText) findViewById(R.id.editText_age);
         bloodgp =(EditText) findViewById(R.id.editText_bloodgp);
         gender = (EditText) findViewById(R.id.editText_gender);
+        height = (EditText) findViewById(R.id.editText_height);
+        weight = (EditText) findViewById(R.id.editText_weight);
+        weight = (EditText) findViewById(R.id.editText_bloodPressure);
+        weight = (EditText) findViewById(R.id.editText_disease);
+
+
 
         // starting From this line, code will be changed for new DB design.
 
@@ -52,6 +62,10 @@ public class DisplayContactActivity extends Activity {
                 String age1 =generalProfileModule.getAge()+"";
                 String blgp = generalProfileModule.getBloodGroup();
                 String gend = generalProfileModule.getGender();
+                Float height1 = generalProfileModule.getHeight();
+                Float weight1 = generalProfileModule.getWeight();
+                Float bloodPressure1 = generalProfileModule.getBloodPressure();
+                String disease1 = generalProfileModule.getDisease();
 
                 Button b = (Button)findViewById(R.id.button_save);
                 b.setVisibility(View.INVISIBLE);
@@ -72,6 +86,21 @@ public class DisplayContactActivity extends Activity {
                 gender.setFocusable(false);
                 gender.setClickable(false);
 
+                height.setText(String.valueOf(height1));
+                height.setFocusable(false);
+                height.setClickable(false);
+
+                weight.setText(String.valueOf(height1));
+                weight.setFocusable(false);
+                weight.setClickable(false);
+
+                bloodPressure.setText(String.valueOf(bloodPressure1));
+                weight.setFocusable(false);
+                weight.setClickable(false);
+
+                disease.setText((CharSequence)disease1);
+                weight.setFocusable(false);
+                weight.setClickable(false);
 
 
                 Button b3 = (Button)findViewById(R.id.button_add_Addi_healthinfo);
