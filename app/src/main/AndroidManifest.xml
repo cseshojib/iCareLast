@@ -66,7 +66,7 @@
             android:label="@string/title_activity_doctors" >
         </activity>
         <activity
-            android:name=".Activity.RbsActivity"
+            android:name=".Rbs.RbsActivity"
             android:label="@string/title_activity_rbs" >
         </activity>
         <activity
@@ -74,7 +74,7 @@
             android:label="@string/title_activity_doctors_profile" >
         </activity>
         <activity
-            android:name=".Activity.RbsSaveActivity"
+            android:name=".Rbs.RbsSaveActivity"
             android:label="@string/title_activity_rbs__save" >
         </activity>
 
@@ -107,8 +107,8 @@
         </activity>
         <activity android:name=".Medication.Medicine.displayMedicine" />
         <activity
-            android:name=".Activity.dietAndFitness"
-            android:label="@string/title_activity_diet_and_fitness" >
+            android:name=".Activity.dietAndFitnessCalculation"
+            android:label="@string/title_activity_diet_and_fitness_calculation" >
         </activity>
     </application>
 

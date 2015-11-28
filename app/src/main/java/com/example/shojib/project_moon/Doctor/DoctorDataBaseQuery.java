@@ -6,21 +6,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.shojib.project_moon.DBHelperPackage.DbHelper;
+import com.example.shojib.project_moon.Medication.Medicine.MedicationModule;
 
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Suuny on 11/23/2015.
- */
+
 public class DoctorDataBaseQuery {
     private Context context;
     private DbHelper mPDbHelper;
     private SQLiteDatabase mSqLiteDatabase;
-    
-    
+
+
     private String[] allColumns={
             DbHelper.COLUMN_DOCTOR_ID,
             DbHelper.COLUMN_DOCTOR_NAME,
@@ -29,8 +28,8 @@ public class DoctorDataBaseQuery {
             DbHelper.COLUMN_DOCTOR_ADDRESS ,
             DbHelper.COLUMN_DOCTOR_APPOINTMENT_DATE ,
             DbHelper.COLUMN_DOCTOR_APPOINTMENT_TIME ,
-            DbHelper.COLUMN_DOCTOR_REMINDER 
-         
+            DbHelper.COLUMN_DOCTOR_REMINDER
+
 
     };
     public DoctorDataBaseQuery(Context context) {
@@ -50,7 +49,7 @@ public class DoctorDataBaseQuery {
     {
         mPDbHelper.close();
     }
-    public  void createNewDoctor( String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, int reminder, long userId)
+    public  void createNewDoctor( String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, String reminder, long userId)
     {
         ContentValues values=new ContentValues();
 
@@ -63,8 +62,8 @@ public class DoctorDataBaseQuery {
         values.put(DbHelper.COLUMN_DOCTOR_APPOINTMENT_TIME,appointmentTime);
         values.put(DbHelper.COLUMN_VACCINATION_REMINDER,reminder);
         values.put(DbHelper.COLUMN_GENERAL_INFO_USER_ID,userId);
-        
-      
+
+
 
         long insertId=mSqLiteDatabase.insert(DbHelper.TABLE_NAME_DOCTOR, null, values);
         mSqLiteDatabase.query(DbHelper.TABLE_NAME_DOCTOR, allColumns, DbHelper.COLUMN_DOCTOR_ID + " = " + insertId, null, null, null, null);
@@ -106,13 +105,13 @@ public class DoctorDataBaseQuery {
         doctorModule.setAddress(cursor.getString(4));
         doctorModule.setAppointmentDate(cursor.getString(5));
         doctorModule.setAppointmentTime(cursor.getString(6));
-        doctorModule.setReminder(cursor.getInt(7));
+        doctorModule.setReminder(cursor.getString(7));
         doctorModule.setUserId(cursor.getLong(8));
 
 
         return doctorModule;
     }
-    private void updateDoctorByDoctorById(long doctorId,String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, int reminder, long userId)
+    public void updateDoctorByDoctorById(long doctorId, String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, String reminder,long userId)
     {
         try {
             open();
@@ -137,7 +136,7 @@ public class DoctorDataBaseQuery {
         mSqLiteDatabase.update(DbHelper.TABLE_NAME_DOCTOR, values, DbHelper.COLUMN_DOCTOR_ID + " = " + doctorId, null);
 
 
-   close();
+        close();
     }
 
     public void DoctorDeletByDoctorId(long ePId){
@@ -150,5 +149,27 @@ public class DoctorDataBaseQuery {
         close();
 
     }
+
+
+
+    public DoctorModule getSingleDoctorById(long pID) {
+
+        Cursor cursor = mSqLiteDatabase.query(DbHelper.TABLE_NAME_DOCTOR, allColumns, DbHelper.COLUMN_DOCTOR_ID + "=? ", new String[]{String.valueOf(pID)}, null, null, null, null);
+        DoctorModule doctorModule= null;
+
+        if (cursor != null) {
+            try {
+                cursor.moveToFirst();
+                doctorModule = cursorToDoctorModule(cursor);
+            }
+            finally
+            {
+                //close();
+            }
+        }
+
+        return doctorModule;
+    }
+
 
 }

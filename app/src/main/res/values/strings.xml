@@ -34,53 +34,28 @@
 
     <string-array name="Doctors_arrays">
 
-        <item>Acupuncturists</item>
+
         <item>Allergists</item>
-        <item>Audiologists</item>
         <item>Cardiologists</item>
-        <item>Chiropractors</item>
         <item>Colorectal Surgeons</item>
         <item>Dentists</item>
         <item>Dermatologists</item>
-        <item>Dietitians</item>
         <item>Ear_Nose_Throat Doctors</item>
-        <item>Emergency Medicine Physicians</item>
         <item>Endocrinologists</item>
-        <item>Endodontists</item>
         <item>Eye Doctors</item>
         <item>Family Physicians</item>
         <item>Gastroenterologists</item>
-
-        <item>Hearing Specialists</item>
-        <item>Hematologists</item>
-        <item>Infectious Disease Specialists</item>
-        <item>Infertility Specialists</item>
         <item>Internists</item>
         <item>Nephrologists</item>
-        <item>Neurologists</item>
         <item>Neurosurgeons</item>
         <item>Oral Surgeons</item>
         <item>Orthopedic Surgeons</item>
-
-
-
-
-        <item>Physical Therapists</item>
-        <item>Plastic Surgeons</item>
-
-
         <item>Psychiatrists</item>
-        <item>Psychologists</item>
-        <item>Psychotherapists</item>
-
-         <item>Radiologists</item>
-
-        <item>Sleep Medicine Specialists</item>
         <item>Sports Medicine Specialists</item>
-        <item>Surgeons</item>
-        <item>Therapists / Counselors</item>
+        <item>Gen. Surgeons</item>
 
-        <item>Urologists</item>
+
+
     </string-array>
     <string name="title_activity_hospital_maps">Map</string>
     <string name="title_activity_additional_info">Additional_info</string>
@@ -88,5 +63,6 @@
     <string name="title_activity_add_vaccination22">addVaccination22</string>
     <string name="title_activity_diet_calculation">dietCalculationActivity</string>
     <string name="title_activity_diet_and_fitness">dietAndFitness</string>
+    <string name="title_activity_diet_and_fitness_calculation">dietAndFitnessCalculation</string>
 
 </resources>

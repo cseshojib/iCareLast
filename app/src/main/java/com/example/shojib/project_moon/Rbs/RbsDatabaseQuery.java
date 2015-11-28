@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.shojib.project_moon.DBHelperPackage.DbHelper;
+import com.example.shojib.project_moon.Medication.Medicine.MedicationModule;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -99,7 +100,7 @@ public class RbsDatabaseQuery {
     }
 
 
-    private void updateRbsByRbsId(long rbsId, float rbsUnit, String rbsDate, String rbsTime, long userId) {
+    protected void updateRbsByRbsId(long rbsId, float rbsUnit, String rbsDate, String rbsTime, long userId) {
 
         try {
             open();
@@ -131,6 +132,26 @@ public class RbsDatabaseQuery {
         mSqLiteDatabase.delete(DbHelper.TABLE_NAME_RBS, DbHelper.COLUMN_RBS_ID + " = " + ePId, null);
 
         close();
+    }
+
+
+    public RbsModule getSingleRbsById(long pID) {
+
+        Cursor cursor = mSqLiteDatabase.query(DbHelper.TABLE_NAME_RBS, allColumns, DbHelper.COLUMN_RBS_ID + "=? ", new String[]{String.valueOf(pID)}, null, null, null, null);
+        RbsModule rbsModule= null;
+
+        if (cursor != null) {
+            try {
+                cursor.moveToFirst();
+                rbsModule = cursorToRbsModule(cursor);
+            }
+            finally
+            {
+                //close();
+            }
+        }
+
+        return rbsModule;
     }
 
 }

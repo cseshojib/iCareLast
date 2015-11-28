@@ -2,9 +2,6 @@ package com.example.shojib.project_moon.Vaccine.Vaccination;
 
 import java.io.Serializable;
 
-/**
- * Created by hasan on 11/23/15.
- */
 public class VaccinationModule implements Serializable {
     private static final long serialVersionUID = -7406082437623008161L;
 
@@ -12,10 +9,10 @@ public class VaccinationModule implements Serializable {
     private String vaccineName;
     private String vaccineReason;
     private long userId;
-    private int reminder;
+    private String reminder;
 
 
-    public VaccinationModule(long vaccineId, String vaccineName, String vaccineReason, long userId, int reminder) {
+    public VaccinationModule(long vaccineId, String vaccineName, String vaccineReason, long userId, String reminder) {
 
         this.vaccineId = vaccineId;
         this.vaccineName = vaccineName;
@@ -44,7 +41,7 @@ public class VaccinationModule implements Serializable {
         this.userId = userId;
     }
 
-    public void setReminder(int reminder) {
+    public void setReminder(String reminder) {
         this.reminder = reminder;
     }
 
@@ -64,7 +61,7 @@ public class VaccinationModule implements Serializable {
         return userId;
     }
 
-    public int getReminder() {
+    public String getReminder() {
         return reminder;
     }
 }

@@ -50,7 +50,8 @@ public class displayMedicine extends Activity {
         cal = Calendar.getInstance();
         hour = cal.get(Calendar.HOUR_OF_DAY);
         min = cal.get(Calendar.MINUTE);
-        reminder = (EditText) findViewById(R.id.editText_time);
+        reminder = (EditText) findViewById(R.id.timeTextView);
+
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,4 +116,3 @@ public class displayMedicine extends Activity {
     }
 
 }
-

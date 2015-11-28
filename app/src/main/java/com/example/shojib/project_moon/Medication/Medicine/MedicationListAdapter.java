@@ -11,9 +11,6 @@ import com.example.shojib.project_moon.R;
 
 import java.util.List;
 
-/**
- * Created by Suuny on 11/23/2015.
- */
 public class MedicationListAdapter extends BaseAdapter {
 
     private List<MedicationModule> mItems;
@@ -58,7 +55,7 @@ public class MedicationListAdapter extends BaseAdapter {
         else {
             holder = (ViewHolder) v.getTag();
         }
-       MedicationModule currentItem=getItem(position);
+        MedicationModule currentItem=getItem(position);
         if(currentItem!=null)
         {
             holder.tvMName.setText(currentItem.getMedicineName()+" \n"+currentItem.getMedicineReason()+" \n"+currentItem.getReminder());
@@ -69,7 +66,7 @@ public class MedicationListAdapter extends BaseAdapter {
 
 
     }
-     class ViewHolder
+    class ViewHolder
     {
         TextView tvMName;
     }

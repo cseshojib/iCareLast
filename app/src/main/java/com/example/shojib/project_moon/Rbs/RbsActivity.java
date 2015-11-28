@@ -1,4 +1,4 @@
-package com.example.shojib.project_moon.Doctor;
+package com.example.shojib.project_moon.Rbs;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -6,106 +6,101 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.GridView;
 
+import com.example.shojib.project_moon.Medication.Medicine.addMedicine;
 import com.example.shojib.project_moon.R;
 
 import java.util.List;
 
 
-public class DoctorsActivity extends AppCompatActivity implements OnItemClickListener,AdapterView.OnItemLongClickListener
-{
+public class RbsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
+
+    Button rbsAddButton;
 
     public final static String EXTRA_MESSAGE = "MESSAGE";
 
-    private ListView mDoctorListView;
-    private DoctorDataBaseQuery doctorDataBaseQuery;
-    private DoctorListAdapter mDoctorAdapter;
-    private List<DoctorModule> doctorModuleList;
-    long eDID=0;
-
-    Button addDoctorButton;
-
+    private GridView rbsGridView;
+    private RbsDatabaseQuery rbsDatabaseQuery;
+    private RbsListAdapter rAdapter;
+    private List<RbsModule> moduleList;
+    long eRID=0;
     long pID;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctors);
-
-        mDoctorListView = (ListView) findViewById(R.id.doctorsListView);
-        mDoctorListView.setOnItemClickListener(this);
-        mDoctorListView.setOnItemLongClickListener(this);
+        setContentView(R.layout.activity_rbs);
+        rbsGridView = (GridView) findViewById(R.id.rbsGridView);
+        rbsGridView.setOnItemClickListener(this);
+        rbsGridView.setOnItemLongClickListener(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             pID = Long.parseLong(getIntent().getStringExtra("pid"));
         }
-
-        addDoctorButton = (Button)findViewById(R.id.addNewDoctorButton);
-        addDoctorButton.setOnClickListener(new View.OnClickListener() {
+        rbsAddButton = (Button) findViewById(R.id.button_Add_Medicine);
+        rbsAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DoctorsActivity.this, DoctorsProfileActivity.class);
+                Intent intent = new Intent(RbsActivity.this, RbsSaveActivity.class);
                 intent.putExtra("pid", String.valueOf(pID));
                 startActivity(intent);
             }
         });
+
+
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        forRefresh();
-    }
-    private void forRefresh()
-    {
-        doctorDataBaseQuery =new DoctorDataBaseQuery(this);
-        doctorModuleList = doctorDataBaseQuery.getAllDoctor();
-        if(doctorModuleList!=null && !doctorModuleList.isEmpty())
-        {
-            System.out.println("Module List not null");
-            mDoctorAdapter=new DoctorListAdapter(this,doctorModuleList);
-            mDoctorListView.setAdapter(mDoctorAdapter);
-            contextRegister();
+        @Override
+        protected void onResume() {
+            super.onResume();
+            forRefresh();
+
         }
-        System.out.println("doctorModulelist");
-    }
+        private void forRefresh()
+        {
+            rbsDatabaseQuery  =new RbsDatabaseQuery(this);
+            moduleList=rbsDatabaseQuery.getAllRbs();
+            if(moduleList!=null && !moduleList.isEmpty())
+            {   System.out.println("modulelist not null");
+                rAdapter=new RbsListAdapter(this,moduleList);
+                rbsGridView.setAdapter(rAdapter);
+                contextRegister();
+            }
+            System.out.println("modulelist");
+        }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        DoctorListAdapter doctorListAdapter;
-        doctorListAdapter=(DoctorListAdapter)parent.getAdapter();
-        Intent intent = new Intent(getApplicationContext(),DisplayDoctors.class);
-        intent.putExtra("did", String.valueOf(doctorListAdapter.getItemId(position)));
-        startActivity(intent);
+
     }
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        DoctorListAdapter doctorListAdapter;
+        RbsListAdapter rbsListAdapter;
 
-        doctorListAdapter=(DoctorListAdapter)parent.getAdapter();
-        eDID=doctorListAdapter.getItemId(position);
+        rbsListAdapter=(RbsListAdapter)parent.getAdapter();
+
+        eRID=rbsListAdapter.getItemId(position);
         return false;
     }
 
-    /** This will be invoked when an item in the listview is long pressed */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        getMenuInflater().inflate(R.menu.menu_doctors , menu);
+        getMenuInflater().inflate(R.menu.menu_rbs, menu);
         menu.setHeaderTitle("Select Menu ");
     }
+
     private void contextRegister ()
     {
-        registerForContextMenu(mDoctorListView);
+        registerForContextMenu(rbsGridView);
     }
     /** This will be invoked when a menu item is selected */
     @Override
@@ -115,18 +110,18 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
 
         switch(item.getItemId()){
             case R.id.action_UpdateP:
-                Intent HIntent=new Intent(DoctorsActivity.this,DoctorsProfileActivity.class);
-                HIntent.putExtra("did",String.valueOf(eDID));
+                Intent HIntent=new Intent(RbsActivity.this,RbsSaveActivity.class);
+                HIntent.putExtra("rid",String.valueOf(eRID));
                 startActivity(HIntent);
                 break;
             case R.id.action_DeleteP:
-                new AlertDialog.Builder(DoctorsActivity.this)
-                        .setTitle("Delete Doctor?")
+                new AlertDialog.Builder(RbsActivity.this)
+                        .setTitle("Delete RBS?")
                         .setMessage("Are you sure you want to delete this entry?")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
-                                doctorDataBaseQuery.DoctorDeletByDoctorId(eDID);
+                                rbsDatabaseQuery.rbsDeletByRbsId(eRID);
                                 forRefresh();
                             }
                         })
@@ -141,13 +136,10 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
         }
         return true;
     }
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_doctors, menu);
+        getMenuInflater().inflate(R.menu.menu_rbs, menu);
         return true;
     }
 
@@ -165,11 +157,12 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if (keycode == KeyEvent.KEYCODE_BACK)
+        {
+            moveTaskToBack(true);
+        }
+        return super.onKeyDown(keycode, event);
+    }
 
 }
-
-
-

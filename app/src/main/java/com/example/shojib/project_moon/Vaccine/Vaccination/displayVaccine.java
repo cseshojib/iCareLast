@@ -2,17 +2,20 @@ package com.example.shojib.project_moon.Vaccine.Vaccination;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.shojib.project_moon.Medication.Medicine.MedicationModule;
 import com.example.shojib.project_moon.R;
+import com.example.shojib.project_moon.Vaccine.VaccineDate.VaccineDateModule;
 
 import java.util.Calendar;
 
-/**
- * Created by Shojib on 11/27/2015.
- */
 public class displayVaccine extends Activity implements View.OnClickListener{
 
     private ImageButton ib;
@@ -20,8 +23,6 @@ public class displayVaccine extends Activity implements View.OnClickListener{
     private int day;
     private int month;
     private int year;
-    // private TextView dateTextView;
-
     private EditText reminder;
     private EditText vaccineName;
     private EditText vaccineReason;
@@ -29,8 +30,8 @@ public class displayVaccine extends Activity implements View.OnClickListener{
 
     private VaccinationDataBaseQuery vaccinationDataBaseQuery;
     private VaccinationModule vaccinationModule;
-    private  long vID=0;
-    private  long pID;
+    private  long vID;
+    private  long pID=1;
 
 
 
@@ -48,26 +49,61 @@ public class displayVaccine extends Activity implements View.OnClickListener{
         reminder = (EditText) findViewById(R.id.vaccinationDateEditView);
         ib.setOnClickListener(this);
 
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
-
-        vaccineName = (EditText)findViewById(R.id.editText_VaccineName);
-        vaccineReason = (EditText)findViewById(R.id.editText_reasons);
+        vaccineName = (EditText) findViewById(R.id.editText_VaccineName);
+        vaccineReason = (EditText) findViewById(R.id.editText_reasons);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            vID = Long.parseLong(getIntent().getStringExtra("vuid"));
-            //vaccinationModule = vaccinationDataBaseQuery.getAllVaccine(vID);
-            //medicationModule = MedicationDataBaseQuery.getSingleProfileById(pID);
+            vID = Long.parseLong(getIntent().getStringExtra("vid"));
+            VaccinationModule vaccinationModule = vaccinationDataBaseQuery.getSingleVaccineById(vID);
 
             String vaccineName1 = vaccinationModule.getVaccineName();
             String vaccineReason1 = vaccinationModule.getVaccineReason();
-            int reminder1 = vaccinationModule.getReminder();
-
+            String reminder1 = vaccinationModule.getReminder();
+            pID = vaccinationModule.getUserId();
 
             vaccineName.setText(vaccineName1);
             vaccineReason.setText(vaccineReason1);
-            //reminder.setText(String.valueOf(reminder1));
-            reminder.setText(reminder1);}}
+            reminder.setText(reminder1);
+        }
+
+        Button saveButton = (Button) findViewById(R.id.saveVaccine_button);
+
+        saveButton .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                final Editable vName1 = vaccineName.getText();
+                final Editable vReason1 = vaccineReason.getText();
+                final Editable reminder1 = reminder.getText();
+
+
+                try {
+                    if (!TextUtils.isEmpty(vName1) && !TextUtils.isEmpty(vReason1)) {
+                        vaccinationDataBaseQuery.updateVaccineByVaccinById(vID, vName1.toString(), vReason1.toString(), pID, reminder1.toString());
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+    }
+
+
     @Override
     public void onClick(View v) {
 

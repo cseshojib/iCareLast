@@ -11,9 +11,6 @@ import com.example.shojib.project_moon.R;
 
 import java.util.List;
 
-/**
- * Created by Suuny on 11/23/2015.
- */
 public class RbsListAdapter extends BaseAdapter {
 
     private List<RbsModule> mItems;
@@ -49,9 +46,9 @@ public class RbsListAdapter extends BaseAdapter {
         View v=convertView;
         ViewHolder holder;
         if(v == null) {
-            v = mLayoutInflater.inflate(R.layout.list_profile_helper_xml, parent, false);
+            v = mLayoutInflater.inflate(R.layout.list_rbs_helper_xml, parent, false);
             holder = new ViewHolder();
-            holder.tvPName = (TextView) v.findViewById(R.id.txt_profile_title);
+            holder.tvRName = (TextView) v.findViewById(R.id.txt_rbs_title);
 
             v.setTag(holder);
         }
@@ -61,7 +58,7 @@ public class RbsListAdapter extends BaseAdapter {
        RbsModule currentItem=getItem(position);
         if(currentItem!=null)
         {
-           // holder.tvPName.setText(currentItem.getProfileName());
+            holder.tvRName.setText("RBS Unit: "+currentItem.getRbsUnit()+" -Date: "+currentItem.getRbsDate()+" -Time: "+currentItem.getRbsTime());
         }
         return v;
 
@@ -71,6 +68,6 @@ public class RbsListAdapter extends BaseAdapter {
     }
      class ViewHolder
     {
-        TextView tvPName;
+        TextView tvRName;
     }
 }

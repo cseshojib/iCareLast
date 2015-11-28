@@ -147,4 +147,3 @@ public class MedicationDataBaseQuery {
         return medicationModule;
     }
 }
-

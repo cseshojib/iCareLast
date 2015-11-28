@@ -11,9 +11,6 @@ import com.example.shojib.project_moon.R;
 
 import java.util.List;
 
-/**
- * Created by Suuny on 11/23/2015.
- */
 public class VaccinationListAdapter extends BaseAdapter {
 
     private List<VaccinationModule> mItems;
@@ -49,9 +46,9 @@ public class VaccinationListAdapter extends BaseAdapter {
         View v=convertView;
         ViewHolder holder;
         if(v == null) {
-            v = mLayoutInflater.inflate(R.layout.list_profile_helper_xml, parent, false);
+            v = mLayoutInflater.inflate(R.layout.list_vaccine_helper_xml, parent, false);
             holder = new ViewHolder();
-            holder.tvPName = (TextView) v.findViewById(R.id.txt_profile_title);
+            holder.tvVName = (TextView) v.findViewById(R.id.txt_vaccine_title);
 
             v.setTag(holder);
         }
@@ -61,7 +58,7 @@ public class VaccinationListAdapter extends BaseAdapter {
        VaccinationModule currentItem=getItem(position);
         if(currentItem!=null)
         {
-           // holder.tvPName.setText(currentItem.getProfileName());
+            holder.tvVName.setText(currentItem.getVaccineName()+" \n"+currentItem.getVaccineReason()+" \n"+currentItem.getReminder());
         }
         return v;
 
@@ -71,6 +68,6 @@ public class VaccinationListAdapter extends BaseAdapter {
     }
      class ViewHolder
     {
-        TextView tvPName;
+        TextView tvVName;
     }
 }

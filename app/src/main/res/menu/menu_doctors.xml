@@ -3,20 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.DoctorsActivity">
 
-    <item
-        android:id="@+id/add_Doctors"
-        android:orderInCategory="100"
-        android:title="add_Doctors"/>
-
-    <item
-        android:id="@+id/Edit_Doctors"
-        android:orderInCategory="100"
-        android:title="Edit_Doctors"/>
-
-    <item
-        android:id="@+id/Delete_Doctors"
-        android:orderInCategory="100"
-        android:title="Delete_Doctors"/>
+    <item android:id="@+id/action_UpdateP"
+        android:title="Update Profile"
+        android:orderInCategory="90" />
+    <item android:id="@+id/action_DeleteP"
+        android:title="Delete Profile"
+        android:orderInCategory="99" />
 
 
 </menu>

@@ -1,6 +1,5 @@
 package com.example.shojib.project_moon.Activity;
 
-import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,13 +12,13 @@ import android.widget.TextView;
 import com.example.shojib.project_moon.R;
 
 
-public class dietAndCalorieCalculation extends Activity {
-
+public class dietAndFitnessCalculation extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diet_and_calorie_calculation);
+        setContentView(R.layout.activity_diet_and_fitness_calculation);
+
 
         Button calculateBMI = (Button)findViewById(R.id.bmiCalculateButton);
 
@@ -51,10 +50,7 @@ public class dietAndCalorieCalculation extends Activity {
                 calorieResult.setText("Calorie Need per Day: "+ CalValue + " kcal/day ");
             }
         });
-
-
     }
-
     private float calculateBMI (float weight, float heightFeet,float heightInchi) {
 
         //Body Mass Index or BMI = (weight in kilograms) ÷ (height in meters)² ≈
@@ -103,7 +99,7 @@ public class dietAndCalorieCalculation extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_diet_and_calorie_calculation, menu);
+        getMenuInflater().inflate(R.menu.menu_diet_and_fitness_calculation, menu);
         return true;
     }
 

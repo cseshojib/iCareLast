@@ -15,61 +15,49 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-
-import com.example.shojib.project_moon.GeneralProfile.GeneralProfileListAdapter;
 import com.example.shojib.project_moon.R;
 
 import java.util.List;
 
 
-public class MedicationActivity extends AppCompatActivity implements OnItemClickListener,AdapterView.OnItemLongClickListener
-{
+public class MedicationActivity extends AppCompatActivity implements OnItemClickListener,AdapterView.OnItemLongClickListener {
     public final static String EXTRA_MESSAGE = "MESSAGE";
 
     private ListView mListView;
     private MedicationDataBaseQuery medicationDataBaseQuery;
     private MedicationListAdapter mAdapter;
     private List<MedicationModule> moduleList;
-    long eMID=0;
-
-    /*private  ListView mListView;
-    private GeneralProfileDataBaseQuery mGeneralProfileDataBaseQuery;
-    private GeneralProfileListAdapter mAdapter;
-    private List<GeneralProfileModule> moduleList;
-    * */
-
+    long eMID = 0;
 
     Button addMedicineButton;
-long pID;
+    long pID;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medication);
-        mListView=(ListView)findViewById(R.id.medicineListView);
+
+        mListView = (ListView) findViewById(R.id.medicineListView);
         mListView.setOnItemClickListener(this);
         mListView.setOnItemLongClickListener(this);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             pID = Long.parseLong(getIntent().getStringExtra("pid"));
         }
-        addMedicineButton = (Button)findViewById(R.id.button_Add_Medicine);
+        addMedicineButton = (Button) findViewById(R.id.button_Add_Medicine);
         addMedicineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MedicationActivity.this, addMedicine.class);
-
-
-
-
-                intent.putExtra("pid",String.valueOf(pID));
+                intent.putExtra("pid", String.valueOf(pID));
                 startActivity(intent);
             }
         });
     }
 
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
         forRefresh();
@@ -80,13 +68,13 @@ long pID;
         medicationDataBaseQuery =new MedicationDataBaseQuery(this);
         moduleList=medicationDataBaseQuery.getAllMedicine();
         if(moduleList!=null && !moduleList.isEmpty())
-        {   System.out.println("modulelist not null");
+        {   //System.out.println("modulelist not null");
             mAdapter=new MedicationListAdapter(this,moduleList);
             mListView.setAdapter(mAdapter);
             contextRegister();
         }
-          System.out.println("modulelist");
-    }
+       // System.out.println("modulelist");
+    }*/
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         MedicationListAdapter medicationListAdapter;
@@ -108,7 +96,7 @@ long pID;
 
     /** This will be invoked when an item in the listview is long pressed */
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    /*public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.menu_medication , menu);
         menu.setHeaderTitle("Select Menu ");
@@ -119,7 +107,7 @@ long pID;
         registerForContextMenu(mListView);
     }
     /** This will be invoked when a menu item is selected */
-    @Override
+   /* @Override
     public boolean onContextItemSelected(MenuItem item) {
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -152,12 +140,14 @@ long pID;
         }
         return true;
     }
-    @Override
+    */
+
+    //@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_medication, menu);
-    return true;
-}
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -172,5 +162,13 @@ long pID;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if (keycode == KeyEvent.KEYCODE_BACK)
+        {
+            moveTaskToBack(true);
+        }
+        return super.onKeyDown(keycode, event);
     }
 }

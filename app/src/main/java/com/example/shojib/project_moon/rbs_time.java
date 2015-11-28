@@ -7,19 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-/**
- * Created by Shojib on 11/22/2015.
- */
 public class rbs_time  extends Activity implements View.OnClickListener {
     private ImageButton ib;
     private Calendar cal;
     private int hour;
     private int min;
-    private EditText et;
+    private TextView et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +29,7 @@ public class rbs_time  extends Activity implements View.OnClickListener {
         cal = Calendar.getInstance();
         hour = cal.get(Calendar.HOUR_OF_DAY);
         min = cal.get(Calendar.MINUTE);
-        et = (EditText) findViewById(R.id.editText_time);
+        et = (TextView) findViewById(R.id.rbsTimeTextView);
         ib.setOnClickListener(this);
 
 

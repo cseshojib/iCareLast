@@ -4,9 +4,9 @@
     tools:context=".Activity.MedicationActivity">
 
     <item android:id="@+id/action_UpdateP"
-        android:title="Update Profile"
+        android:title="Update Medicine"
         android:orderInCategory="90" />
     <item android:id="@+id/action_DeleteP"
-        android:title="Delete Profile"
+        android:title="Delete Medicine"
         android:orderInCategory="99" />
 </menu>

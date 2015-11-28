@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.shojib.project_moon.Doctor.DoctorsActivity;
 import com.example.shojib.project_moon.Medication.Medicine.MedicationActivity;
 import com.example.shojib.project_moon.R;
+import com.example.shojib.project_moon.Rbs.RbsActivity;
 import com.example.shojib.project_moon.Vaccine.Vaccination.VaccinationActivity;
 
 
@@ -40,6 +41,8 @@ long pID;
         hospital = (Button) findViewById(R.id.hospitalButton);
         exit = (Button) findViewById(R.id.exitButton);
         Bundle extras = getIntent().getExtras();
+
+
         if (extras != null) {
             pID = Long.parseLong(getIntent().getStringExtra("pid"));
         }
@@ -84,7 +87,7 @@ long pID;
         diet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HealthServiceActivity.this, dietAndFitness.class);
+                Intent intent = new Intent(HealthServiceActivity.this, dietAndFitnessCalculation.class);
                 intent.putExtra("pid",String.valueOf(pID));
                 startActivity(intent);
 

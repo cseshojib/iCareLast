@@ -47,7 +47,8 @@ public class VaccinationDataBaseQuery {
     {
         mPDbHelper.close();
     }
-    public  void createNewVaccine(String vaccineName, String vaccineReason, long userId, int reminder)
+
+    public  void createNewVaccine(String vaccineName, String vaccineReason, long userId, String reminder)
     {
         ContentValues values=new ContentValues();
 
@@ -59,6 +60,7 @@ public class VaccinationDataBaseQuery {
       
 
         long insertId=mSqLiteDatabase.insert(DbHelper.TABLE_NAME_VACCINATION, null, values);
+        System.out.println("VaccineDb "+insertId);
         mSqLiteDatabase.query(DbHelper.TABLE_NAME_VACCINATION, allColumns, DbHelper.COLUMN_VACCINATION_VACCINE_ID + " = " + insertId, null, null, null, null);
 
 
@@ -95,11 +97,11 @@ public class VaccinationDataBaseQuery {
         vaccinationModule.setVaccineName(cursor.getString(1));
         vaccinationModule.setVaccineReason(cursor.getString(2));
         vaccinationModule.setUserId(cursor.getLong(3));
-        vaccinationModule.setReminder(cursor.getInt(4));
-
+        vaccinationModule.setReminder(cursor.getString(4));
+        System.out.println("VaccineDBq "+vaccinationModule.getVaccineName());
         return vaccinationModule;
     }
-    public void updateVaccineByVaccinById(long vaccineId, String vaccineName, String vaccineReason, long userId, int reminder)
+    public void updateVaccineByVaccinById(long vaccineId, String vaccineName, String vaccineReason, long userId, String reminder)
     {
         try {
             open();

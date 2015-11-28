@@ -8,16 +8,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.shojib.project_moon.Medication.Medicine.MedicationDataBaseQuery;
-import com.example.shojib.project_moon.Medication.Medicine.MedicationModule;
 import com.example.shojib.project_moon.R;
 
 import java.util.Calendar;
@@ -32,6 +30,7 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
     private int day;
     private int month;
     private int year;
+
    // private TextView dateTextView;
 
     private EditText reminder;
@@ -44,7 +43,8 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
     private  long vID=0;
     private  long pID;
 
-    String flag =null;
+    String flag1 = null;
+    String flag2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,26 +69,30 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
 
 
         vaccinationDataBaseQuery= new VaccinationDataBaseQuery(this);
-        Intent mEIntent = getIntent();
-        flag = mEIntent.getStringExtra("vid");
+        Intent vEIntent = getIntent();
+        flag2 = vEIntent.getStringExtra("vid");
+        flag1 = vEIntent.getStringExtra("pid");
+
+        if (flag2 != null) {
+
+            vID = Long.parseLong(getIntent().getStringExtra("vuid"));
+
+            vaccinationModule = vaccinationDataBaseQuery.getSingleVaccineById(vID);
 
 
 
-        vID = Long.parseLong(getIntent().getStringExtra("vuid"));
        // vaccinationModule = vaccinationDataBaseQuery.getAllVaccine(vID);
         //medicationModule = MedicationDataBaseQuery.getSingleProfileById(pID);
 
         String vaccineName1 = vaccinationModule.getVaccineName();
         String vaccineReason1 = vaccinationModule.getVaccineReason();
-        int reminder1 = vaccinationModule.getReminder();
+        String reminder1 = vaccinationModule.getReminder();
 
+            pID=vaccinationModule.getUserId();
 
         vaccineName.setText(vaccineName1);
         vaccineReason.setText(vaccineReason1);
-        //reminder.setText(String.valueOf(reminder1));
         reminder.setText(reminder1);
-
-
 
         Button b = (Button) findViewById(R.id.saveVaccine_button);
 
@@ -104,26 +108,55 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
                     if (!TextUtils.isEmpty(vaccineName1) && !TextUtils.isEmpty(vaccineReason1) && !TextUtils.isEmpty(reminder1))
 
                     {
-                        //**********************************************
-                        // userID is absent in the query !!!xyx= hdfka
-                        //**********************************************
-                        vaccinationDataBaseQuery.updateVaccineByVaccinById(vID, vaccineName.toString(), vaccineReason.toString(), pID, Integer.valueOf(reminder.toString()));
+
+                        vaccinationDataBaseQuery.updateVaccineByVaccinById(vID, vaccineName.toString(), vaccineReason.toString(), pID, reminder.toString());
                         finish();
                     }
                     else
                     {
-                        Toast.makeText(getApplicationContext(), "Your Medicine Added ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Your Vaccine Added ", Toast.LENGTH_LONG).show();
 
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "Your Medicine Added", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Your Vaccine Added", Toast.LENGTH_LONG).show();
                 }
 
             }
         });
-    }
+    }else {
+            pID=Long.parseLong(getIntent().getStringExtra("pid"));
 
+            final Editable vaccineName1   = vaccineName.getText();
+            final Editable vaccineReason1 = vaccineReason.getText();
+            final Editable reminder1  =  reminder.getText();
+
+            Button b = (Button) findViewById(R.id.saveVaccine_button);
+
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    try {
+
+                        System.out.println(vaccineName1.toString()+vaccineReason1.toString()+reminder1.toString());
+                        if (!TextUtils.isEmpty(vaccineName1) && !TextUtils.isEmpty(vaccineReason1) && !TextUtils.isEmpty(reminder1))
+
+                        {
+
+                            vaccinationDataBaseQuery.updateVaccineByVaccinById(vID, vaccineName1.toString(), vaccineReason1.toString(), pID,reminder1.toString());
+                            Toast.makeText(getApplicationContext(), "Vaccine Added Successfully!", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+
+
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Your Vaccine Added", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+    }
     @Override
     public void onClick(View v) {
         showDialog(0);
@@ -143,4 +176,26 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
         }
     };
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_add_vaccination22, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

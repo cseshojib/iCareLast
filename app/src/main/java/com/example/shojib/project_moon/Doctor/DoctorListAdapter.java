@@ -12,9 +12,7 @@ import com.example.shojib.project_moon.R;
 
 import java.util.List;
 
-/**
- * Created by Suuny on 11/23/2015.
- */
+
 public class DoctorListAdapter extends BaseAdapter {
 
     private List<DoctorModule> mItems;
@@ -50,19 +48,20 @@ public class DoctorListAdapter extends BaseAdapter {
         View v=convertView;
         ViewHolder holder;
         if(v == null) {
-            v = mLayoutInflater.inflate(R.layout.list_profile_helper_xml, parent, false);
+            v = mLayoutInflater.inflate(R.layout.list_doctors_helper_xml, parent, false);
             holder = new ViewHolder();
-            holder.tvPName = (TextView) v.findViewById(R.id.txt_profile_title);
+            holder.tvDName = (TextView) v.findViewById(R.id.txt_doctors_title);
 
             v.setTag(holder);
         }
         else {
             holder = (ViewHolder) v.getTag();
         }
-       DoctorModule currentItem=getItem(position);
+        DoctorModule currentItem=getItem(position);
         if(currentItem!=null)
         {
-           // holder.tvPName.setText(currentItem.getProfileName());
+            // holder.tvPName.setText(currentItem.getProfileName());
+            holder.tvDName.setText(currentItem.getDoctorName()+" \n"+currentItem.getSpeciality()+" \n"+currentItem.getPhone());
         }
         return v;
 
@@ -70,8 +69,8 @@ public class DoctorListAdapter extends BaseAdapter {
 
 
     }
-     class ViewHolder
+    class ViewHolder
     {
-        TextView tvPName;
+        TextView tvDName;
     }
 }
