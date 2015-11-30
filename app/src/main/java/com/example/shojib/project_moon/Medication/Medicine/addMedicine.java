@@ -33,7 +33,7 @@ public class addMedicine extends Activity implements OnClickListener {
     private Calendar cal;
     private int hour;
     private int min;
-    private TextView reminder;
+    private EditText reminder;
     private EditText medicineName;
     private EditText medicineReason;
 
@@ -54,7 +54,7 @@ public class addMedicine extends Activity implements OnClickListener {
         cal = Calendar.getInstance();
         hour = cal.get(Calendar.HOUR_OF_DAY);
         min = cal.get(Calendar.MINUTE);
-        reminder = (TextView) findViewById(R.id.timeTextView);
+        reminder = (EditText) findViewById(R.id.timeTextView);
         medicineName = (EditText) findViewById(R.id.editText_medicineName);
         medicineReason = (EditText) findViewById(R.id.editText_reasons);
 
@@ -90,7 +90,7 @@ public class addMedicine extends Activity implements OnClickListener {
                     //
                     final Editable mName1 = medicineName.getText();
                     final Editable mReason1 = medicineReason.getText();
-                    final Editable reminder1 =  reminder.getEditableText();
+                    final Editable reminder1 =  reminder.getText();
 
 
                     try {
@@ -113,7 +113,7 @@ public class addMedicine extends Activity implements OnClickListener {
             pID=Long.parseLong(getIntent().getStringExtra("pid"));
             final Editable mName1 = medicineName.getText();
             final Editable mReason1 = medicineReason.getText();
-            final Editable reminder1 = reminder.getEditableText();
+            final Editable reminder1 = reminder.getText();
 
             Button sameMedicineButton = (Button) findViewById(R.id.saveMedicine_button);
 
@@ -125,6 +125,7 @@ public class addMedicine extends Activity implements OnClickListener {
                         if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) )
                         {
                             medicationDataBaseQuery.createNewMedication(mName1.toString(), mReason1.toString(), pID, reminder1.toString());
+                           // medicationDataBaseQuery.createNewMedication("Napa","Jor", pID, "11.30");
                             Toast.makeText(getApplicationContext(), "Medicine Added Successfully!", Toast.LENGTH_LONG).show();
 
                             finish();

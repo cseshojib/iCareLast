@@ -13,8 +13,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.example.shojib.project_moon.Medication.Medicine.addMedicine;
+import com.example.shojib.project_moon.Medication.Medicine.displayMedicine;
 import com.example.shojib.project_moon.R;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
 
     public final static String EXTRA_MESSAGE = "MESSAGE";
 
-    private GridView rbsGridView;
+    private ListView mListView;
     private RbsDatabaseQuery rbsDatabaseQuery;
     private RbsListAdapter rAdapter;
     private List<RbsModule> moduleList;
@@ -37,9 +39,9 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rbs);
-        rbsGridView = (GridView) findViewById(R.id.rbsGridView);
-        rbsGridView.setOnItemClickListener(this);
-        rbsGridView.setOnItemLongClickListener(this);
+        mListView = (ListView) findViewById(R.id.rbsListView);
+        mListView.setOnItemClickListener(this);
+        mListView.setOnItemLongClickListener(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -70,7 +72,7 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
             if(moduleList!=null && !moduleList.isEmpty())
             {   System.out.println("modulelist not null");
                 rAdapter=new RbsListAdapter(this,moduleList);
-                rbsGridView.setAdapter(rAdapter);
+                mListView.setAdapter(rAdapter);
                 contextRegister();
             }
             System.out.println("modulelist");
@@ -78,7 +80,9 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Intent intent = new Intent(getApplicationContext(),RbsSaveActivity.class);
+        intent.putExtra("mid", String.valueOf(id));
+        startActivity(intent);
     }
 
     @Override
@@ -100,7 +104,7 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
 
     private void contextRegister ()
     {
-        registerForContextMenu(rbsGridView);
+        registerForContextMenu(mListView);
     }
     /** This will be invoked when a menu item is selected */
     @Override

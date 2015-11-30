@@ -57,7 +57,7 @@ public class MedicationActivity extends AppCompatActivity implements OnItemClick
         });
     }
 
-   /* @Override
+    @Override
     protected void onResume() {
         super.onResume();
         forRefresh();
@@ -71,10 +71,10 @@ public class MedicationActivity extends AppCompatActivity implements OnItemClick
         {   //System.out.println("modulelist not null");
             mAdapter=new MedicationListAdapter(this,moduleList);
             mListView.setAdapter(mAdapter);
-            contextRegister();
+            //contextRegister();
         }
-       // System.out.println("modulelist");
-    }*/
+
+    }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         MedicationListAdapter medicationListAdapter;

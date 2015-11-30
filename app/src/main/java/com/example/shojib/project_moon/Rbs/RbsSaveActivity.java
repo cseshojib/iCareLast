@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -27,16 +28,16 @@ import com.example.shojib.project_moon.R;
 import java.util.Calendar;
 
 
-public class RbsSaveActivity extends Activity implements View.OnClickListener {
+public class RbsSaveActivity extends Activity {
 
-    private TextView date;
-    private TextView time;
+    private EditText date;
+    private EditText time;
 
     private EditText rbsUnit;
     private EditText dateEditText;
 
 
-    Button rbsSaveButton,sameMedicineButton;
+    Button rbsSaveButton, sameMedicineButton;
 
     private RbsDatabaseQuery rbsDatabaseQuery;
     private RbsModule rbsModule;
@@ -52,31 +53,76 @@ public class RbsSaveActivity extends Activity implements View.OnClickListener {
     private int min;
 
 
-    private long pID=1;
+    private long pID = 1;
 
     private long rID;
     String flag1 = null;
     String flag2 = null;
 
-
-
-
+private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rbs__save);
+context=this;
 
-
-        date = (TextView) findViewById(R.id.rbsDateTextView);
-        time = (TextView) findViewById(R.id.rbsTimeTextView);
+        date = (EditText) findViewById(R.id.rbsDateTextView);
+        time = (EditText) findViewById(R.id.rbsTimeTextView);
         rbsUnit = (EditText) findViewById(R.id.rbsEditText);
 
 
         dateImageButton = (ImageButton) findViewById(R.id.imageButton_date);
         timeImageButton = (ImageButton) findViewById(R.id.imageButton_time);
 
-        dateImageButton.setOnClickListener(this);
-        timeImageButton.setOnClickListener(this);
+        dateImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Process to get Current Date
+                final Calendar c = Calendar.getInstance();
+                year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+
+                // Launch Date Picker Dialog
+                DatePickerDialog dpd = new DatePickerDialog(context,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // Display Selected date in textbox
+                                date.setText(dayOfMonth + "-"
+                                        + (monthOfYear + 1) + "-" + year);
+
+                            }
+                        }, year, month, day);
+                dpd.show();
+            }
+        });
+        timeImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Process to get Current Time
+                final Calendar c = Calendar.getInstance();
+                hour = c.get(Calendar.HOUR_OF_DAY);
+                min = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                TimePickerDialog tpd = new TimePickerDialog(context,
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+                                // Display Selected time in textbox
+                                time.setText(hourOfDay + ":" + minute);
+                            }
+                        }, hour, min, false);
+                tpd.show();
+            }
+        });
+
+        rbsSaveButton = (Button) findViewById(R.id.rbsSaveButton);
 
 
         rbsDatabaseQuery = new RbsDatabaseQuery(this);
@@ -100,133 +146,60 @@ public class RbsSaveActivity extends Activity implements View.OnClickListener {
             rbsUnit.setText(String.valueOf(RBSUnit));
             date.setText(RBSDate);
             time.setText(RBStime);
+            rbsSaveButton.setText("Update RBS");
 
-
-            rbsSaveButton = (Button) findViewById(R.id.rbsSaveButton);
-            rbsSaveButton.setOnClickListener(this);
-        }
-            else {
-
-
-                 sameMedicineButton = (Button) findViewById(R.id.saveMedicine_button);
-
-                sameMedicineButton.setOnClickListener(this);
-
-            }
 
         }
+        rbsSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button vt = (Button) v;
 
-    @Override
-    public void onClick(View v) {
-        if (v == dateImageButton) {
+                String btTxt = vt.getText().toString();
 
-            // Process to get Current Date
-            final Calendar c = Calendar.getInstance();
-            year = c.get(Calendar.YEAR);
-            month = c.get(Calendar.MONTH);
-            day = c.get(Calendar.DAY_OF_MONTH);
+                if (btTxt == "Update RBS") {
 
-            // Launch Date Picker Dialog
-            DatePickerDialog dpd = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
+                    pID = Long.parseLong(getIntent().getStringExtra("pid"));
+                    final Editable RBSUnit1 = rbsUnit.getText();
+                    final Editable RBSDate1 = date.getEditableText();
+                    final Editable RBStime1 = time.getEditableText();
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-                            // Display Selected date in textbox
-                            date.setText(dayOfMonth + "-"
-                                    + (monthOfYear + 1) + "-" + year);
+                    try {
+                        System.out.println(RBSUnit1.toString() + RBSDate1.toString() + RBStime1.toString());
+                        if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1) && !TextUtils.isEmpty(RBStime1)) {
+                            rbsDatabaseQuery.updateRbsByRbsId(rID, Float.valueOf(RBSUnit1.toString()), RBSDate1.toString(), RBStime1.toString(), pID);
+                            finish();
 
+                            Toast.makeText(getApplicationContext(), "RBS Added Successfully!", Toast.LENGTH_LONG).show();
+
+                            finish();
                         }
-                    },year, month, day);
-            dpd.show();
-        }
-        if (v == timeImageButton)
-        {
-
-            // Process to get Current Time
-            final Calendar c = Calendar.getInstance();
-            hour = c.get(Calendar.HOUR_OF_DAY);
-            min = c.get(Calendar.MINUTE);
-
-            // Launch Time Picker Dialog
-            TimePickerDialog tpd = new TimePickerDialog(this,
-                    new TimePickerDialog.OnTimeSetListener() {
-
-                        @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay,
-                                              int minute) {
-                            // Display Selected time in textbox
-                            time.setText(hourOfDay + ":" + minute);
-                        }
-                    }, hour, min, false);
-            tpd.show();
-        }
-        if(v==rbsSaveButton)
-        {
-            final Editable RBSUnit1 = rbsUnit.getText();
-            final Editable RBSDate1 =  date.getEditableText();
-            final Editable RBStime1 =  time.getEditableText();
-
-
-            try {
-                if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1) && !TextUtils.isEmpty(RBStime1)) {
-                    rbsDatabaseQuery.updateRbsByRbsId(rID, Float.valueOf(RBSUnit1.toString()), RBSDate1.toString(), RBStime1.toString(), pID);
-                    finish();
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                    Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+                    pID = Long.parseLong(getIntent().getStringExtra("pid"));
+                    final Editable RBSUnit1 = rbsUnit.getText();
+                    final Editable RBSDate1 = date.getEditableText();
+                    final Editable RBStime1 = time.getEditableText();
 
-                }
+                    try {
+                        System.out.println(RBSUnit1.toString() + RBSDate1.toString() + RBStime1.toString());
+                        if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1) && !TextUtils.isEmpty(RBStime1)) {
+                            rbsDatabaseQuery.createNewRbs(Float.valueOf(RBSUnit1.toString()), RBSDate1.toString(), RBStime1.toString(), pID);
+                            finish();
 
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-            }
-        }
-        if(v==sameMedicineButton){
+                            Toast.makeText(getApplicationContext(), "RBS Added Successfully!", Toast.LENGTH_LONG).show();
 
-            pID=Long.parseLong(getIntent().getStringExtra("pid"));
-            final Editable RBSUnit1 = rbsUnit.getText();
-            final Editable RBSDate1 =  date.getEditableText();
-            final Editable RBStime1 = time.getEditableText();
-
-            try {
-                System.out.println(RBSUnit1.toString()+RBSDate1.toString()+RBStime1.toString());
-                if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1)&& !TextUtils.isEmpty(RBStime1) )
-                {
-                    rbsDatabaseQuery.createNewRbs(Float.valueOf(RBSUnit1.toString()) , RBSDate1.toString(), RBStime1.toString(),pID);
-                    finish();
-
-                    Toast.makeText(getApplicationContext(), "RBS Added Successfully!", Toast.LENGTH_LONG).show();
-
-                    finish();
+                            finish();
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
-            catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_rbs__save, menu);
-        return true;
-    }
+        });
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
-
-

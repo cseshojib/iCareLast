@@ -41,10 +41,10 @@
         android:layout_height="wrap_content"
         android:text="RBS (Unit): "
         android:id="@+id/textView_rbs"
+        android:layout_marginTop="62dp"
         android:layout_below="@+id/textView_time"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="150sp"
@@ -52,7 +52,7 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/rbsEditText"
-        android:layout_alignBottom="@+id/textView_rbs"
+        android:layout_below="@+id/textView_rbs"
         android:layout_alignLeft="@+id/textView5"
         android:layout_alignStart="@+id/textView5" />
 
@@ -84,27 +84,30 @@
         android:id="@+id/imageButton_time"
         android:onClick="showTimePickerDialog"
         android:src="@drawable/time_icon"
-        android:layout_above="@+id/rbsEditText"
-        android:layout_toRightOf="@+id/rbsEditText"
-        android:layout_toEndOf="@+id/rbsEditText" />
+        android:layout_below="@+id/textView_time"
+        android:layout_alignLeft="@+id/imageButton_date"
+        android:layout_alignStart="@+id/imageButton_date" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:editable="false"
         android:text="Click on Calendar"
         android:id="@+id/rbsDateTextView"
-        android:layout_alignTop="@+id/textView_date"
         android:layout_alignLeft="@+id/rbsEditText"
-        android:layout_alignStart="@+id/rbsEditText" />
+        android:layout_alignStart="@+id/rbsEditText"
+        android:layout_alignTop="@+id/textView_date" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click on Watch"
+        android:editable="false"
         android:id="@+id/rbsTimeTextView"
-        android:layout_above="@+id/textView_rbs"
         android:layout_alignLeft="@+id/rbsEditText"
-        android:layout_alignStart="@+id/rbsEditText" />
+        android:layout_alignStart="@+id/rbsEditText"
+        android:layout_alignTop="@+id/textView_time"
+        android:layout_alignBottom="@+id/imageButton_time" />
 
 
 </RelativeLayout>

@@ -65,12 +65,13 @@
         android:layout_alignStart="@+id/textView_reason"
         android:layout_marginTop="39dp" />
 
-    <TextView
+    <EditText
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Click on Watch"
         android:id="@+id/timeTextView"
         android:singleLine="true"
+        android:editable="false"
         android:layout_alignBottom="@+id/textView_time"
         android:layout_toRightOf="@+id/textView_MedicineName"
         android:layout_toLeftOf="@+id/button_timePick"
