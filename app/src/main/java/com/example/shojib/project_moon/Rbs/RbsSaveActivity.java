@@ -36,7 +36,7 @@ public class RbsSaveActivity extends Activity implements View.OnClickListener {
     private EditText dateEditText;
 
 
-    Button rbsSaveButton;
+    Button rbsSaveButton,sameMedicineButton;
 
     private RbsDatabaseQuery rbsDatabaseQuery;
     private RbsModule rbsModule;
@@ -103,59 +103,15 @@ public class RbsSaveActivity extends Activity implements View.OnClickListener {
 
 
             rbsSaveButton = (Button) findViewById(R.id.rbsSaveButton);
-            rbsSaveButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final Editable RBSUnit1 = rbsUnit.getText();
-                    final Editable RBSDate1 = (Editable) date.getText();
-                    final Editable RBStime1 = (Editable) time.getText();
-
-
-                    try {
-                        if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1) && !TextUtils.isEmpty(RBStime1)) {
-                            rbsDatabaseQuery.updateRbsByRbsId(rID, Float.valueOf(RBSUnit1.toString()), RBSDate1.toString(), RBStime1.toString(), pID);
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-
-                        }
-
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-                    }
-
-                }
-            });
+            rbsSaveButton.setOnClickListener(this);
         }
             else {
 
-                pID=Long.parseLong(getIntent().getStringExtra("pid"));
-                final Editable RBSUnit1 = rbsUnit.getText();
-                final Editable RBSDate1 = (Editable) date.getText();
-                final Editable RBStime1 = (Editable) time.getText();
 
-                Button sameMedicineButton = (Button) findViewById(R.id.saveMedicine_button);
+                 sameMedicineButton = (Button) findViewById(R.id.saveMedicine_button);
 
-                sameMedicineButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        try {
-                            System.out.println(RBSUnit1.toString()+RBSDate1.toString()+RBStime1.toString());
-                            if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1)&& !TextUtils.isEmpty(RBStime1) )
-                            {
-                                rbsDatabaseQuery.createNewRbs(Float.valueOf(RBSUnit1.toString()) , RBSDate1.toString(), RBStime1.toString(),pID);
-                                finish();
+                sameMedicineButton.setOnClickListener(this);
 
-                                Toast.makeText(getApplicationContext(), "RBS Added Successfully!", Toast.LENGTH_LONG).show();
-
-                                finish();
-                            }
-                        }
-                        catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
             }
 
         }
@@ -205,6 +161,49 @@ public class RbsSaveActivity extends Activity implements View.OnClickListener {
                         }
                     }, hour, min, false);
             tpd.show();
+        }
+        if(v==rbsSaveButton)
+        {
+            final Editable RBSUnit1 = rbsUnit.getText();
+            final Editable RBSDate1 =  date.getEditableText();
+            final Editable RBStime1 =  time.getEditableText();
+
+
+            try {
+                if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1) && !TextUtils.isEmpty(RBStime1)) {
+                    rbsDatabaseQuery.updateRbsByRbsId(rID, Float.valueOf(RBSUnit1.toString()), RBSDate1.toString(), RBStime1.toString(), pID);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+            }
+        }
+        if(v==sameMedicineButton){
+
+            pID=Long.parseLong(getIntent().getStringExtra("pid"));
+            final Editable RBSUnit1 = rbsUnit.getText();
+            final Editable RBSDate1 =  date.getEditableText();
+            final Editable RBStime1 = time.getEditableText();
+
+            try {
+                System.out.println(RBSUnit1.toString()+RBSDate1.toString()+RBStime1.toString());
+                if (!TextUtils.isEmpty(RBSUnit1) && !TextUtils.isEmpty(RBSDate1)&& !TextUtils.isEmpty(RBStime1) )
+                {
+                    rbsDatabaseQuery.createNewRbs(Float.valueOf(RBSUnit1.toString()) , RBSDate1.toString(), RBStime1.toString(),pID);
+                    finish();
+
+                    Toast.makeText(getApplicationContext(), "RBS Added Successfully!", Toast.LENGTH_LONG).show();
+
+                    finish();
+                }
+            }
+            catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+            }
         }
     }
     @Override

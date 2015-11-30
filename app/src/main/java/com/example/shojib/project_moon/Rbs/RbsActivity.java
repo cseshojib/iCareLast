@@ -45,7 +45,7 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
         if (extras != null) {
             pID = Long.parseLong(getIntent().getStringExtra("pid"));
         }
-        rbsAddButton = (Button) findViewById(R.id.button_Add_Medicine);
+        rbsAddButton = (Button) findViewById(R.id.addRbsButton);
         rbsAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -90,7 +90,7 @@ public class addMedicine extends Activity implements OnClickListener {
                     //
                     final Editable mName1 = medicineName.getText();
                     final Editable mReason1 = medicineReason.getText();
-                    final Editable reminder1 = (Editable) reminder.getText();
+                    final Editable reminder1 =  reminder.getEditableText();
 
 
                     try {
@@ -113,7 +113,7 @@ public class addMedicine extends Activity implements OnClickListener {
             pID=Long.parseLong(getIntent().getStringExtra("pid"));
             final Editable mName1 = medicineName.getText();
             final Editable mReason1 = medicineReason.getText();
-            final Editable reminder1 = (Editable)reminder.getText();
+            final Editable reminder1 = reminder.getEditableText();
 
             Button sameMedicineButton = (Button) findViewById(R.id.saveMedicine_button);
 
@@ -121,7 +121,7 @@ public class addMedicine extends Activity implements OnClickListener {
                 @Override
                 public void onClick(View v) {
                     try {
-                        System.out.println(mName1.toString()+mReason1.toString()+reminder1.toString());
+                        System.out.println(mName1.toString()+mReason1.toString());
                         if (!TextUtils.isEmpty(mName1) && !TextUtils.isEmpty(mReason1) )
                         {
                             medicationDataBaseQuery.createNewMedication(mName1.toString(), mReason1.toString(), pID, reminder1.toString());
