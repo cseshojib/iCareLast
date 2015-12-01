@@ -29,13 +29,13 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:id="@+id/doctorsListView"
-        android:layout_below="@+id/addNewDoctorButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="48dp"
-        android:background="#ffcacaca" />
+        android:background="#ffcacaca"
+        android:layout_above="@+id/backButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,9 +43,20 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Doctors&apos; List"
         android:id="@+id/textView11"
-        android:layout_below="@+id/addNewDoctorButton"
+        android:textColor="#ffffffff"
+        android:layout_above="@+id/doctorsListView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#ffffffff" />
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        android:id="@+id/backButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

@@ -20,7 +20,7 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:id="@+id/listView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -29,12 +29,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Add Vaccine"
         android:id="@+id/button_Add_Vaccine"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="44dp" />
+        android:layout_below="@+id/textView7"
+        android:layout_alignRight="@+id/textView6"
+        android:layout_alignEnd="@+id/textView6" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,5 +44,16 @@
         android:id="@+id/textView7"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        android:id="@+id/backButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/listView2"
+        android:layout_alignEnd="@+id/listView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

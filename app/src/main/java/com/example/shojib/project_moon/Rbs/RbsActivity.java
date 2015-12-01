@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import com.example.shojib.project_moon.Activity.HealthServiceActivity;
 import com.example.shojib.project_moon.Medication.Medicine.addMedicine;
 import com.example.shojib.project_moon.Medication.Medicine.displayMedicine;
 import com.example.shojib.project_moon.R;
@@ -39,9 +40,21 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rbs);
+
         mListView = (ListView) findViewById(R.id.rbsListView);
         mListView.setOnItemClickListener(this);
         mListView.setOnItemLongClickListener(this);
+
+        Button backButton = (Button)findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RbsActivity.this,HealthServiceActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -56,7 +69,6 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
                 startActivity(intent);
             }
         });
-
 
     }
         @Override
@@ -140,6 +152,8 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
         }
         return true;
     }
+
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -168,5 +182,6 @@ public class RbsActivity extends AppCompatActivity implements AdapterView.OnItem
         }
         return super.onKeyDown(keycode, event);
     }
+    */
 
 }

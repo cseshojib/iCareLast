@@ -3,6 +3,7 @@ package com.example.shojib.project_moon.Vaccine.Vaccination;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,14 +25,13 @@ import java.util.Calendar;
 public class addVaccination22  extends Activity implements View.OnClickListener {
 
 
-
     private ImageButton ib;
     private Calendar cal;
     private int day;
     private int month;
     private int year;
 
-   // private TextView dateTextView;
+    // private TextView dateTextView;
 
     private EditText reminder;
     private EditText vaccineName;
@@ -40,8 +40,8 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
 
     private VaccinationDataBaseQuery vaccinationDataBaseQuery;
     private VaccinationModule vaccinationModule;
-    private  long vID=0;
-    private  long pID;
+    private long vID;
+    private long pID;
 
     String flag1 = null;
     String flag2 = null;
@@ -58,11 +58,8 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
         month = cal.get(Calendar.MONTH);
         year = cal.get(Calendar.YEAR);
 
-     //reminder = (EditText) findViewById(R.id.vaccinationDateTextView);
+       reminder = (EditText) findViewById(R.id.vaccinationDateEditView);
         ib.setOnClickListener(this);
-
-
-
 
         vaccineName = (EditText)findViewById(R.id.editText_VaccineName);
         vaccineReason = (EditText)findViewById(R.id.editText_reasons);
@@ -106,12 +103,10 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
 
                 try {
                     if (!TextUtils.isEmpty(vaccineName1) && !TextUtils.isEmpty(vaccineReason1) && !TextUtils.isEmpty(reminder1))
+                    {vaccinationDataBaseQuery.updateVaccineByVaccinById(vID, vaccineName1.toString(), vaccineReason1.toString(), pID, reminder1.toString());
+                    finish();}
 
-                    {
 
-                        vaccinationDataBaseQuery.updateVaccineByVaccinById(vID, vaccineName.toString(), vaccineReason.toString(), pID, reminder.toString());
-                        finish();
-                    }
                     else
                     {
                         Toast.makeText(getApplicationContext(), "Your Vaccine Added ", Toast.LENGTH_LONG).show();
@@ -124,7 +119,8 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
 
             }
         });
-    }else {
+    }
+    else {
             pID=Long.parseLong(getIntent().getStringExtra("pid"));
 
             final Editable vaccineName1   = vaccineName.getText();
@@ -144,7 +140,7 @@ public class addVaccination22  extends Activity implements View.OnClickListener 
 
                         {
 
-                            vaccinationDataBaseQuery.updateVaccineByVaccinById(vID, vaccineName1.toString(), vaccineReason1.toString(), pID,reminder1.toString());
+                            vaccinationDataBaseQuery.createNewVaccine(vaccineName1.toString(), vaccineReason1.toString(), pID, reminder1.toString());
                             Toast.makeText(getApplicationContext(), "Vaccine Added Successfully!", Toast.LENGTH_LONG).show();
                             finish();
                         }

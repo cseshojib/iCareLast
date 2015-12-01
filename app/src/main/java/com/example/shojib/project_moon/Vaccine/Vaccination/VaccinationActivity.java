@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.shojib.project_moon.Activity.HealthServiceActivity;
 import com.example.shojib.project_moon.Medication.Medicine.addMedicine;
 import com.example.shojib.project_moon.Medication.Medicine.displayMedicine;
 import com.example.shojib.project_moon.R;
@@ -34,10 +35,20 @@ public class VaccinationActivity extends Activity implements AdapterView.OnItemC
 
     long pID;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccination);
+
+        Button backButton = (Button)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VaccinationActivity.this,HealthServiceActivity.class);
+                startActivity(intent);
+            }
+        });
 
         vListView=(ListView)findViewById(R.id.listView2);
         vListView.setOnItemClickListener(this);
@@ -152,7 +163,10 @@ public class VaccinationActivity extends Activity implements AdapterView.OnItemC
         }
         return true;
     }
-   @Override
+
+
+    /*
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_vaccination, menu);
@@ -179,5 +193,5 @@ public class VaccinationActivity extends Activity implements AdapterView.OnItemC
             moveTaskToBack(true);
         }
         return super.onKeyDown(keycode, event);
-    }
+    }*/
 }

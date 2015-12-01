@@ -20,7 +20,7 @@
 
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:paddingTop="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -180,17 +180,6 @@
 
  </TableLayout>
 
-    <CheckBox
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appiontment_reminder"
-        android:text="Set Reminder"
-        android:layout_column="1"
-
-        android:checked="false"
-        android:layout_below="@+id/tableLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -198,11 +187,25 @@
         android:textSize="20sp"
         android:onClick="drInfoSave"
         android:id="@+id/saveDoctorButton"
-        android:layout_marginBottom="86dp"
         android:background="#ff97ffb3"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/backButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="56dp"
+        android:layout_alignRight="@+id/backButton"
+        android:layout_alignEnd="@+id/backButton" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        android:textSize="20sp"
+        android:onClick="drInfoSave"
+        android:background="#fff5ffd2"
+
+        android:id="@+id/backButton"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

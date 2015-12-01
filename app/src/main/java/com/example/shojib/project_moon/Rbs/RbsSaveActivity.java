@@ -37,7 +37,7 @@ public class RbsSaveActivity extends Activity {
     private EditText dateEditText;
 
 
-    Button rbsSaveButton, sameMedicineButton;
+    Button rbsSaveButton;
 
     private RbsDatabaseQuery rbsDatabaseQuery;
     private RbsModule rbsModule;
@@ -122,6 +122,7 @@ context=this;
             }
         });
 
+
         rbsSaveButton = (Button) findViewById(R.id.rbsSaveButton);
 
 
@@ -130,7 +131,8 @@ context=this;
         flag2 = mEIntent.getStringExtra("rid");
         flag1 = mEIntent.getStringExtra("pid");
 
-        if (flag2 != null) {
+        if (flag2 != null)
+        {
 
             rID = Long.parseLong(getIntent().getStringExtra("mid"));
 
@@ -150,6 +152,7 @@ context=this;
 
 
         }
+
         rbsSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

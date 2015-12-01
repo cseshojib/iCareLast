@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.shojib.project_moon.Activity.HealthServiceActivity;
 import com.example.shojib.project_moon.R;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
 
     public final static String EXTRA_MESSAGE = "MESSAGE";
 
-    private ListView mDoctorListView;
+    private ListView mDListView;
     private DoctorDataBaseQuery doctorDataBaseQuery;
     private DoctorListAdapter mDoctorAdapter;
     private List<DoctorModule> doctorModuleList;
@@ -40,9 +41,21 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctors);
 
-        mDoctorListView = (ListView) findViewById(R.id.doctorsListView);
-        mDoctorListView.setOnItemClickListener(this);
-        mDoctorListView.setOnItemLongClickListener(this);
+
+        mDListView = (ListView) findViewById(R.id.doctorsListView);
+        mDListView.setOnItemClickListener(this);
+        mDListView.setOnItemLongClickListener(this);
+
+        Button backButton = (Button)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoctorsActivity.this,HealthServiceActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -72,7 +85,7 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
         {
             System.out.println("Module List not null");
             mDoctorAdapter=new DoctorListAdapter(this,doctorModuleList);
-            mDoctorListView.setAdapter(mDoctorAdapter);
+            mDListView.setAdapter(mDoctorAdapter);
             contextRegister();
         }
         System.out.println("doctorModulelist");
@@ -96,16 +109,16 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
         return false;
     }
 
-    /** This will be invoked when an item in the listview is long pressed */
+    /** This will be invoked when an item in the listview is long pressed
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.menu_doctors , menu);
         menu.setHeaderTitle("Select Menu ");
-    }
+    }*/
     private void contextRegister ()
     {
-        registerForContextMenu(mDoctorListView);
+        registerForContextMenu(mDListView);
     }
     /** This will be invoked when a menu item is selected */
     @Override
@@ -143,7 +156,7 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
     }
 
 
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -167,7 +180,7 @@ public class DoctorsActivity extends AppCompatActivity implements OnItemClickLis
     }
 
 
-
+*/
 
 }
 

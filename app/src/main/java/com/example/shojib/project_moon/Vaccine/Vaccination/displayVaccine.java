@@ -1,11 +1,14 @@
 package com.example.shojib.project_moon.Vaccine.Vaccination;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -16,7 +19,7 @@ import com.example.shojib.project_moon.Vaccine.VaccineDate.VaccineDateModule;
 
 import java.util.Calendar;
 
-public class displayVaccine extends Activity implements View.OnClickListener{
+public class displayVaccine extends Activity implements View.OnClickListener {
 
     private ImageButton ib;
     private Calendar cal;
@@ -46,19 +49,13 @@ public class displayVaccine extends Activity implements View.OnClickListener{
         month = cal.get(Calendar.MONTH);
         year = cal.get(Calendar.YEAR);
 
-        reminder = (EditText) findViewById(R.id.vaccinationDateEditView);
         ib.setOnClickListener(this);
-
-        ib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
         vaccineName = (EditText) findViewById(R.id.editText_VaccineName);
         vaccineReason = (EditText) findViewById(R.id.editText_reasons);
+        reminder = (EditText) findViewById(R.id.vaccinationDateEditView);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             vID = Long.parseLong(getIntent().getStringExtra("vid"));
@@ -67,6 +64,7 @@ public class displayVaccine extends Activity implements View.OnClickListener{
             String vaccineName1 = vaccinationModule.getVaccineName();
             String vaccineReason1 = vaccinationModule.getVaccineReason();
             String reminder1 = vaccinationModule.getReminder();
+
             pID = vaccinationModule.getUserId();
 
             vaccineName.setText(vaccineName1);
@@ -82,8 +80,7 @@ public class displayVaccine extends Activity implements View.OnClickListener{
                 //
                 final Editable vName1 = vaccineName.getText();
                 final Editable vReason1 = vaccineReason.getText();
-                final Editable reminder1 = reminder.getText();
-
+                final Editable reminder1 = reminder.getEditableText();
 
                 try {
                     if (!TextUtils.isEmpty(vName1) && !TextUtils.isEmpty(vReason1)) {
@@ -106,6 +103,19 @@ public class displayVaccine extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-
+        showDialog(0);
     }
+    @Override
+    @Deprecated
+    protected Dialog onCreateDialog(int id) {
+        return new DatePickerDialog(this, datePickerListener, year, month, day);
+    }
+
+    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int selectedYear,
+                              int selectedMonth, int selectedDay) {
+            reminder.setText(selectedDay + " / " + (selectedMonth + 1) + " / "
+                    + selectedYear);
+        }
+    };
 }

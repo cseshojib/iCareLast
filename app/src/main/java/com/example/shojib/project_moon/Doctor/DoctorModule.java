@@ -12,11 +12,11 @@ public class DoctorModule implements Serializable {
     private String address;
     private String appointmentDate;
     private String appointmentTime;
-    private String reminder;
+   // private String reminder;
     private long userId;
 
 
-    public DoctorModule(long doctorId, String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, String reminder, long userId) {
+    public DoctorModule(long doctorId, String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, long userId) {
 
         this.doctorId = doctorId;
         this.doctorName = doctorName;
@@ -25,7 +25,7 @@ public class DoctorModule implements Serializable {
         this.address = address;
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
-        this.reminder = reminder;
+        //this.reminder = reminder;
         this.userId = userId;
 
     }
@@ -62,9 +62,9 @@ public class DoctorModule implements Serializable {
         this.appointmentTime = appointmentTime;
     }
 
-    public void setReminder(String reminder) {
+   /* public void setReminder(String reminder) {
         this.reminder = reminder;
-    }
+    }*/
 
     public void setUserId(long userId) {
         this.userId = userId;
@@ -98,9 +98,9 @@ public class DoctorModule implements Serializable {
         return appointmentTime;
     }
 
-    public String getReminder() {
+    /*public String getReminder() {
         return reminder;
-    }
+    }*/
 
     public long getUserId() {
         return userId;

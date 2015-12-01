@@ -49,7 +49,7 @@ public class DoctorDataBaseQuery {
     {
         mPDbHelper.close();
     }
-    public  void createNewDoctor( String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, String reminder, long userId)
+    public  void createNewDoctor( String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, long userId)
     {
         ContentValues values=new ContentValues();
 
@@ -60,13 +60,13 @@ public class DoctorDataBaseQuery {
         values.put(DbHelper.COLUMN_DOCTOR_ADDRESS,address);
         values.put(DbHelper.COLUMN_DOCTOR_APPOINTMENT_DATE,appointmentDate);
         values.put(DbHelper.COLUMN_DOCTOR_APPOINTMENT_TIME,appointmentTime);
-        values.put(DbHelper.COLUMN_VACCINATION_REMINDER,reminder);
+       // values.put(DbHelper.COLUMN_VACCINATION_REMINDER,reminder);
         values.put(DbHelper.COLUMN_GENERAL_INFO_USER_ID,userId);
 
 
 
         long insertId=mSqLiteDatabase.insert(DbHelper.TABLE_NAME_DOCTOR, null, values);
-        mSqLiteDatabase.query(DbHelper.TABLE_NAME_DOCTOR, allColumns, DbHelper.COLUMN_DOCTOR_ID + " = " + insertId, null, null, null, null);
+        mSqLiteDatabase.query(DbHelper.TABLE_NAME_DOCTOR, allColumns, DbHelper.COLUMN_DOCTOR_ID + " = " + insertId, null, null, null, null,null);//.. eta te ki null ekta kom hobe???
 
 
 
@@ -98,6 +98,7 @@ public class DoctorDataBaseQuery {
     private DoctorModule cursorToDoctorModule(Cursor cursor) {
 
         DoctorModule doctorModule=new DoctorModule();
+
         doctorModule.setDoctorId(cursor.getLong(0));
         doctorModule.setDoctorName(cursor.getString(1));
         doctorModule.setSpeciality(cursor.getString(2));
@@ -105,17 +106,19 @@ public class DoctorDataBaseQuery {
         doctorModule.setAddress(cursor.getString(4));
         doctorModule.setAppointmentDate(cursor.getString(5));
         doctorModule.setAppointmentTime(cursor.getString(6));
-        doctorModule.setReminder(cursor.getString(7));
-        doctorModule.setUserId(cursor.getLong(8));
+        //doctorModule.setReminder(cursor.getString(7));
+        doctorModule.setUserId(cursor.getLong(7));
 
 
         return doctorModule;
     }
-    public void updateDoctorByDoctorById(long doctorId, String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, String reminder,long userId)
+    public void updateDoctorByDoctorById(long doctorId, String doctorName, String speciality, String phone, String address, String appointmentDate, String appointmentTime, long userId)
     {
         try {
             open();
-        } catch (SQLException e) {
+            }
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
 
@@ -129,7 +132,7 @@ public class DoctorDataBaseQuery {
         values.put(DbHelper.COLUMN_DOCTOR_ADDRESS,address);
         values.put(DbHelper.COLUMN_DOCTOR_APPOINTMENT_DATE,appointmentDate);
         values.put(DbHelper.COLUMN_DOCTOR_APPOINTMENT_TIME,appointmentTime);
-        values.put(DbHelper.COLUMN_VACCINATION_REMINDER,reminder);
+       // values.put(DbHelper.COLUMN_VACCINATION_REMINDER,reminder);
         values.put(DbHelper.COLUMN_GENERAL_INFO_USER_ID,userId);
 
 

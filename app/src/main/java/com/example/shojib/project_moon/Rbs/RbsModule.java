@@ -2,9 +2,7 @@ package com.example.shojib.project_moon.Rbs;
 
 import java.io.Serializable;
 
-/**
- * Created by hasan on 11/23/15.
- */
+
 public class RbsModule implements Serializable {
     private static final long serialVersionUID = -7406082437623008161L;
 

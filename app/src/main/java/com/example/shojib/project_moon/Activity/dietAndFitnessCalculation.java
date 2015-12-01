@@ -1,5 +1,7 @@
 package com.example.shojib.project_moon.Activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,14 +14,21 @@ import android.widget.TextView;
 import com.example.shojib.project_moon.R;
 
 
-public class dietAndFitnessCalculation extends ActionBarActivity {
+public class dietAndFitnessCalculation extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_and_fitness_calculation);
 
-
+        Button backButton = (Button)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(dietAndFitnessCalculation.this,HealthServiceActivity.class);
+                startActivity(intent);
+            }
+        });
         Button calculateBMI = (Button)findViewById(R.id.bmiCalculateButton);
 
         calculateBMI.setOnClickListener(new View.OnClickListener() {

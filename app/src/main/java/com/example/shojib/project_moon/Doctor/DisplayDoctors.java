@@ -24,7 +24,7 @@ public class DisplayDoctors extends Activity {
     private EditText dr_address;
     private EditText appointment_date;
     private EditText appointment_time;
-    private CheckBox setreminder;
+    //private CheckBox setreminder;
 
 
     private EditText dr_Specialty;
@@ -44,10 +44,10 @@ public class DisplayDoctors extends Activity {
         dr_Specialty = (EditText) findViewById(R.id.SpecialtyEditText);
         appointment_date =(EditText)findViewById(R.id.Appointment_Date);
         appointment_time =(EditText)findViewById(R.id.Appointment_Time);
-        setreminder = (CheckBox)findViewById(R.id.appiontment_reminder);
+        //setreminder = (CheckBox)findViewById(R.id.appiontment_reminder);
 
 
-        //saveDoctorsButton = (Button)findViewById(R.id.saveDoctorButton);
+       Button saveDoctorsButton = (Button)findViewById(R.id.saveDoctorButton);
 
         doctorDataBaseQuery = new DoctorDataBaseQuery(this);
 
@@ -62,7 +62,7 @@ public class DisplayDoctors extends Activity {
             String dSpecialty = doctorModule.getSpeciality();
             String dAppointmentDate = doctorModule.getAppointmentDate();
             String dAppointmentTime = doctorModule.getAppointmentTime();
-            String setreminder1 = doctorModule.getReminder();
+           // String setreminder1 = doctorModule.getReminder();
 
             pID = doctorModule.getUserId();
 
@@ -72,28 +72,28 @@ public class DisplayDoctors extends Activity {
             dr_Specialty.setText(dSpecialty);
             appointment_date.setText(dAppointmentDate);
             appointment_time.setText(dAppointmentTime);
-            setreminder.setText(setreminder1);
+            //setreminder.setText(setreminder1);
 
 
+           saveDoctorsButton = (Button) findViewById(R.id.saveDoctorButton);
 
-            Button saveMedicineButton = (Button) findViewById(R.id.saveDoctorButton);
 
-            saveMedicineButton.setOnClickListener(new View.OnClickListener() {
+            saveDoctorsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //
+
                     final Editable dName1 = doctorName.getText();
                     final Editable dPhone1 = dr_phoneNumber.getText();
                     final Editable dAddress1 = dr_address.getText();
-                    final Editable dSpecialty1 = doctorName.getText();
-                    final Editable dAppointmentDate1 = dr_phoneNumber.getText();
-                    final Editable dAppointmentTime1 = dr_address.getText();
-                    final Editable setreminder2 = dr_address.getText();
+                    final Editable dSpecialty1 = dr_Specialty.getText();
+                    final Editable dAppointmentDate1 = appointment_date.getText();
+                    final Editable dAppointmentTime1 = appointment_time.getText();
+                    //final Editable setreminder2 = dr_address.getText();
 
                     try {
-                        if (!TextUtils.isEmpty(dName1) && !TextUtils.isEmpty(dSpecialty1) && !TextUtils.isEmpty(dPhone1) && !TextUtils.isEmpty(dAddress1) && !TextUtils.isEmpty(dAppointmentDate1)&& !TextUtils.isEmpty(dAppointmentTime1)&& !TextUtils.isEmpty(setreminder2)) {
+                        if (!TextUtils.isEmpty(dName1) && !TextUtils.isEmpty(dSpecialty1) && !TextUtils.isEmpty(dPhone1) && !TextUtils.isEmpty(dAddress1) && !TextUtils.isEmpty(dAppointmentDate1)&& !TextUtils.isEmpty(dAppointmentTime1)) {
 
-                            doctorDataBaseQuery.updateDoctorByDoctorById(dID, dName1.toString(), dSpecialty1.toString(), dPhone1.toString(), dAddress1.toString(), dAppointmentDate1.toString(), dAppointmentTime1.toString(), setreminder2.toString(),pID);
+                            doctorDataBaseQuery.updateDoctorByDoctorById(dID, dName1.toString(), dSpecialty1.toString(), dPhone1.toString(), dAddress1.toString(), dAppointmentDate1.toString(), dAppointmentTime1.toString(),pID);
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();

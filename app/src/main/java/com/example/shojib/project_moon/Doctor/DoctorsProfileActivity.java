@@ -1,6 +1,7 @@
 package com.example.shojib.project_moon.Doctor;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,30 +12,47 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.shojib.project_moon.R;
 
+import java.util.Calendar;
 
-public class DoctorsProfileActivity extends Activity implements View.OnClickListener {
+
+public class DoctorsProfileActivity extends Activity {
 
 
     private DoctorDataBaseQuery doctorDataBaseQuery;
     private DoctorModule doctorModule;
 
-    EditText doctorName;
-    EditText dr_phoneNumber;
-    EditText dr_address;
-    EditText appointment_date;
-    EditText appointment_time;
-    CheckBox setreminder;
+    private EditText doctorName;
+    private EditText dr_phoneNumber;
+    private EditText dr_address;
+    private EditText appointment_date;
+    private EditText appointment_time;
+    //private CheckBox setreminder;
 
 
-   EditText dr_Specialty;
+    private EditText dr_Specialty;
 
 
 
-    //private Button saveDoctorsButton;
+   Button saveDoctorsButton;
+
+
+    private ImageButton dateImageButton;
+    private Calendar cal1;
+    private int day;
+    private int month;
+    private int year;
+
+    private ImageButton timeImageButton;
+    private Calendar cal2;
+    private int hour;
+    private int min;
+
+
 
     private long pID=1;
     private long dID;
@@ -42,10 +60,13 @@ public class DoctorsProfileActivity extends Activity implements View.OnClickList
     String flag2 = null;
 
 
+
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctors_profile);
+        context=this;
 
         doctorName = (EditText) findViewById(R.id.doctorNameEditText);
         dr_phoneNumber = (EditText) findViewById(R.id.dr_phoneEditText);
@@ -53,23 +74,23 @@ public class DoctorsProfileActivity extends Activity implements View.OnClickList
         dr_Specialty = (EditText) findViewById(R.id.SpecialtyEditText);
         appointment_date =(EditText)findViewById(R.id.Appointment_Date);
         appointment_time =(EditText)findViewById(R.id.Appointment_Time);
-        setreminder = (CheckBox)findViewById(R.id.appiontment_reminder);
+       // setreminder = (CheckBox)findViewById(R.id.appiontment_reminder);
 
 
-        //saveDoctorsButton = (Button)findViewById(R.id.saveDoctorButton);
+        saveDoctorsButton = (Button)findViewById(R.id.saveDoctorButton);
 
         doctorDataBaseQuery = new DoctorDataBaseQuery(this);
-        Intent mEIntent = getIntent();
-        flag2 = mEIntent.getStringExtra("did");
-        flag1 = mEIntent.getStringExtra("pid");
+        Intent mDIntent = getIntent();
+        flag2 = mDIntent.getStringExtra("did");
+        flag1 = mDIntent.getStringExtra("pid");
 
-        if (flag2 != null)
-        {
+        if (flag2 != null) {
 
             dID = Long.parseLong(getIntent().getStringExtra("did"));
 
             doctorModule = doctorDataBaseQuery.getSingleDoctorById(dID);
 
+            pID = doctorModule.getUserId();
 
             String dName = doctorModule.getDoctorName();
             String dPhone = doctorModule.getPhone();
@@ -77,9 +98,8 @@ public class DoctorsProfileActivity extends Activity implements View.OnClickList
             String dSpecialty = doctorModule.getSpeciality();
             String dAppointmentDate = doctorModule.getAppointmentDate();
             String dAppointmentTime = doctorModule.getAppointmentTime();
-            String setreminder1 = doctorModule.getReminder();
+           // String setreminder1 = doctorModule.getReminder();
 
-            pID = doctorModule.getUserId();
 
             doctorName.setText(dName);
             dr_phoneNumber.setText(dPhone);
@@ -87,77 +107,80 @@ public class DoctorsProfileActivity extends Activity implements View.OnClickList
             dr_Specialty.setText(dSpecialty);
             appointment_date.setText(dAppointmentDate);
             appointment_time.setText(dAppointmentTime);
-            setreminder.setText(setreminder1);
+            //setreminder.setText(setreminder1);
 
-            Button saveMedicineButton = (Button) findViewById(R.id.saveDoctorButton);
+            saveDoctorsButton.setText("Update Dr.Profile");
+        }
 
-            saveMedicineButton.setOnClickListener(new View.OnClickListener() {
+
+            saveDoctorsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //
-                    final Editable dName1 = doctorName.getText();
-                    final Editable dPhone1 = dr_phoneNumber.getText();
-                    final Editable dAddress1 = dr_address.getText();
-                    final Editable dSpecialty1 = doctorName.getText();
-                    final Editable dAppointmentDate1 = dr_phoneNumber.getText();
-                    final Editable dAppointmentTime1 = dr_address.getText();
-                    final Editable setreminder2 = dr_address.getText();
 
 
+                    Button dt = (Button) v;
 
-                    try {
-                        if (!TextUtils.isEmpty(dName1) && !TextUtils.isEmpty(dSpecialty1) && !TextUtils.isEmpty(dPhone1) && !TextUtils.isEmpty(dAddress1) && !TextUtils.isEmpty(dAppointmentDate1)&& !TextUtils.isEmpty(dAppointmentTime1)&& !TextUtils.isEmpty(setreminder2)) {
+                    String drtTxt = dt.getText().toString();
 
-                            doctorDataBaseQuery.updateDoctorByDoctorById(dID, dName1.toString(), dSpecialty1.toString(), dPhone1.toString(), dAddress1.toString(), dAppointmentDate1.toString(), dAppointmentTime1.toString(), setreminder2.toString(),pID);
-                            finish();
-                        } else {
+                    if (drtTxt == "Update Dr.Profile") {
+
+                        pID = Long.parseLong(getIntent().getStringExtra("pid"));
+                        //
+                        final Editable dName1 = doctorName.getText();
+                        final Editable dPhone1 = dr_phoneNumber.getText();
+                        final Editable dAddress1 = dr_address.getText();
+                        final Editable dSpecialty1 = dr_Specialty.getText();
+                        final Editable dAppointmentDate1 = appointment_date.getText();
+                        final Editable dAppointmentTime1 = appointment_time.getText();
+                        //final Editable setreminder2 = setreminder.getText();
+
+
+                        try {
+                            if (!TextUtils.isEmpty(dName1) && !TextUtils.isEmpty(dSpecialty1) && !TextUtils.isEmpty(dPhone1) && !TextUtils.isEmpty(dAddress1) && !TextUtils.isEmpty(dAppointmentDate1) && !TextUtils.isEmpty(dAppointmentTime1)) {
+
+                                doctorDataBaseQuery.updateDoctorByDoctorById(dID, dName1.toString(), dSpecialty1.toString(), dPhone1.toString(), dAddress1.toString(), dAppointmentDate1.toString(), dAppointmentTime1.toString(), pID);
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
+
+                            }
+
+                        } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
-
                         }
 
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
                     }
+                    else {
 
-                }
-            });
-        }
-            else
-        {
+                        pID = Long.parseLong(getIntent().getStringExtra("pid"));
+                        final Editable dName1 = doctorName.getText();
+                        final Editable dPhone1 = dr_phoneNumber.getText();
+                        final Editable dAddress1 = dr_address.getText();
+                        final Editable dSpecialty1 = dr_Specialty.getText();
+                        final Editable dAppointmentDate1 = appointment_date.getText();
+                        final Editable dAppointmentTime1 = appointment_time.getText();
+                       // final Editable setreminder2 = dr_address.getText();
 
-                pID=Long.parseLong(getIntent().getStringExtra("pid"));
-            final Editable dName1 = doctorName.getText();
-            final Editable dPhone1 = dr_phoneNumber.getText();
-            final Editable dAddress1 = dr_address.getText();
-            final Editable dSpecialty1 = doctorName.getText();
-            final Editable dAppointmentDate1 = dr_phoneNumber.getText();
-            final Editable dAppointmentTime1 = dr_address.getText();
-            final Editable setreminder2 = dr_address.getText();
 
-                Button sameMedicineButton = (Button) findViewById(R.id.saveDoctorButton);
-
-                sameMedicineButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
                         try {
-                            System.out.println(dName1.toString()+dSpecialty1.toString()+dPhone1.toString()+dAddress1.toString()+dAppointmentDate1.toString()+dAppointmentTime1.toString()+setreminder2.toString());
-                            if (!TextUtils.isEmpty(dName1) && !TextUtils.isEmpty(dSpecialty1) && !TextUtils.isEmpty(dPhone1) && !TextUtils.isEmpty(dAddress1) && !TextUtils.isEmpty(dAppointmentDate1)&& !TextUtils.isEmpty(dAppointmentTime1)&& !TextUtils.isEmpty(setreminder2)) {
+                            System.out.println(dName1.toString() + dSpecialty1.toString() + dPhone1.toString() + dAddress1.toString() + dAppointmentDate1.toString() + dAppointmentTime1.toString());
+                            if (!TextUtils.isEmpty(dName1) && !TextUtils.isEmpty(dSpecialty1) && !TextUtils.isEmpty(dPhone1) && !TextUtils.isEmpty(dAddress1) && !TextUtils.isEmpty(dAppointmentDate1) && !TextUtils.isEmpty(dAppointmentTime1)) {
 
-                                doctorDataBaseQuery.updateDoctorByDoctorById(dID, dName1.toString(), dSpecialty1.toString(), dPhone1.toString(), dAddress1.toString(), dAppointmentDate1.toString(), dAppointmentTime1.toString(), setreminder2.toString(),pID);
-                                Toast.makeText(getApplicationContext(), "Medicine Added Successfully!", Toast.LENGTH_LONG).show();
+                                doctorDataBaseQuery.createNewDoctor(dName1.toString(), dSpecialty1.toString(), dPhone1.toString(), dAddress1.toString(), dAppointmentDate1.toString(), dAppointmentTime1.toString(), pID);
+                                Toast.makeText(getApplicationContext(), "Doctors Profile Added Successfully!", Toast.LENGTH_LONG).show();
 
                                 finish();
                             }
-                         }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "You Must Fill all Fields!", Toast.LENGTH_LONG).show();
                         }
                     }
-                });
+                }
+            });
             }
 
 
-        }
+
 
 
     @Override
@@ -183,8 +206,5 @@ public class DoctorsProfileActivity extends Activity implements View.OnClickList
     }
 
 
-    @Override
-    public void onClick(View v) {
 
-    }
 }

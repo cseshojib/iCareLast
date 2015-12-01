@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.shojib.project_moon.Doctor.DoctorsActivity;
+import com.example.shojib.project_moon.GeneralProfile.ProfileMainActivity;
 import com.example.shojib.project_moon.Medication.Medicine.MedicationActivity;
 import com.example.shojib.project_moon.R;
 import com.example.shojib.project_moon.Rbs.RbsActivity;
@@ -105,7 +106,8 @@ long pID;
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.exit(0);
+                Intent intent = new Intent(HealthServiceActivity.this, ProfileMainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -114,7 +116,7 @@ long pID;
     }
 
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_health_service, menu);
@@ -135,4 +137,5 @@ long pID;
 
         return super.onOptionsItemSelected(item);
     }
+    */
 }

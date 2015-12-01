@@ -21,7 +21,7 @@ import com.example.shojib.project_moon.R;
 import java.util.Calendar;
 
 
-public class displayMedicine extends Activity {
+public class displayMedicine extends Activity implements View.OnClickListener{
 
     int from_Where_I_Am_Coming = 0;
 
@@ -51,11 +51,11 @@ public class displayMedicine extends Activity {
         hour = cal.get(Calendar.HOUR_OF_DAY);
         min = cal.get(Calendar.MINUTE);
         reminder = (EditText) findViewById(R.id.timeTextView);
-
+        ib.setOnClickListener(this);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showDialog(0);
             }
         });
 
@@ -75,6 +75,7 @@ public class displayMedicine extends Activity {
             String mName = medicationModule.getMedicineName();
             String mReason = medicationModule.getMedicineReason();
             String mReminderTime = medicationModule.getReminder();
+
             pID=medicationModule.getUserId();
 
             medicineName.setText(mName);
@@ -113,6 +114,10 @@ public class displayMedicine extends Activity {
 
 
         }
+    }
+    @Override
+    public void onClick(View v) {
+        showDialog(0);
     }
 
 }
